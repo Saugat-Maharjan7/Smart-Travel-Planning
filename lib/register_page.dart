@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'textfield_register.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  String userName;
+  String phoneNumber;
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,12 +82,16 @@ class RegisterPage extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  width: 107,
+                  width: 92,
                   height: 40,
                   child: Row(
                     children: <Widget>[
-                      FlatButton(
+                      TextButton(
                         onPressed: () {
+                          print(userName);
+                          print(phoneNumber);
+                          print(email);
+                          print(password);
                           print('New account registered successfully.');
                           Navigator.pop(
                             context,
@@ -97,8 +111,9 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        color: Colors.indigoAccent,
-                        textColor: Colors.black,
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.indigoAccent,
+                        ),
                       ),
                     ],
                   ),

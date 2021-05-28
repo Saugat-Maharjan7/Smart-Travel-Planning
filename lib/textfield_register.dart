@@ -36,8 +36,8 @@ Widget buildTextField(
           color: Colors.grey,
         ),
       ),
-      onChanged: (name) {
-        print(name);
+      onChanged: (value) {
+        print(value);
       },
     ),
   );
@@ -77,8 +77,8 @@ Widget buildPhoneField(IconData icon, String hintText, bool isNumber) {
           color: Colors.grey,
         ),
       ),
-      onChanged: (name) {
-        print(name);
+      onChanged: (value) {
+        print(value);
       },
     ),
   );

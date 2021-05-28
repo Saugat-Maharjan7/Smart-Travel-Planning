@@ -204,11 +204,11 @@ class _LoginPageState extends State<LoginPage> {
                     height: 5,
                   ),
                   Container(
-                    width: 120,
+                    width: 116,
                     height: 40,
                     child: Row(
                       children: <Widget>[
-                        RaisedButton.icon(
+                        TextButton.icon(
                           onPressed: () {
                             print(email);
                             print(password);
@@ -226,11 +226,13 @@ class _LoginPageState extends State<LoginPage> {
                               fontSize: 20.0,
                             ),
                           ),
-                          color: Colors.indigoAccent,
-                          textColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.indigoAccent,
+                            // textColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0)),
+                            ),
                           ),
                         ),
                       ],
@@ -244,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.all(2.0),
                     child: Row(
                       children: <Widget>[
-                        RaisedButton.icon(
+                        TextButton.icon(
                           onPressed: () {
                             print('Logged-in with fingerprint');
                             Navigator.pushNamed(context, HomePage.id);
@@ -261,11 +263,12 @@ class _LoginPageState extends State<LoginPage> {
                               fontSize: 13.0,
                             ),
                           ),
-                          color: Colors.transparent,
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0)),
+                            ),
                           ),
                         ),
                       ],
@@ -279,11 +282,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    width: 107,
+                    width: 92,
                     height: 40,
                     child: Row(
                       children: <Widget>[
-                        FlatButton(
+                        TextButton(
                           onPressed: () {
                             print('Register a new Account?');
                             Navigator.pushNamed(context, RegisterPage.id);
@@ -297,8 +300,10 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                          color: Colors.indigoAccent,
-                          textColor: Colors.black,
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.indigoAccent,
+                            // textColor: Colors.black,
+                          ),
                         ),
                       ],
                     ),
