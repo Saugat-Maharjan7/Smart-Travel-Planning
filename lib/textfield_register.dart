@@ -36,8 +36,8 @@ Widget buildTextField(
           color: Colors.grey,
         ),
       ),
-      onChanged: (value) {
-        print(value);
+      onChanged: (newValue) {
+        print(newValue);
       },
     ),
   );

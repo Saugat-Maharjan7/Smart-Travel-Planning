@@ -4,6 +4,9 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:smart_travel_planning_appli/home_page.dart';
 import 'register_page.dart';
 import 'home_page.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class LoginPage extends StatefulWidget {
   static const String id = 'login_page';
@@ -16,6 +19,49 @@ class _LoginPageState extends State<LoginPage> {
   String password;
   bool _secureText = true;
   bool isRememberMe = false;
+  bool isAuth = false;
+
+  @override
+  void initState() {
+    super.initState();
+    //Detects when user signed in/out
+    googleSignIn.onCurrentUserChanged.listen(
+      (account) {
+        if (account != null) {
+          print('User signed in != $account');
+          setState(() {
+            isAuth = true;
+          });
+        } else {
+          setState(() {
+            isAuth = false;
+          });
+        }
+      },
+      onError: (err) {
+        print('Error signing in: $err');
+      },
+    );
+    //Re-authenticate user app when app is reopened
+    googleSignIn.signInSilently(suppressErrors: false).then((account) {
+      if (account != null) {
+        print('User signed in != $account');
+        setState(() {
+          isAuth = true;
+        });
+      } else {
+        setState(() {
+          isAuth = false;
+        });
+      }
+    }).catchError((err) {
+      print('Error signing in : $err');
+    });
+  }
+
+  login() {
+    googleSignIn.signIn();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -324,8 +370,8 @@ class _LoginPageState extends State<LoginPage> {
                   SignInButton(
                     Buttons.Google,
                     text: "Sign-in with Google",
-                    onPressed: () {
-                      print('Signed-in with google');
+                    onPressed: () async {
+                      login();
                     },
                   ),
                   SignInButton(
