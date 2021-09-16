@@ -63,6 +63,10 @@ class _LoginPageState extends State<LoginPage> {
     googleSignIn.signIn();
   }
 
+  logout() {
+    googleSignIn.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -372,6 +376,7 @@ class _LoginPageState extends State<LoginPage> {
                     text: "Sign-in with Google",
                     onPressed: () async {
                       login();
+                      print('Signed-in with google');
                     },
                   ),
                   SignInButton(
