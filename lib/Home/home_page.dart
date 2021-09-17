@@ -1,27 +1,92 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+// import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  var bottomNavStyle = GoogleFonts.lato(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+  );
+
   //Page Controller
   final _pageController = PageController(viewportFraction: 0.87);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        backgroundColor: Colors.transparent,
+        type: BottomNavigationBarType.fixed,
+        selectedFontSize: 12,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0,
+        items: [
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 0
+                ? new Icon(
+                    Icons.home,
+                  )
+                : new Icon(
+                    Icons.home_outlined,
+                  ),
+            label: ('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 1
+                ? new Icon(
+                    Icons.location_on,
+                  )
+                : new Icon(
+                    Icons.location_on_outlined,
+                  ),
+            label: ('Location'),
+          ),
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 2
+                ? new Icon(
+                    Icons.notifications,
+                  )
+                : new Icon(
+                    Icons.notifications_none,
+                  ),
+            label: ('Notification'),
+          ),
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 3
+                ? new Icon(
+                    Icons.person,
+                  )
+                : new Icon(
+                    Icons.person_outline,
+                  ),
+            label: ('Account'),
+          )
+        ],
+      ),
       backgroundColor: Color(0xFF320D36),
       drawer: NavigationDrawerWidget(),
       // appBar: AppBar(
@@ -78,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //Custom Tab bar
+              //Custom Tab bar for Category
               Container(
                   height: 30,
                   margin: EdgeInsets.only(left: 14.4, top: 28.8),
@@ -204,6 +269,109 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
+              //Featured Places
+              Padding(
+                padding: EdgeInsets.only(top: 48, left: 28, right: 28),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Seasonal Best',
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.tealAccent,
+                      ),
+                    ),
+                    Text(
+                      'Show all',
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              //Custom Tab bar for Season wise
+              Container(
+                  height: 30,
+                  margin: EdgeInsets.only(left: 14.4, top: 28.8),
+                  child: DefaultTabController(
+                    length: 5,
+                    child: TabBar(
+                        labelPadding: EdgeInsets.only(left: 14.4, right: 14.4),
+                        indicatorPadding:
+                            EdgeInsets.only(left: 14.4, right: 14.4),
+                        isScrollable: true,
+                        labelColor: Colors.tealAccent,
+                        unselectedLabelColor: Colors.grey,
+                        labelStyle: GoogleFonts.lato(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        unselectedLabelStyle: GoogleFonts.lato(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        tabs: [
+                          Tab(
+                            child: Container(
+                              child: Text('Spring'),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              child: Text('Summer'),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              child: Text('Monsoon'),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              child: Text('Autumn'),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              child: Text('Winter'),
+                            ),
+                          ),
+                        ]),
+                  )),
+
+              //Season wise (error)
+              //Seasonal wise
+              // Container(
+              //   margin: EdgeInsets.only(top: 28, bottom: 16),
+              //   height: 218,
+              //   child: ListView.builder(
+              //     itemCount: season.length,
+              //     padding: EdgeInsets.only(left: 28, right: 12),
+              //     scrollDirection: Axis.horizontal,
+              //     physics: BouncingScrollPhysics(),
+              //     itemBuilder: (context, index) {
+              //       return Container(
+              //         height: 124,
+              //         width: 188,
+              //         margin: EdgeInsets.only(right: 16),
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(9),
+              //             image: DecorationImage(
+              //               fit: BoxFit.cover,
+              //               image: NetworkImage(season[index].image),
+              //             )),
+              //       );
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),
