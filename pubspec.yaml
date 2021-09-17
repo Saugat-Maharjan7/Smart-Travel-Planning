@@ -31,11 +31,11 @@ flutter:
 
   assets:
     - images/stpa.png
-    - images/cctravel.png
     - images/ftravel.jpg
     - images/travel.png
     - images/btravel.jpg
     - images/stbg.jpg
+    - images/cctravel.jpg
 
 
 

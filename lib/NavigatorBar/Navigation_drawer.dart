@@ -14,12 +14,27 @@ class NavigationDrawerWidget extends StatelessWidget {
       child: Material(
         color: Color.fromRGBO(50, 75, 205, 1),
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          // padding: EdgeInsets.symmetric(horizontal: 20),
           children: <Widget>[
-            buildHeader(
-              urlImage: urlImage,
-              name: name,
-              email: email,
+            DrawerHeader(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/cctravel.jpg'),
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              padding: EdgeInsets.zero,
+              child: Container(
+                child: Column(
+                  children: [
+                    buildHeader(
+                      urlImage: urlImage,
+                      name: name,
+                      email: email,
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 40,
@@ -95,7 +110,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   }) =>
       InkWell(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 40),
+          padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
           child: Row(
             children: <Widget>[
               CircleAvatar(
@@ -136,6 +151,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     final color = Colors.white;
 
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 40),
       leading: Icon(
         icon,
         color: color,
