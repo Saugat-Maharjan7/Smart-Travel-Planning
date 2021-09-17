@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:smart_travel_planning_appli/Destination.dart';
-import 'package:smart_travel_planning_appli/Packages.dart';
-import 'package:smart_travel_planning_appli/login_page.dart';
-import 'package:alert_dialog/alert_dialog.dart';
+import 'package:smart_travel_planning_appli/Login/login_page.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   @override
@@ -156,12 +153,12 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Packages(),
+          builder: (context) => null,
         ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Destination(),
+          builder: (context) => null,
         ));
         break;
       case 5:
