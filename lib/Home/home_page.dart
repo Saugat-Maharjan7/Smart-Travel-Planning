@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF320D36),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : new Icon(
                     Icons.home_outlined,
+                    color: Colors.white,
                   ),
             label: ('Home'),
           ),
@@ -62,6 +64,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : new Icon(
                     Icons.location_on_outlined,
+                    color: Colors.white,
                   ),
             label: ('Location'),
           ),
@@ -72,6 +75,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : new Icon(
                     Icons.notifications_none,
+                    color: Colors.white,
                   ),
             label: ('Notification'),
           ),
@@ -82,6 +86,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 : new Icon(
                     Icons.person_outline,
+                    color: Colors.white,
                   ),
             label: ('Account'),
           )
@@ -136,9 +141,10 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(top: 48, left: 28.8),
                 child: Text(
                   'Where Next?',
-                  style: GoogleFonts.playfairDisplay(
+                  style: GoogleFonts.roboto(
                     fontSize: 45.6,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -229,6 +235,7 @@ class _HomePageState extends State<HomePage> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.location_on,
+                                        color: Colors.white,
                                       ),
                                       SizedBox(
                                         width: 9,
@@ -279,10 +286,10 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Text(
                       'Seasonal Best',
-                      style: GoogleFonts.playfairDisplay(
+                      style: GoogleFonts.roboto(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
-                        color: Colors.tealAccent,
+                        color: Colors.white,
                       ),
                     ),
                     Text(

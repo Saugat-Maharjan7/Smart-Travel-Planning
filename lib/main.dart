@@ -1,26 +1,40 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/Register/register_page.dart';
 import 'package:smart_travel_planning_appli/intro_page.dart';
+import 'package:smart_travel_planning_appli/splash.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginPage())));
+  }
+
   @override
   Widget build(BuildContext context) {
+    //MediaQuery
+    // var screenWidth = MediaQuery.of(context).size.width;
+    // var screenHeight = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF320D36),
-        primarySwatch: Colors.teal,
-        scaffoldBackgroundColor: Color(0xFF320D36),
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xFF320D36),
-      ),
+      theme: ThemeData.dark(),
       initialRoute: IntroPage.id,
       routes: {
         IntroPage.id: (context) => IntroPage(),
@@ -28,6 +42,7 @@ class MyApp extends StatelessWidget {
         RegisterPage.id: (context) => RegisterPage(),
         HomePage.id: (context) => HomePage(),
       },
+      home: Splash(),
     );
   }
 }

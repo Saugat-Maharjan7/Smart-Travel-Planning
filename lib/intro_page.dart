@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 
@@ -23,11 +22,10 @@ class _IntroPageState extends State<IntroPage> {
           imagePadding: EdgeInsets.only(top: 50),
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF320D36)),
+              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
           bodyTextStyle: TextStyle(
             fontSize: 18,
+            color: Colors.white,
           ),
         ),
         // footer: ElevatedButton(
@@ -53,11 +51,10 @@ class _IntroPageState extends State<IntroPage> {
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF320D36)),
+              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
           bodyTextStyle: TextStyle(
             fontSize: 18,
+            color: Colors.white,
           ),
         ),
       ),
@@ -71,11 +68,10 @@ class _IntroPageState extends State<IntroPage> {
               EdgeInsets.only(top: 28, bottom: 50, left: 50, right: 50),
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF320D36)),
+              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
           bodyTextStyle: TextStyle(
             fontSize: 18,
+            color: Colors.white,
           ),
         ),
       ),
@@ -87,11 +83,10 @@ class _IntroPageState extends State<IntroPage> {
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF320D36)),
+              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
           bodyTextStyle: TextStyle(
             fontSize: 18,
+            color: Colors.white,
           ),
         ),
       ),
@@ -102,7 +97,7 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IntroductionScreen(
-        globalBackgroundColor: Colors.white,
+        globalBackgroundColor: Color(0xFF320D36),
         dotsDecorator: DotsDecorator(
             activeColor: Colors.tealAccent,
             activeSize: Size(22, 10),
