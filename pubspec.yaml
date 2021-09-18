@@ -11,9 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.22.0
+
   google_fonts: ^1.1.0
   smooth_page_indicator: ^0.1.5
+  introduction_screen: ^2.1.0
 
   flutter_icons: ^1.0.0
 
@@ -33,11 +34,13 @@ flutter:
 
 
   assets:
+    - images/btravel.png
     - images/stpa.png
     - images/ftravel.jpg
+    - images/start.png
     - images/travel.png
-    - images/btravel.jpg
     - images/stbg.jpg
+    - images/stintro.png
     - images/cctravel.jpg
 
 

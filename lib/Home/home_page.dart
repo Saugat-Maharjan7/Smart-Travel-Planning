@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      backgroundColor: Color(0xFF320D36),
+      // backgroundColor: Color(0xFF320D36),
       drawer: NavigationDrawerWidget(),
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,
