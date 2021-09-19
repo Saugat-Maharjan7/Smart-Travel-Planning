@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/Register/register_page.dart';
-import 'package:smart_travel_planning_appli/intro_page.dart';
-import 'package:smart_travel_planning_appli/splash.dart';
+import 'package:smart_travel_planning_appli/Login/intro_page.dart';
+import 'package:smart_travel_planning_appli/Login/splash.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
+import 'NavBarPages/Noti_page.dart';
+import 'NavBarPages/location_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,6 +44,9 @@ class _MyAppState extends State<MyApp> {
         LoginPage.id: (context) => LoginPage(),
         RegisterPage.id: (context) => RegisterPage(),
         HomePage.id: (context) => HomePage(),
+        ProfilePage.id: (context) => ProfilePage(),
+        NotiPage.id: (context) => NotiPage(),
+        LocationPage.id: (context) => LocationPage(),
       },
       home: Splash(),
     );

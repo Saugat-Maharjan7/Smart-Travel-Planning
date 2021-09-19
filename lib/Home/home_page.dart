@@ -1,12 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/Noti_page.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
 import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 // import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
+import 'package:smart_travel_planning_appli/Login/login_page.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -15,12 +20,29 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      if (_selectedIndex == 0) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      } else if (_selectedIndex == 1) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => LocationPage()),
+        );
+      } else if (_selectedIndex == 2) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => NotiPage()),
+        );
+      } else if (_selectedIndex == 3) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => ProfilePage()),
+        );
+      }
     });
   }
 
@@ -31,6 +53,17 @@ class _HomePageState extends State<HomePage> {
 
   //Page Controller
   final _pageController = PageController(viewportFraction: 0.87);
+
+  TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(vsync: this, length: 3);
+    super.initState();
+  }
+
+  int selected = 0;
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +125,9 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+      // //appBar ma vako drawer
       // backgroundColor: Color(0xFF320D36),
-      drawer: NavigationDrawerWidget(),
+      // drawer: NavigationDrawerWidget(),
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,
       // ),
@@ -106,21 +140,21 @@ class _HomePageState extends State<HomePage> {
                 height: 57.6,
                 margin: EdgeInsets.only(top: 28.8, left: 28.8, right: 28.8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    //CustomNavigationDrawer
-                    Container(
-                      height: 57.6,
-                      width: 57.6,
-                      padding: EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9.6),
-                        color: Color(0xFFD8AADD),
-                      ),
-                      child: Icon(
-                        Icons.view_headline_sharp,
-                      ),
-                    ),
+                    //CustomNavigationDrawer Search sangae ko wala
+                    // Container(
+                    //   height: 57.6,
+                    //   width: 57.6,
+                    //   padding: EdgeInsets.all(18),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(9.6),
+                    //     // color: Colors.blueAccent,
+                    //   ),
+                    //   child: Icon(
+                    //     Icons.view_headline_sharp,
+                    //   ),
+                    // ),
                     Container(
                       height: 57.6,
                       width: 57.6,
@@ -151,113 +185,84 @@ class _HomePageState extends State<HomePage> {
 
               //Custom Tab bar for Category
               Container(
-                  height: 30,
-                  margin: EdgeInsets.only(left: 14.4, top: 28.8),
-                  child: DefaultTabController(
-                    length: 4,
-                    child: TabBar(
-                        labelPadding: EdgeInsets.only(left: 14.4, right: 14.4),
-                        indicatorPadding:
-                            EdgeInsets.only(left: 14.4, right: 14.4),
-                        isScrollable: true,
-                        labelColor: Colors.tealAccent,
-                        unselectedLabelColor: Colors.grey,
-                        labelStyle: GoogleFonts.lato(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        unselectedLabelStyle: GoogleFonts.lato(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        tabs: [
-                          Tab(
-                            child: Container(
-                              child: Text('Recommended'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('New Destination'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Popular'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Featured'),
-                            ),
-                          ),
-                        ]),
-                  )),
-
-              //ListView Widget with PageView
-              //Recommended section
-              Container(
-                height: 218,
-                margin: EdgeInsets.only(top: 16),
-                child: PageView(
-                  physics: BouncingScrollPhysics(),
-                  controller: _pageController,
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(
-                    recommendations.length,
-                    (int index) => Container(
-                      margin: EdgeInsets.only(right: 28),
-                      width: 333,
-                      height: 218,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9.6),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(recommendations[index].image)),
-                      ),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                            bottom: 10,
-                            right: 12,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(28),
-                              child: BackdropFilter(
-                                filter: ImageFilter.blur(
-                                  sigmaX: 1,
-                                  sigmaY: 1,
-                                ),
-                                child: Container(
-                                  height: 36,
-                                  padding: EdgeInsets.only(left: 16, right: 14),
-                                  alignment: Alignment.centerLeft,
-                                  child: Row(
-                                    children: <Widget>[
-                                      Icon(
-                                        Icons.location_on,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 9,
-                                      ),
-                                      Text(
-                                        recommendations[index].name,
-                                        style: GoogleFonts.aBeeZee(
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                height: 30,
+                margin: EdgeInsets.only(left: 14.4, top: 28.8),
+                child: DefaultTabController(
+                  length: 3,
+                  child: TabBar(
+                    controller: tabController,
+                    onTap: (value) {
+                      setState(() {
+                        index = value;
+                        selected = value;
+                      });
+                    },
+                    dragStartBehavior: DragStartBehavior.start,
+                    indicatorColor: Colors.transparent,
+                    labelPadding: EdgeInsets.only(left: 14.4, right: 14.4),
+                    indicatorPadding: EdgeInsets.only(left: 14.4, right: 14.4),
+                    isScrollable: true,
+                    labelColor: Colors.white,
+                    unselectedLabelColor: Colors.grey,
+                    labelStyle: GoogleFonts.lato(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
                     ),
+                    unselectedLabelStyle: GoogleFonts.lato(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    tabs: <Container>[
+                      Container(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          decoration: BoxDecoration(
+                              color: selected == 0 ? Colors.blueAccent : null,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Tab(text: "Recommended"),
+                        ),
+                      ),
+                      Container(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          decoration: BoxDecoration(
+                              color: selected == 1 ? Colors.tealAccent : null,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Tab(text: "Popular"),
+                        ),
+                      ),
+                      Container(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          decoration: BoxDecoration(
+                              color: selected == 2 ? Color(0xFFD8AADD) : null,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Tab(text: "Featured"),
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+              ),
+
+              //_tabbarItem for recommend, popular
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                height: 300,
+                width: double.infinity,
+                child: TabBarView(
+                  controller: tabController,
+                  children: [
+                    _tabbarItem(
+                      "NetworkImage(recommendations[index].image)",
+                    ),
+                    _tabbarItem(
+                      "NetworkImage(recommendations[index].image)",
+                    ),
+                    _tabbarItem(
+                      'NetworkImage(recommendations[index].image)',
+                    ),
+                  ],
                 ),
               ),
 
@@ -277,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //Featured Places
+              //Seasonal Places
               Padding(
                 padding: EdgeInsets.only(top: 48, left: 28, right: 28),
                 child: Row(
@@ -304,84 +309,101 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-              //Custom Tab bar for Season wise
               Container(
-                  height: 30,
-                  margin: EdgeInsets.only(left: 14.4, top: 28.8),
-                  child: DefaultTabController(
-                    length: 5,
-                    child: TabBar(
-                        labelPadding: EdgeInsets.only(left: 14.4, right: 14.4),
-                        indicatorPadding:
-                            EdgeInsets.only(left: 14.4, right: 14.4),
-                        isScrollable: true,
-                        labelColor: Colors.tealAccent,
-                        unselectedLabelColor: Colors.grey,
-                        labelStyle: GoogleFonts.lato(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        unselectedLabelStyle: GoogleFonts.lato(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        tabs: [
-                          Tab(
-                            child: Container(
-                              child: Text('Spring'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Summer'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Monsoon'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Autumn'),
-                            ),
-                          ),
-                          Tab(
-                            child: Container(
-                              child: Text('Winter'),
-                            ),
-                          ),
-                        ]),
-                  )),
-
-              //Season wise (error)
-              //Seasonal wise
-              // Container(
-              //   margin: EdgeInsets.only(top: 28, bottom: 16),
-              //   height: 218,
-              //   child: ListView.builder(
-              //     itemCount: season.length,
-              //     padding: EdgeInsets.only(left: 28, right: 12),
-              //     scrollDirection: Axis.horizontal,
-              //     physics: BouncingScrollPhysics(),
-              //     itemBuilder: (context, index) {
-              //       return Container(
-              //         height: 124,
-              //         width: 188,
-              //         margin: EdgeInsets.only(right: 16),
-              //         decoration: BoxDecoration(
-              //             borderRadius: BorderRadius.circular(9),
-              //             image: DecorationImage(
-              //               fit: BoxFit.cover,
-              //               image: NetworkImage(season[index].image),
-              //             )),
-              //       );
-              //     },
-              //   ),
-              // ),
+                height: 200,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 180,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container _tabbarItem(String images) {
+    return Container(
+      height: 150,
+      width: double.infinity,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          Container(
+            height: 150,
+            width: 420,
+            child: PageView(
+              physics: BouncingScrollPhysics(),
+              controller: _pageController,
+              scrollDirection: Axis.horizontal,
+              children: List.generate(
+                recommendations.length,
+                (int index) => Container(
+                  margin: EdgeInsets.only(right: 28),
+                  width: 333,
+                  height: 218,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(9.6),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(recommendations[index].image)),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        bottom: 10,
+                        right: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(28),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(
+                              sigmaX: 1,
+                              sigmaY: 1,
+                            ),
+                            child: Container(
+                              height: 36,
+                              padding: EdgeInsets.only(left: 16, right: 14),
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.location_on,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 9,
+                                  ),
+                                  Text(
+                                    recommendations[index].name,
+                                    style: GoogleFonts.aBeeZee(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

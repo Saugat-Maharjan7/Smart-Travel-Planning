@@ -15,14 +15,15 @@ class _IntroPageState extends State<IntroPage> {
       PageViewModel(
         image: Image.asset('images/stintro.png'),
         title: 'Smart Travel',
-        body:
-            'Application that assists you to plan your next travel without having to think much.',
+        body: 'Your travel assistant.',
         decoration: PageDecoration(
           imageFlex: 1,
           imagePadding: EdgeInsets.only(top: 50),
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.blueAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
@@ -51,7 +52,9 @@ class _IntroPageState extends State<IntroPage> {
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.tealAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
@@ -68,7 +71,9 @@ class _IntroPageState extends State<IntroPage> {
               EdgeInsets.only(top: 28, bottom: 50, left: 50, right: 50),
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.blueAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
@@ -78,12 +83,14 @@ class _IntroPageState extends State<IntroPage> {
       PageViewModel(
         image: Image.asset('images/start.png'),
         title: 'Lets Start',
-        body: 'Without a further a do. Lets Go',
+        body: "Without a further a do.\nLets Go",
         decoration: PageDecoration(
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),
           titleTextStyle: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.tealAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
