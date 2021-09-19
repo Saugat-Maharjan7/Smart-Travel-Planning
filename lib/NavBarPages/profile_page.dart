@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
+import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 
 import 'Noti_page.dart';
 import 'location_page.dart';
@@ -41,6 +42,10 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: Color(0xFF320D36),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
