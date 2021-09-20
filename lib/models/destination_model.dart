@@ -1,4 +1,5 @@
 import 'package:smart_travel_planning_appli/models/activity_model.dart';
+import 'activity_model.dart';
 
 class Destination {
   String imageUrl;
@@ -16,7 +17,7 @@ class Destination {
 
 List<Activity> activities = [
   Activity(
-    imgUrl: 'assets/imgs/one.jpg',
+    imgUrl: "images/ktm.jpg",
     name: 'Scenary view',
     type: 'Sightseeing tour',
     startTimes: ['6:00 am', '11:00 am'],
@@ -24,7 +25,7 @@ List<Activity> activities = [
     price: 30,
   ),
   Activity(
-    imgUrl: 'assets/imgs/two.jpg',
+    imgUrl: "images/pkr.jpg",
     name: 'Walking Tour and Hiking',
     type: 'Sightseeing tour',
     startTimes: ['6:00 am', '11:00 am'],
@@ -32,8 +33,8 @@ List<Activity> activities = [
     price: 210,
   ),
   Activity(
-    imgUrl: 'assets/imgs/three.jpg',
-    name: 'Visit Histrical Places',
+    imgUrl: "images/cht.jpg",
+    name: 'Visit Historical Places',
     type: 'Sightseeing tour',
     startTimes: ['10:00 am', '5:00 pm'],
     rating: 5,
@@ -43,21 +44,21 @@ List<Activity> activities = [
 
 List<Destination> destinations = [
   Destination(
-    imageUrl: 'assets/imgs/four.jpg',
+    imageUrl: "images/ktm.jpg",
     city: "Kathmandu",
     description: "Travel around Kathmandu for exploring exciting places.",
     activities: activities,
   ),
   Destination(
-    imageUrl: 'assets/imgs/five.jpg',
+    imageUrl: "images/pkr.jpg",
     city: "Pokhara",
-    description: "Visit Pokhara for an amazing and unforgettable adventure",
+    description: "Visit Pokhara for an amazing and unforgettable adventure.",
     activities: activities,
   ),
   Destination(
-    imageUrl: 'assets/imgs/six.jpg',
+    imageUrl: "images/cht.jpg",
     city: "Chitwan",
-    description: "Visit Chitwan for chilling and exploring wildlife adventure",
+    description: "Visit Chitwan for chilling and exploring wildlife adventure.",
     activities: activities,
   ),
 ];

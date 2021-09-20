@@ -3,15 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/Noti_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
-import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
+import 'package:smart_travel_planning_appli/models/destination_model.dart';
+import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-// import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
+import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
-import 'package:smart_travel_planning_appli/Login/login_page.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -267,17 +268,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
               //DotsIndicator
-              Padding(
-                padding: EdgeInsets.only(left: 28, top: 28),
-                child: SmoothPageIndicator(
-                  controller: _pageController,
-                  count: recommendations.length,
-                  effect: ExpandingDotsEffect(
-                    activeDotColor: Colors.tealAccent,
-                    dotColor: Colors.grey,
-                    dotHeight: 6,
-                    dotWidth: 6,
-                    spacing: 4,
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 28, top: 28),
+                  child: SmoothPageIndicator(
+                    controller: _pageController,
+                    count: recommendations.length,
+                    effect: ExpandingDotsEffect(
+                      activeDotColor: Colors.tealAccent,
+                      dotColor: Colors.grey,
+                      dotHeight: 6,
+                      dotWidth: 6,
+                      spacing: 4,
+                    ),
                   ),
                 ),
               ),
@@ -290,39 +294,138 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Seasonal Best',
+                      'Top Destinations',
                       style: GoogleFonts.roboto(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      'Show all',
-                      style: GoogleFonts.lato(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () => print('See All'),
+                      child: Text(
+                        'Show all',
+                        style: GoogleFonts.lato(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
 
+              SizedBox(
+                height: 10,
+              ),
+
               Container(
-                height: 200,
-                width: double.infinity,
-                child: ListView(
+                height: 300,
+                child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 180,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
+                  itemCount: destinations.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Destination destination = destinations[index];
+                    return Container(
+                      margin: EdgeInsets.all(10),
+                      width: 210,
+                      child: Stack(
+                        alignment: Alignment.topCenter,
+                        children: <Widget>[
+                          Positioned(
+                            bottom: 15.0,
+                            child: Container(
+                              height: 120,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                color: Colors.blueAccent,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      '${destination.activities.length} places',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      destination.description,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    offset: Offset(0.0, 2.0),
+                                    blurRadius: 6.9,
+                                  )
+                                ]),
+                            child: Stack(
+                              children: <Widget>[
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    height: 180,
+                                    width: 180,
+                                    image: AssetImage(destination.imageUrl),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 10,
+                                  bottom: 10,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            FlutterIcons.location_city_mdi,
+                                            size: 10.0,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            destination.city,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 1.2,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    )
-                  ],
+                    );
+                  },
                 ),
               ),
             ],

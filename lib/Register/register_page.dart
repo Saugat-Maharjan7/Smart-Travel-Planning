@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'textfield_register.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,18 +22,18 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: Colors.transparent,
         title: Text(
           'REGISTRATION',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25.0,
+          style: GoogleFonts.roboto(
+            fontSize: 25,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
       ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 30),
-          padding: EdgeInsets.only(left: 70, right: 50),
-          height: 500,
+          margin: EdgeInsets.only(top: 100),
+          padding: EdgeInsets.only(left: 80, right: 80),
+          // height: 600,
           width: 400,
           child: SingleChildScrollView(
             child: Column(
@@ -62,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   margin: EdgeInsets.only(top: 20),
                   child: RichText(
                     text: TextSpan(
-                      text: "By pressing 'Submit' you agree to our ",
+                      text: "On clicking 'Register' you agree to our ",
                       style: TextStyle(
                         color: Colors.white,
                       ),
