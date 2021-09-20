@@ -32,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(top: 100),
-          padding: EdgeInsets.only(left: 80, right: 80),
+          padding: EdgeInsets.only(left: 50, right: 20),
           // height: 600,
           width: 400,
           child: SingleChildScrollView(

@@ -30,7 +30,7 @@ final List<Season> seasons = [
     imgUrl: 'images/autumn.jpg',
     name: 'Autumn',
     month: 'Sep,Oct,Nov',
-    info: 'Best for hiking and trekking.',
+    info: 'Best for hiking and trekking.\nFavourable weather condition',
   ),
   Season(
     imgUrl: 'images/winter.jpg',

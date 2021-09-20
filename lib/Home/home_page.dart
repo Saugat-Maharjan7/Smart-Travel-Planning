@@ -9,7 +9,7 @@ import 'package:smart_travel_planning_appli/NavBarPages/Noti_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
-import 'package:smart_travel_planning_appli/models/seasonBest_model.dart';
+import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 
