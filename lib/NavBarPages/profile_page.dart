@@ -14,6 +14,8 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
+  bool showPassword = false;
+
   int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
@@ -189,10 +191,57 @@ class _ProfilePageState extends State<ProfilePage>
               SizedBox(
                 height: 30,
               ),
-              buildTextField("User Name", "Hand Sanitizer"),
-              buildTextField("Email", "abc@email.com"),
-              buildTextField("Password", "******"),
-              buildTextField("Mobile Number", "984-------"),
+              buildTextField("User Name", "Hand Sanitizer", false),
+              buildTextField("Email", "abc@email.com", false),
+              buildTextField("Password", "******", true),
+              buildTextField("Mobile Number", "984-------", false),
+              SizedBox(
+                height: 25,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  OutlinedButton(
+                    onPressed: () {
+                      print('Changes Discarded');
+                    },
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 19,
+                        letterSpacing: 2.2,
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.red),
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Changes Saved');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blueAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                    ),
+                    child: Text(
+                      'Save',
+                      style: TextStyle(
+                        fontSize: 19,
+                        letterSpacing: 2.2,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -200,11 +249,26 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Widget buildTextField(String labelText, String placeholder) {
+  Widget buildTextField(
+      String labelText, String placeholder, bool isPasswordTextField) {
     return Padding(
       padding: EdgeInsets.only(bottom: 35.0),
       child: TextField(
+        obscureText: isPasswordTextField ? showPassword : false,
         decoration: InputDecoration(
+          suffixIcon: isPasswordTextField
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      showPassword = !showPassword;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.visibility,
+                    color: Colors.grey,
+                  ),
+                )
+              : null,
           contentPadding: EdgeInsets.only(bottom: 5),
           labelText: labelText,
           labelStyle: TextStyle(
@@ -214,7 +278,7 @@ class _ProfilePageState extends State<ProfilePage>
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: placeholder,
           hintStyle: TextStyle(
-            fontSize: 16,
+            fontSize: 19,
             color: Colors.grey,
           ),
         ),
