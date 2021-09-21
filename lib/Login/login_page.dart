@@ -125,9 +125,6 @@ class _LoginPageState extends State<LoginPage> {
                                       padding: const EdgeInsets.all(4.0),
                                       child: TextFormField(
                                         keyboardType: TextInputType.text,
-                                        onSaved: (String name) {
-                                          _name = name;
-                                        },
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
                                           hintText: 'Username',
@@ -142,6 +139,9 @@ class _LoginPageState extends State<LoginPage> {
                                             return "Please enter username";
                                           }
                                           return null;
+                                        },
+                                        onSaved: (String name) {
+                                          _name = name;
                                         },
                                         onChanged: (value) {
                                           _name = value;

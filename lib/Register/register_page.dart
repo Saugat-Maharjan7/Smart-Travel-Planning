@@ -144,11 +144,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildTextField(
-      IconData icon, String hintText, bool isPassword1, bool isEmail) {
+      IconData icon, String hintText, bool isPassword, bool isEmail) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
-        obscureText: isPassword1,
+        obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
             return "Please enter username";
