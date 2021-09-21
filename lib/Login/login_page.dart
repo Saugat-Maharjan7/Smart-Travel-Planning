@@ -15,11 +15,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email;
-  String password;
+  String _name;
+  String _password;
   bool _secureText = true;
   bool isRememberMe = false;
   bool isAuth = false;
+
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -85,69 +87,15 @@ class _LoginPageState extends State<LoginPage> {
               constraints: BoxConstraints.expand(),
               child: SafeArea(
                 child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: 600.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Container(
-                          height: 50,
-                          width: 250,
-                          child: Material(
-                            elevation: 5.0,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
-                            color: Colors.white,
-                            child: Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Icon(
-                                    Icons.account_circle,
-                                    color: Colors.black,
-                                    size: 30.0,
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(15.0),
-                                        bottomRight: Radius.circular(15.0)),
-                                  ),
-                                  width: 200,
-                                  height: 50,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: 'Username',
-                                        hintStyle: TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                      onChanged: (value) {
-                                        email = value;
-                                      },
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        SingleChildScrollView(
-                          child: Container(
+                  child: Form(
+                    key: _formkey,
+                    child: SizedBox(
+                      height: 600.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            height: 50,
                             width: 250,
                             child: Material(
                               elevation: 5.0,
@@ -159,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Padding(
                                     padding: EdgeInsets.all(10.0),
                                     child: Icon(
-                                      Icons.lock_rounded,
+                                      Icons.account_circle,
                                       color: Colors.black,
                                       size: 30.0,
                                     ),
@@ -175,34 +123,33 @@ class _LoginPageState extends State<LoginPage> {
                                     height: 50,
                                     child: Padding(
                                       padding: const EdgeInsets.all(4.0),
-                                      child: TextField(
+                                      child: TextFormField(
+                                        keyboardType: TextInputType.text,
+                                        onSaved: (String name) {
+                                          _name = name;
+                                        },
                                         decoration: InputDecoration(
-                                          hintText: 'Password',
+                                          border: InputBorder.none,
+                                          hintText: 'Username',
                                           hintStyle: TextStyle(
                                             color: Colors.grey,
                                           ),
                                           fillColor: Colors.white,
                                           filled: true,
-                                          border: InputBorder.none,
-                                          suffixIcon: IconButton(
-                                            icon: Icon(_secureText
-                                                ? Icons.visibility_off
-                                                : Icons.visibility),
-                                            onPressed: () {
-                                              setState(() {
-                                                _secureText = !_secureText;
-                                              });
-                                            },
-                                          ),
                                         ),
+                                        validator: (String value) {
+                                          if (value.isEmpty) {
+                                            return "Please enter username";
+                                          }
+                                          return null;
+                                        },
                                         onChanged: (value) {
-                                          password = value;
+                                          _name = value;
                                         },
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           color: Colors.black,
                                         ),
-                                        obscureText: _secureText,
                                       ),
                                     ),
                                   ),
@@ -210,200 +157,282 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 50.0),
-                              child: Row(
-                                children: [
-                                  Checkbox(
-                                    checkColor: Colors.black,
-                                    value: isRememberMe,
-                                    activeColor: Colors.white,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isRememberMe = !isRememberMe;
-                                      });
-                                    },
-                                  ),
-                                  Text(
-                                    "Remember Me",
+                          SizedBox(
+                            height: 10,
+                          ),
+                          SingleChildScrollView(
+                            child: Container(
+                              width: 250,
+                              child: Material(
+                                elevation: 5.0,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0)),
+                                color: Colors.white,
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Icon(
+                                        Icons.lock_rounded,
+                                        color: Colors.black,
+                                        size: 30.0,
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(15.0),
+                                            bottomRight: Radius.circular(15.0)),
+                                      ),
+                                      width: 200,
+                                      height: 50,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: TextFormField(
+                                          validator: (String value) {
+                                            if (value.isEmpty) {
+                                              return "Please enter password";
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (value) {
+                                            _password = value;
+                                          },
+                                          onChanged: (value) {
+                                            _password = value;
+                                          },
+                                          decoration: InputDecoration(
+                                            hintText: 'Password',
+                                            hintStyle: TextStyle(
+                                              color: Colors.grey,
+                                            ),
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: InputBorder.none,
+                                            suffixIcon: IconButton(
+                                              icon: Icon(_secureText
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _secureText = !_secureText;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.black,
+                                          ),
+                                          obscureText: _secureText,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 50.0),
+                                child: Row(
+                                  children: [
+                                    Checkbox(
+                                      checkColor: Colors.black,
+                                      value: isRememberMe,
+                                      activeColor: Colors.white,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isRememberMe = !isRememberMe;
+                                        });
+                                      },
+                                    ),
+                                    Text(
+                                      "Remember Me",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 50.0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    print('Forgot Password?');
+                                  },
+                                  child: Text(
+                                    'Forgot Password?',
                                     style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.white,
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 50.0),
-                              child: TextButton(
-                                onPressed: () {
-                                  print('Forgot Password?');
-                                },
-                                child: Text(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          width: 116,
-                          height: 40,
-                          child: Row(
-                            children: <Widget>[
-                              TextButton.icon(
-                                onPressed: () {
-                                  print(email);
-                                  print(password);
-                                  print('Logged-in');
-                                  Navigator.pushNamed(context, HomePage.id);
-                                },
-                                icon: Icon(
-                                  Icons.login_rounded,
-                                  color: Colors.white,
-                                ),
-                                label: Text(
-                                  'Log-in',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                                style: TextButton.styleFrom(
-                                  backgroundColor: Colors.indigoAccent,
-                                  // textColor: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15.0)),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          margin:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 92),
-                          padding: EdgeInsets.all(2.0),
-                          child: Row(
-                            children: <Widget>[
-                              TextButton.icon(
-                                onPressed: () {
-                                  print('Logged-in with fingerprint');
-                                  Navigator.pushNamed(context, HomePage.id);
-                                },
-                                icon: Icon(
-                                  Icons.fingerprint,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                                label: Text(
-                                  'Login with fingerprint',
-                                  style: TextStyle(
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: 116,
+                            height: 40,
+                            child: Row(
+                              children: <Widget>[
+                                TextButton.icon(
+                                  onPressed: () {
+                                    if (_formkey.currentState.validate()) {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    } else {
+                                      return;
+                                    }
+                                    print(_name);
+                                    print(_password);
+                                    print('Logged-in');
+                                  },
+                                  icon: Icon(
+                                    Icons.login_rounded,
                                     color: Colors.white,
-                                    fontSize: 13.0,
                                   ),
-                                ),
-                                style: TextButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15.0)),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 65,
-                          width: 300,
-                          child: Divider(
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          'Not an existing user?',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          width: 92,
-                          height: 40,
-                          child: Row(
-                            children: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  print('Register a new Account?');
-                                  Navigator.pushNamed(context, RegisterPage.id);
-                                },
-                                child: Center(
-                                  child: Text(
-                                    'Register',
+                                  label: Text(
+                                    'Log-in',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,
                                     ),
                                   ),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.indigoAccent,
+                                    // textColor: Colors.black,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15.0)),
+                                    ),
+                                  ),
                                 ),
-                                style: TextButton.styleFrom(
-                                  backgroundColor: Colors.indigoAccent,
-                                  // textColor: Colors.black,
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 92),
+                            padding: EdgeInsets.all(2.0),
+                            child: Row(
+                              children: <Widget>[
+                                TextButton.icon(
+                                  onPressed: () {
+                                    print('Logged-in with fingerprint');
+                                    Navigator.pushNamed(context, HomePage.id);
+                                  },
+                                  icon: Icon(
+                                    Icons.fingerprint,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ),
+                                  label: Text(
+                                    'Login with fingerprint',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13.0,
+                                    ),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15.0)),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          '- OR -',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          SizedBox(
+                            height: 65,
+                            width: 300,
+                            child: Divider(
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        SignInButton(
-                          Buttons.Google,
-                          text: "Sign-in with Google",
-                          onPressed: () async {
-                            login();
-                            print('Signed-in with google');
-                          },
-                        ),
-                        SignInButton(
-                          Buttons.Facebook,
-                          text: "Sign-in with Facebook",
-                          onPressed: () async {
-                            print('Signed-in with facebook');
-                          },
-                        ),
-                      ],
+                          Text(
+                            'Not an existing user?',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: 92,
+                            height: 40,
+                            child: Row(
+                              children: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    print('Register a new Account?');
+                                    Navigator.pushNamed(
+                                        context, RegisterPage.id);
+                                  },
+                                  child: Center(
+                                    child: Text(
+                                      'Register',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                      ),
+                                    ),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.indigoAccent,
+                                    // textColor: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            '- OR -',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          SignInButton(
+                            Buttons.Google,
+                            text: "Sign-in with Google",
+                            onPressed: () async {
+                              login();
+                              print('Signed-in with google');
+                            },
+                          ),
+                          SignInButton(
+                            Buttons.Facebook,
+                            text: "Sign-in with Facebook",
+                            onPressed: () async {
+                              print('Signed-in with facebook');
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
