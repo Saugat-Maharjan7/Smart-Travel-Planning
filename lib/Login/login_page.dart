@@ -290,13 +290,12 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: () {
                                     if (_formkey.currentState.validate()) {
                                       Navigator.pushNamed(context, HomePage.id);
-                                      print('Sucessful');
+                                      print(_name);
+                                      print(_password);
+                                      print('Successful');
                                     } else {
                                       print("Unsuccessful");
                                     }
-                                    print(_name);
-                                    print(_password);
-                                    print('Logged-in');
                                   },
                                   icon: Icon(
                                     Icons.login_rounded,

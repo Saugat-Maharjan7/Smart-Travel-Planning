@@ -11,7 +11,6 @@ class _RegisterPageState extends State<RegisterPage> {
   String userName;
   String mobileNumber;
   String email;
-  String password;
 
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmPassword = TextEditingController();
@@ -101,12 +100,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: <Widget>[
                         TextButton(
                           onPressed: () {
-                            print(userName);
-                            print(mobileNumber);
-                            print(email);
-                            print(password);
-                            print('New account registered successfully.');
                             if (_formKey.currentState.validate()) {
+                              print(userName);
+                              print(mobileNumber);
+                              print(email);
+                              print(_password);
+                              print('New account registered successfully.');
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
@@ -115,7 +114,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                   },
                                 ),
                               );
-                              print("Successful");
                             } else {
                               print("Unsuccessful");
                             }
