@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
 import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 
 import 'Noti_page.dart';
@@ -61,6 +62,11 @@ class _ProfilePageState extends State<ProfilePage>
             icon: Icon(Icons.settings, color: Colors.blueAccent),
             onPressed: () {
               print('Settings clicked');
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => SettingsPage(),
+                ),
+              );
             },
           ),
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
+import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 
 import 'location_page.dart';
 
@@ -40,6 +41,7 @@ class _NotiPageState extends State<NotiPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       backgroundColor: Color(0xFF320D36),
       appBar: AppBar(
         backgroundColor: Colors.transparent,

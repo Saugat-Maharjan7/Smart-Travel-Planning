@@ -5,6 +5,7 @@ import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import '../Register/register_page.dart';
 import '../Home/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flushbar/flushbar.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -124,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(4.0),
                                       child: TextFormField(
+                                        autofocus: false,
                                         keyboardType: TextInputType.text,
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
@@ -136,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
-                                            return "Please enter username";
+                                            return 'Please enter username';
                                           }
                                           return null;
                                         },
@@ -190,14 +192,15 @@ class _LoginPageState extends State<LoginPage> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
                                         child: TextFormField(
+                                          autofocus: false,
                                           validator: (String value) {
                                             if (value.isEmpty) {
-                                              return "Please enter password";
+                                              return 'Please enter password';
                                             }
                                             return null;
                                           },
-                                          onSaved: (value) {
-                                            _password = value;
+                                          onSaved: (password) {
+                                            _password = password;
                                           },
                                           onChanged: (value) {
                                             _password = value;
@@ -294,6 +297,12 @@ class _LoginPageState extends State<LoginPage> {
                                       print(_password);
                                       print('Successful');
                                     } else {
+                                      Flushbar(
+                                        title: 'Invalid',
+                                        message: 'Textfield must not be empty.',
+                                        backgroundColor: Colors.blueAccent,
+                                        duration: Duration(seconds: 5),
+                                      ).show(context);
                                       print("Unsuccessful");
                                     }
                                   },

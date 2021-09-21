@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -115,6 +116,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                               );
                             } else {
+                              Flushbar(
+                                title: 'Invalid',
+                                message:
+                                    'All the field must be filled properly.',
+                                backgroundColor: Colors.blueAccent,
+                                duration: Duration(seconds: 5),
+                              ).show(context);
                               print("Unsuccessful");
                             }
                           },

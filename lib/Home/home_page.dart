@@ -155,17 +155,56 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     //     Icons.view_headline_sharp,
                     //   ),
                     // ),
-                    Container(
-                      height: 57.6,
-                      width: 57.6,
-                      padding: EdgeInsets.all(18),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9.6),
-                        color: Color(0xFFD8AADD),
+                    GestureDetector(
+                      child: Container(
+                        height: 57.6,
+                        width: 57.6,
+                        padding: EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9.6),
+                          color: Color(0xFFD8AADD),
+                        ),
+                        child: Icon(
+                          Icons.search,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.search,
-                      ),
+                      onTap: () {
+                        setState(() {
+                          print('Ready to search');
+                          TextField(
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                            ),
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Colors.black,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0)),
+                              ),
+                              hintText: 'Search Places',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                          );
+                        });
+                      },
                     ),
                   ],
                 ),
