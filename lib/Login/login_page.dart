@@ -290,8 +290,9 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: () {
                                     if (_formkey.currentState.validate()) {
                                       Navigator.pushNamed(context, HomePage.id);
+                                      print('Sucessful');
                                     } else {
-                                      return;
+                                      print("Unsuccessful");
                                     }
                                     print(_name);
                                     print(_password);

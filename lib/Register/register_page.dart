@@ -14,7 +14,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String password;
 
   TextEditingController _password = TextEditingController();
-  TextEditingController _confirmpassword = TextEditingController();
+  TextEditingController _confirmPassword = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -115,8 +115,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                   },
                                 ),
                               );
+                              print("Successful");
                             } else {
-                              return;
+                              print("Unsuccessful");
                             }
                           },
                           child: Center(
@@ -355,13 +356,13 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
-        controller: _confirmpassword,
+        controller: _confirmPassword,
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
             return "Please Re-enter password";
           }
-          if (_password.text != _confirmpassword.text) {
+          if (_password.text != _confirmPassword.text) {
             return "Password Mismatch";
           }
           return null;
