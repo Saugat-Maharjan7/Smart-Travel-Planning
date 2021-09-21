@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'textfield_register.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
@@ -54,10 +53,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  buildMobileField(Icons.call, 'Mobile Number', true),
-                  SizedBox(
-                    height: 10,
-                  ),
                   buildEmailField(Icons.email_rounded, 'E-mail', false, true),
                   SizedBox(
                     height: 10,
@@ -68,6 +63,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   buildRePassword(
                       Icons.lock_rounded, 'Re-enter Password', true),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  buildMobileField(Icons.call, 'Mobile Number', true),
                   SizedBox(
                     height: 20,
                   ),
@@ -261,7 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
           if (value.isEmpty) {
             return "Please enter Mobile number";
           }
-          if (value.length < 9 || value.length > 11) {
+          if (value.length < 10 || value.length > 10) {
             return "Please enter valid Mobile number";
           }
           return null;
