@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 95, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 90, horizontal: 15),
               constraints: BoxConstraints.expand(),
               child: SafeArea(
                 child: SingleChildScrollView(
@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                                     child: TextField(
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: 'UserName',
+                                        hintText: 'Username',
                                         hintStyle: TextStyle(
                                           color: Colors.grey,
                                         ),
@@ -331,11 +331,21 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 95,
+                          height: 65,
                           width: 300,
                           child: Divider(
                             color: Colors.white,
                           ),
+                        ),
+                        Text(
+                          'Not an existing user?',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
                         ),
                         Container(
                           width: 92,
@@ -372,6 +382,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(

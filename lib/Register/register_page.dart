@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(top: 100),
+          margin: EdgeInsets.only(top: 80),
           padding: EdgeInsets.only(left: 50, right: 20),
           // height: 600,
           width: 400,
@@ -42,7 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 20,
                 ),
-                buildTextField(Icons.account_circle, 'UserName', false, false),
+                buildTextField(Icons.account_circle, 'Username', false, false),
                 SizedBox(
                   height: 10,
                 ),
@@ -55,6 +55,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 10,
                 ),
                 buildTextField(Icons.lock_rounded, 'Password', true, false),
+                SizedBox(
+                  height: 10,
+                ),
+                buildTextField(
+                    Icons.lock_rounded, 'Re-Enter Password', true, false),
                 SizedBox(
                   height: 20,
                 ),
