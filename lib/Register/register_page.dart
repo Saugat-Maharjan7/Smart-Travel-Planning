@@ -58,8 +58,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(
                   height: 10,
                 ),
-                buildTextField(
-                    Icons.lock_rounded, 'Re-Enter Password', true, false),
+                buildReenterPassword(
+                    Icons.lock_rounded, 'Re-Enter Password', true),
                 SizedBox(
                   height: 20,
                 ),
