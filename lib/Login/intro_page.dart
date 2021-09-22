@@ -46,8 +46,8 @@ class _IntroPageState extends State<IntroPage> {
       ),
       PageViewModel(
         image: Image.asset('images/travel.png'),
-        title: 'Explore Destinations',
-        body: 'Come up with new places to explore',
+        title: 'Search Places',
+        body: 'Find new places to travel.',
         decoration: PageDecoration(
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),
@@ -63,8 +63,8 @@ class _IntroPageState extends State<IntroPage> {
       ),
       PageViewModel(
         image: Image.asset('images/stpa.png'),
-        title: 'Search Places',
-        body: 'Where to travel according to the season',
+        title: 'Explore Destinations',
+        body: 'Come up with new places to explore.',
         decoration: PageDecoration(
           imageFlex: 2,
           imagePadding:
@@ -83,7 +83,7 @@ class _IntroPageState extends State<IntroPage> {
       PageViewModel(
         image: Image.asset('images/start.png'),
         title: 'Lets Start',
-        body: "Without a further a do.\nLets Go",
+        body: "A journey of a thousand miles must begin with a single step.",
         decoration: PageDecoration(
           imageFlex: 2,
           descriptionPadding: EdgeInsets.all(16),

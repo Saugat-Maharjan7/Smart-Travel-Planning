@@ -231,9 +231,52 @@ class _ProfilePageState extends State<ProfilePage>
     return Center(
       child: Stack(
         children: <Widget>[
-          CircleAvatar(
-            radius: 70,
-            backgroundImage: AssetImage("images/pkr.jpg"),
+          Container(
+            width: 130,
+            height: 130,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  width: 2,
+                  color: Colors.tealAccent,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      color: Colors.greenAccent.withOpacity(0.1),
+                      offset: Offset(0, 3)),
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      'https://scontent.fbwa1-1.fna.fbcdn.net/v/t1.6435-9/126142314_3117845208320675_8204778654295153619_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=alcFjFwibRUAX84o7qJ&_nc_ht=scontent.fbwa1-1.fna&oh=b812110a6550cdbc5652fae7d9d4f242&oe=61687853'),
+                )),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: InkWell(
+              onTap: () {
+                print('Tapped');
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFFD8AADD),
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.tealAccent,
+                  ),
+                ),
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),

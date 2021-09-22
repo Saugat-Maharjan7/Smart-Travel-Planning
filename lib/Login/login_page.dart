@@ -333,6 +333,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 5,
                           ),
                           Container(
+                            width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 92),
                             padding: EdgeInsets.all(2.0),
