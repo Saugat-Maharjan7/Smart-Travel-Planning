@@ -1,6 +1,7 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// import 'package:firebase_auth/firebase_auth';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
