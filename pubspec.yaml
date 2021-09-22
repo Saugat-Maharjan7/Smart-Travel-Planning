@@ -36,22 +36,7 @@ flutter:
 
 
   assets:
-    - images/btravel.png
-    - images/stpa.png
-    - images/ftravel.jpg
-    - images/start.png
-    - images/travel.png
-    - images/stbg.jpg
-    - images/stintro.png
-    - images/cctravel.jpg
-    - images/cht.jpg
-    - images/ktm.jpg
-    - images/pkr.jpg
-    - images/autumn.jpg
-    - images/monsoon.jpg
-    - images/summer.jpg
-    - images/winter.jpg
-
+     - images/
 
 
 
