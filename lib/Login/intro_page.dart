@@ -54,7 +54,7 @@ class _IntroPageState extends State<IntroPage> {
           titleTextStyle: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: Colors.tealAccent),
+              color: Colors.blueAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,
@@ -90,7 +90,7 @@ class _IntroPageState extends State<IntroPage> {
           titleTextStyle: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: Colors.tealAccent),
+              color: Colors.blueAccent),
           bodyTextStyle: TextStyle(
             fontSize: 18,
             color: Colors.white,

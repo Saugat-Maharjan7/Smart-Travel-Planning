@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
-import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
-
-import 'Noti_page.dart';
 import 'location_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,7 +14,7 @@ class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
   bool showPassword = false;
 
-  int _selectedIndex = 3;
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -31,10 +28,6 @@ class _ProfilePageState extends State<ProfilePage>
           MaterialPageRoute(builder: (context) => LocationPage()),
         );
       } else if (_selectedIndex == 2) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => NotiPage()),
-        );
-      } else if (_selectedIndex == 3) {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => ProfilePage()),
         );
@@ -106,17 +99,6 @@ class _ProfilePageState extends State<ProfilePage>
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
-                ? new Icon(
-                    Icons.notifications,
-                  )
-                : new Icon(
-                    Icons.notifications_none,
-                    color: Colors.white,
-                  ),
-            label: ('Notification'),
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 3
                 ? new Icon(
                     Icons.person,
                   )
@@ -197,8 +179,8 @@ class _ProfilePageState extends State<ProfilePage>
               SizedBox(
                 height: 30,
               ),
-              buildTextField("User Name", "Hand Sanitizer", false),
-              buildTextField("Email", "abc@email.com", false),
+              buildTextField("User Name", "Saugat Maharjan", false),
+              buildTextField("Email", "sau12@email.com", false),
               buildTextField("Password", "******", true),
               buildTextField("Mobile Number", "984-------", false),
               SizedBox(

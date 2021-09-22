@@ -3,8 +3,6 @@ import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'package:smart_travel_planning_appli/NavigatorBar/Navigation_drawer.dart';
 
-import 'Noti_page.dart';
-
 class LocationPage extends StatefulWidget {
   static const String id = 'location_page';
 
@@ -28,10 +26,6 @@ class _LocationPageState extends State<LocationPage>
           MaterialPageRoute(builder: (context) => LocationPage()),
         );
       } else if (_selectedIndex == 2) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => NotiPage()),
-        );
-      } else if (_selectedIndex == 3) {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => ProfilePage()),
         );
@@ -89,17 +83,6 @@ class _LocationPageState extends State<LocationPage>
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
-                ? new Icon(
-                    Icons.notifications,
-                  )
-                : new Icon(
-                    Icons.notifications_none,
-                    color: Colors.white,
-                  ),
-            label: ('Notification'),
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 3
                 ? new Icon(
                     Icons.person,
                   )

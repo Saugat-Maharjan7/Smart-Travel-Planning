@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_travel_planning_appli/NavBarPages/Noti_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
@@ -37,10 +36,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           MaterialPageRoute(builder: (context) => LocationPage()),
         );
       } else if (_selectedIndex == 2) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => NotiPage()),
-        );
-      } else if (_selectedIndex == 3) {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => ProfilePage()),
         );
@@ -105,17 +100,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
-                ? new Icon(
-                    Icons.notifications,
-                  )
-                : new Icon(
-                    Icons.notifications_none,
-                    color: Colors.white,
-                  ),
-            label: ('Notification'),
-          ),
-          BottomNavigationBarItem(
-            icon: _selectedIndex == 3
                 ? new Icon(
                     Icons.person,
                   )
@@ -259,18 +243,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         child: Container(
                           padding: EdgeInsets.only(left: 15, right: 15),
                           decoration: BoxDecoration(
-                              color: selected == 1 ? Colors.tealAccent : null,
+                              color: selected == 1 ? Colors.blueAccent : null,
                               borderRadius: BorderRadius.circular(20)),
-                          child: Tab(text: "Popular"),
+                          child: Tab(text: "Featured"),
                         ),
                       ),
                       Container(
                         child: Container(
                           padding: EdgeInsets.only(left: 15, right: 15),
                           decoration: BoxDecoration(
-                              color: selected == 2 ? Color(0xFFD8AADD) : null,
+                              color: selected == 2 ? Colors.blueAccent : null,
                               borderRadius: BorderRadius.circular(20)),
-                          child: Tab(text: "Featured"),
+                          child: Tab(text: "New"),
                         ),
                       ),
                     ],

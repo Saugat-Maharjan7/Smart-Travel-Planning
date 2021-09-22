@@ -6,7 +6,6 @@ import 'package:smart_travel_planning_appli/Register/register_page.dart';
 import 'package:smart_travel_planning_appli/Login/intro_page.dart';
 import 'package:smart_travel_planning_appli/Login/splash.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
-import 'NavBarPages/Noti_page.dart';
 import 'NavBarPages/location_page.dart';
 
 void main() {
@@ -45,7 +44,6 @@ class _MyAppState extends State<MyApp> {
         RegisterPage.id: (context) => RegisterPage(),
         HomePage.id: (context) => HomePage(),
         ProfilePage.id: (context) => ProfilePage(),
-        NotiPage.id: (context) => NotiPage(),
         LocationPage.id: (context) => LocationPage(),
       },
       home: Splash(),
