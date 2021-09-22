@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
 import 'location_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String id = 'profile_page';
@@ -12,6 +15,9 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
+  PickedFile _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
   bool showPassword = false;
 
   int _selectedIndex = 2;
@@ -249,8 +255,10 @@ class _ProfilePageState extends State<ProfilePage>
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://scontent.fbwa1-1.fna.fbcdn.net/v/t1.6435-9/126142314_3117845208320675_8204778654295153619_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=alcFjFwibRUAX84o7qJ&_nc_ht=scontent.fbwa1-1.fna&oh=b812110a6550cdbc5652fae7d9d4f242&oe=61687853'),
+                  image: _imageFile == null
+                      ? NetworkImage(
+                          'https://scontent.fbwa1-1.fna.fbcdn.net/v/t1.6435-9/126142314_3117845208320675_8204778654295153619_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=alcFjFwibRUAX84o7qJ&_nc_ht=scontent.fbwa1-1.fna&oh=b812110a6550cdbc5652fae7d9d4f242&oe=61687853')
+                      : FileImage(File(_imageFile.path)),
                 )),
           ),
           Positioned(
@@ -258,6 +266,11 @@ class _ProfilePageState extends State<ProfilePage>
             right: 0,
             child: InkWell(
               onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: ((builder) => bottomSheet()),
+                  // backgroundColor: Colors.redAccent,
+                );
                 print('Tapped');
               },
               child: Container(
@@ -281,5 +294,52 @@ class _ProfilePageState extends State<ProfilePage>
         ],
       ),
     );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: Column(
+        children: <Widget>[
+          Text(
+            'Choose Profile photo',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              TextButton.icon(
+                icon: Icon(Icons.camera_alt),
+                onPressed: () {
+                  takePhoto(ImageSource.camera);
+                },
+                label: Text(
+                  'Camera',
+                ),
+              ),
+              TextButton.icon(
+                icon: Icon(Icons.photo),
+                onPressed: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                label: Text('Gallery'),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(source: source);
+    setState(() {
+      _imageFile = pickedFile;
+    });
   }
 }

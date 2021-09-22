@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     //MediaQuery
-    // var screenWidth = MediaQuery.of(context).size.width;
-    // var screenHeight = MediaQuery.of(context).size.height;
+    //  width = MediaQuery.of(context).size.width;
+    //  height = MediaQuery.of(context).size.height;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,

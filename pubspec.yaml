@@ -24,6 +24,8 @@ dependencies:
   alert_dialog: ^1.0.0
   flutter_spinkit: ^5.1.0
   flushbar: ^1.10.4
+  image_picker: ^0.6.7+4
+
 
 
 dev_dependencies:
