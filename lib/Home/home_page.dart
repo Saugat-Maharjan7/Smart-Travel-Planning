@@ -21,6 +21,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  bool _folded = true;
+
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -142,69 +144,61 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    //CustomNavigationDrawer Search sangae ko wala
-                    // Container(
-                    //   height: 57.6,
-                    //   width: 57.6,
-                    //   padding: EdgeInsets.all(18),
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(9.6),
-                    //     // color: Colors.blueAccent,
-                    //   ),
-                    //   child: Icon(
-                    //     Icons.view_headline_sharp,
-                    //   ),
-                    // ),
-                    GestureDetector(
-                      child: Container(
-                        height: 57.6,
-                        width: 57.6,
-                        padding: EdgeInsets.all(18),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9.6),
-                          color: Color(0xFFD8AADD),
-                        ),
-                        child: Icon(
-                          Icons.search,
-                        ),
+                    AnimatedContainer(
+                      duration: Duration(milliseconds: 400),
+                      width: _folded ? 56 : 372,
+                      height: 56,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color(0xFFD8AADD),
                       ),
-                      onTap: () {
-                        setState(() {
-                          print('Ready to search');
-                          TextField(
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 26),
+                              child: !_folded
+                                  ? TextField(
+                                      decoration: InputDecoration(
+                                        hintText: 'Search',
+                                        hintStyle: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                        ),
+                                        border: InputBorder.none,
+                                      ),
+                                    )
+                                  : null,
                             ),
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Colors.black,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
+                          ),
+                          AnimatedContainer(
+                            duration: Duration(milliseconds: 400),
+                            child: Material(
+                              type: MaterialType.transparency,
+                              child: InkWell(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(_folded ? 32 : 0),
+                                    topRight: Radius.circular(32),
+                                    bottomLeft:
+                                        Radius.circular(_folded ? 32 : 0),
+                                    bottomRight: Radius.circular(32)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Icon(
+                                    _folded ? Icons.search : Icons.close,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15.0)),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15.0)),
-                              ),
-                              hintText: 'Search Places',
-                              hintStyle: TextStyle(
-                                color: Colors.grey,
+                                onTap: () {
+                                  setState(() {
+                                    _folded = !_folded;
+                                  });
+                                },
                               ),
                             ),
-                          );
-                        });
-                      },
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
