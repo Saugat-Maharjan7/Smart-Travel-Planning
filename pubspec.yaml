@@ -25,7 +25,8 @@ dependencies:
   flutter_spinkit: ^5.1.0
   flushbar: ^1.10.4
   image_picker: ^0.6.7+4
-
+  flutter_facebook_login: ^3.0.0
+  flutter_facebook_auth: ^3.3.2
 
 
 dev_dependencies:
