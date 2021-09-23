@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -6,6 +8,9 @@ import '../Register/register_page.dart';
 import '../Home/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flushbar/flushbar.dart';
+// import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
+// import 'package:firebase_auth/firebase_auth';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -21,6 +26,10 @@ class _LoginPageState extends State<LoginPage> {
   bool _secureText = true;
   bool isRememberMe = false;
   bool isAuth = false;
+
+  // bool _isLogin = false;
+  // Map data;
+  // final facebookLogin = FacebookLogin();
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -438,6 +447,7 @@ class _LoginPageState extends State<LoginPage> {
                             Buttons.Facebook,
                             text: "Sign-in with Facebook",
                             onPressed: () async {
+                              // onFBLogin();
                               print('Signed-in with facebook');
                             },
                           ),
@@ -453,4 +463,31 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+//   onFBLogin() async {
+//     final result = await facebookLogin.logIn(['email']);
+//     switch (result.status) {
+//       case FacebookLoginStatus.loggedIn:
+//         final token = result.accessToken;
+//         final response = await http.get(
+//             "https://graph.facebook.com/v2.12/me?fields=name,picture,email&access token=$token");
+//         final data = json.decode(response.body);
+//         print(data);
+//         setState(() {
+//           _isLogin = true;
+//           this.data = data;
+//         });
+//         break;
+//       case FacebookLoginStatus.cancelledByUser:
+//         setState(() {
+//           return _isLogin;
+//         });
+//         break;
+//       case FacebookLoginStatus.error:
+//         setState(() {
+//           return _isLogin;
+//         });
+//         break;
+//     }
+//   }
 }

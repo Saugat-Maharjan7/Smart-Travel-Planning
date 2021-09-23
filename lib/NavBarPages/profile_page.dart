@@ -1,6 +1,7 @@
 import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
 import 'location_page.dart';
@@ -266,11 +267,18 @@ class _ProfilePageState extends State<ProfilePage>
             right: 0,
             child: InkWell(
               onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: ((builder) => bottomSheet()),
-                  // backgroundColor: Colors.redAccent,
-                );
+                if (Platform.isAndroid) {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: ((builder) => bottomSheet()),
+                    // backgroundColor: Colors.redAccent,
+                  );
+                } else {
+                  return showCupertinoModalPopup<ImageSource>(
+                    context: context,
+                    builder: ((builder) => bottomSheet()),
+                  );
+                }
                 print('Tapped');
               },
               child: Container(
@@ -337,9 +345,15 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   void takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.getImage(source: source);
-    setState(() {
-      _imageFile = pickedFile;
-    });
+    try {
+      final pickedFile = await _picker.getImage(source: source);
+      if (pickedFile == null) return;
+
+      setState(() {
+        _imageFile = pickedFile;
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
   }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="app_name">smart_travel_planning_appli</string>
+    <string name="facebook_app_id">286812193257200</string>
+    <string name="facebook_login_protocol_scheme">fb173034064002785</string>
+</resources>
