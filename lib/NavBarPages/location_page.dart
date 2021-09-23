@@ -99,6 +99,7 @@ class _LocationPageState extends State<LocationPage>
           style: TextStyle(
             fontSize: 150,
             color: Colors.tealAccent,
+            backgroundColor: Colors.blueAccent,
           ),
         ),
       ),
