@@ -4,7 +4,7 @@ import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/Register/register_page.dart';
 import 'package:smart_travel_planning_appli/Login/intro_page.dart';
-import 'package:smart_travel_planning_appli/Login/splash.dart';
+// import 'package:smart_travel_planning_appli/Login/splash.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'NavBarPages/location_page.dart';
 
@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         ProfilePage.id: (context) => ProfilePage(),
         LocationPage.id: (context) => LocationPage(),
       },
-      home: Splash(),
+      // home: Splash(),
     );
   }
 }
