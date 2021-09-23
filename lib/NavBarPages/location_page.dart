@@ -97,7 +97,8 @@ class _LocationPageState extends State<LocationPage>
         child: Text(
           'Location Page',
           style: TextStyle(
-            fontSize: 100,
+            fontSize: 150,
+            color: Colors.tealAccent,
           ),
         ),
       ),
