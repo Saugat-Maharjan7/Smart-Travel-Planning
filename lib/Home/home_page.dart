@@ -11,6 +11,7 @@ import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -20,6 +21,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  // final _auth = FirebaseAuth.instance;
+  // FirebaseUser loggedInUser;
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   tabController = TabController(vsync: this, length: 3);
+  //   getCurrentUser();
+  // }
+  //
+  // void getCurrentUser() async {
+  //   try {
+  //     final user = await _auth.currentUser();
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       print(loggedInUser.email);
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+
   bool _folded = true;
 
   int _selectedIndex = 0;

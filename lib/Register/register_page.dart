@@ -1,7 +1,7 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:firebase_auth/firebase_auth';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
@@ -10,6 +10,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  // final _auth = FirebaseAuth.instance;
+
   String userName;
   String mobileNumber;
   String email;
@@ -326,7 +328,7 @@ class _RegisterPageState extends State<RegisterPage> {
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
-            return "Please enter password";
+            return "Please enter password atleast 6-letters";
           }
           return null;
         },
@@ -382,7 +384,7 @@ class _RegisterPageState extends State<RegisterPage> {
             return "Please Re-enter password";
           }
           if (_password.text != _confirmPassword.text) {
-            return "Password Mismatch";
+            return "Password not matched";
           }
           return null;
         },
