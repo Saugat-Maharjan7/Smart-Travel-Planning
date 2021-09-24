@@ -7,7 +7,7 @@ import '../Home/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flushbar/flushbar.dart';
 // import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -19,8 +19,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _name;
-  String _password;
+  final _auth = FirebaseAuth.instance;
+
+  String email;
+  String password;
+
   bool _secureText = true;
   bool isRememberMe = false;
   bool isAuth = false;
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                                         keyboardType: TextInputType.text,
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
-                                          hintText: 'Username',
+                                          hintText: 'E-mail',
                                           hintStyle: TextStyle(
                                             color: Colors.grey,
                                           ),
@@ -145,15 +148,15 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
-                                            return 'Please enter username';
+                                            return 'Please enter email';
                                           }
                                           return null;
                                         },
-                                        onSaved: (String name) {
-                                          _name = name;
+                                        onSaved: (String value) {
+                                          email = value;
                                         },
                                         onChanged: (value) {
-                                          _name = value;
+                                          email = value;
                                         },
                                         style: TextStyle(
                                           fontSize: 20.0,
@@ -209,11 +212,11 @@ class _LoginPageState extends State<LoginPage> {
                                             }
                                             return null;
                                           },
-                                          onSaved: (password) {
-                                            _password = password;
+                                          onSaved: (value) {
+                                            password = value;
                                           },
                                           onChanged: (value) {
-                                            _password = value;
+                                            password = value;
                                           },
                                           decoration: InputDecoration(
                                             hintText: 'Password',
@@ -300,20 +303,31 @@ class _LoginPageState extends State<LoginPage> {
                             child: Row(
                               children: <Widget>[
                                 TextButton.icon(
-                                  onPressed: () {
-                                    if (_formkey.currentState.validate()) {
-                                      Navigator.pushNamed(context, HomePage.id);
-                                      print(_name);
-                                      print(_password);
-                                      print('Successful');
-                                    } else {
-                                      Flushbar(
-                                        title: 'Invalid',
-                                        message: 'Textfield must not be empty.',
-                                        backgroundColor: Colors.blueAccent,
-                                        duration: Duration(seconds: 5),
-                                      ).show(context);
-                                      print("Unsuccessful");
+                                  onPressed: () async {
+                                    try {
+                                      final user = await _auth
+                                          .signInWithEmailAndPassword(
+                                              email: email, password: password);
+                                      if (_formkey.currentState.validate()) {
+                                        if (user != null) {
+                                          Navigator.pushNamed(
+                                              context, HomePage.id);
+                                          print(email);
+                                          print(password);
+                                          print('Successful');
+                                        }
+                                      } else {
+                                        Flushbar(
+                                          title: 'Invalid',
+                                          message:
+                                              'Text-field must not be empty.',
+                                          backgroundColor: Colors.blueAccent,
+                                          duration: Duration(seconds: 5),
+                                        ).show(context);
+                                        print("Unsuccessful");
+                                      }
+                                    } catch (e) {
+                                      print(e);
                                     }
                                   },
                                   icon: Icon(
