@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -204,6 +202,8 @@ class _LoginPageState extends State<LoginPage> {
                                         child: TextFormField(
                                           autofocus: false,
                                           validator: (String value) {
+                                            RegExp regex =
+                                                new RegExp(r'^.{6,}$');
                                             if (value.isEmpty) {
                                               return 'Please enter password';
                                             }

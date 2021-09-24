@@ -10,7 +10,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
 
   String userName;
   String mobileNumber;
@@ -104,30 +104,39 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: Row(
                       children: <Widget>[
                         TextButton(
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              print(userName);
-                              print(mobileNumber);
-                              print(email);
-                              print(password);
-                              print('New account registered successfully.');
-                              Navigator.pop(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return;
-                                  },
-                                ),
-                              );
-                            } else {
-                              Flushbar(
-                                title: 'Invalid',
-                                message:
-                                    'All the field must be filled properly.',
-                                backgroundColor: Colors.blueAccent,
-                                duration: Duration(seconds: 5),
-                              ).show(context);
-                              print("Unsuccessful");
+                          onPressed: () async {
+                            try {
+                              final newUser =
+                                  await _auth.createUserWithEmailAndPassword(
+                                      email: email, password: password);
+                              if (_formKey.currentState.validate()) {
+                                if (newUser != null) {
+                                  print(userName);
+                                  print(mobileNumber);
+                                  print(email);
+                                  print(password);
+                                  print('New account registered successfully.');
+                                  Navigator.pop(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return;
+                                      },
+                                    ),
+                                  );
+                                }
+                              } else {
+                                Flushbar(
+                                  title: 'Invalid',
+                                  message:
+                                      'All the field must be filled properly.',
+                                  backgroundColor: Colors.blueAccent,
+                                  duration: Duration(seconds: 5),
+                                ).show(context);
+                                print("Unsuccessful");
+                              }
+                            } catch (e) {
+                              print(e);
                             }
                           },
                           child: Center(
@@ -328,7 +337,7 @@ class _RegisterPageState extends State<RegisterPage> {
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
-            return "Please enter password atleast 6-letters";
+            return "Please enter password";
           }
           return null;
         },
@@ -384,7 +393,7 @@ class _RegisterPageState extends State<RegisterPage> {
             return "Please Re-enter password";
           }
           if (_password.text != _confirmPassword.text) {
-            return "Password not matched";
+            return "Password Mismatch";
           }
           return null;
         },
