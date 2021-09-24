@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "524025438417",
+    "project_id": "smarttravel-9ee03",
+    "storage_bucket": "smarttravel-9ee03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524025438417:android:44318b3b92f23b4c1ba5f0",
+        "android_client_info": {
+          "package_name": "com.example.smart_travel_planning_appli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524025438417-bfc2r8fga62l3eecgep7cvsnr6277pm0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlPWZRU9aR9z6APzO9tyv7l10rV3JVxCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524025438417-bfc2r8fga62l3eecgep7cvsnr6277pm0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
