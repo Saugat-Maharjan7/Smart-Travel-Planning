@@ -105,35 +105,43 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: <Widget>[
                         TextButton(
                           onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              print(userName);
+                              print(mobileNumber);
+                              print(email);
+                              print(password);
+                              print('New account registered successfully.');
+                              Navigator.pop(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return;
+                                  },
+                                ),
+                              );
+                            } else {
+                              Flushbar(
+                                title: 'Invalid',
+                                message:
+                                    'All the field must be filled properly.',
+                                backgroundColor: Colors.blueAccent,
+                                duration: Duration(seconds: 5),
+                              ).show(context);
+                              print("Unsuccessful");
+                            }
                             try {
                               final newUser =
                                   await _auth.createUserWithEmailAndPassword(
                                       email: email, password: password);
-                              if (_formKey.currentState.validate()) {
-                                if (newUser != null) {
-                                  print(userName);
-                                  print(mobileNumber);
-                                  print(email);
-                                  print(password);
-                                  print('New account registered successfully.');
-                                  Navigator.pop(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return;
-                                      },
-                                    ),
-                                  );
-                                }
-                              } else {
-                                Flushbar(
-                                  title: 'Invalid',
-                                  message:
-                                      'All the field must be filled properly.',
-                                  backgroundColor: Colors.blueAccent,
-                                  duration: Duration(seconds: 5),
-                                ).show(context);
-                                print("Unsuccessful");
+                              if (newUser != null) {
+                                Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return;
+                                    },
+                                  ),
+                                );
                               }
                             } catch (e) {
                               print(e);

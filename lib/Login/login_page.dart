@@ -148,7 +148,12 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         validator: (String value) {
                                           if (value.isEmpty) {
-                                            return 'Please enter email';
+                                            return "Please enter email";
+                                          }
+                                          if (!RegExp(
+                                                  "^[a-zA-Z0-9+_.-]+@[a-zA-z0-9.-]+.[a-z]")
+                                              .hasMatch(value)) {
+                                            return "Please enter valid email";
                                           }
                                           return null;
                                         },
@@ -308,14 +313,16 @@ class _LoginPageState extends State<LoginPage> {
                                       final user = await _auth
                                           .signInWithEmailAndPassword(
                                               email: email, password: password);
-                                      if (_formkey.currentState.validate()) {
-                                        if (user != null) {
+                                      if (user != null) {
+                                        if (_formkey.currentState.validate()) {
                                           Navigator.pushNamed(
                                               context, HomePage.id);
                                           print(email);
                                           print(password);
                                           print('Successful');
                                         }
+                                        Navigator.pushNamed(
+                                            context, HomePage.id);
                                       } else {
                                         Flushbar(
                                           title: 'Invalid',
