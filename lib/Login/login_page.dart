@@ -174,6 +174,7 @@ class _LoginPageState extends State<LoginPage> {
                           SingleChildScrollView(
                             child: Container(
                               width: 250,
+                              height: 50,
                               child: Material(
                                 elevation: 5.0,
                                 borderRadius:

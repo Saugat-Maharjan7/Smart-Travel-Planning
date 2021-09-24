@@ -13,6 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String userName;
   String mobileNumber;
   String email;
+  String password;
 
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmPassword = TextEditingController();
@@ -106,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               print(userName);
                               print(mobileNumber);
                               print(email);
-                              print(_password);
+                              print(password);
                               print('New account registered successfully.');
                               Navigator.pop(
                                 context,
@@ -157,6 +158,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        textAlign: TextAlign.center,
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
@@ -164,11 +166,11 @@ class _RegisterPageState extends State<RegisterPage> {
           }
           return null;
         },
-        onSaved: (name) {
-          userName = name;
+        onSaved: (value) {
+          userName = value;
         },
-        onChanged: (name) {
-          userName = name;
+        onChanged: (value) {
+          userName = value;
         },
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         style: TextStyle(
@@ -209,6 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        textAlign: TextAlign.center,
         obscureText: isPassword1,
         validator: (String value) {
           if (value.isEmpty) {
@@ -220,8 +223,8 @@ class _RegisterPageState extends State<RegisterPage> {
           }
           return null;
         },
-        onSaved: (String email) {
-          email = email;
+        onSaved: (value) {
+          email = value;
         },
         onChanged: (value) {
           email = value;
@@ -264,6 +267,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        textAlign: TextAlign.center,
         validator: (String value) {
           if (value.isEmpty) {
             return "Please enter Mobile number";
@@ -273,8 +277,8 @@ class _RegisterPageState extends State<RegisterPage> {
           }
           return null;
         },
-        onSaved: (number) {
-          mobileNumber = number;
+        onSaved: (value) {
+          mobileNumber = value;
         },
         onChanged: (value) {
           mobileNumber = value;
@@ -317,6 +321,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        textAlign: TextAlign.center,
         controller: _password,
         obscureText: isPassword,
         validator: (String value) {
@@ -324,6 +329,12 @@ class _RegisterPageState extends State<RegisterPage> {
             return "Please enter password";
           }
           return null;
+        },
+        onSaved: (value) {
+          password = value;
+        },
+        onChanged: (value) {
+          password = value;
         },
         keyboardType: isPassword ? TextInputType.text : TextInputType.text,
         style: TextStyle(
@@ -363,6 +374,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        textAlign: TextAlign.center,
         controller: _confirmPassword,
         obscureText: isPassword,
         validator: (String value) {
@@ -373,6 +385,12 @@ class _RegisterPageState extends State<RegisterPage> {
             return "Password Mismatch";
           }
           return null;
+        },
+        onSaved: (value) {
+          password = value;
+        },
+        onChanged: (value) {
+          password = value;
         },
         keyboardType: isPassword ? TextInputType.text : TextInputType.text,
         style: TextStyle(
