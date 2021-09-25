@@ -310,28 +310,28 @@ class _LoginPageState extends State<LoginPage> {
                                 TextButton.icon(
                                   onPressed: () async {
                                     try {
-                                      final user = await _auth
+                                      final newUser = await _auth
                                           .signInWithEmailAndPassword(
                                               email: email, password: password);
-                                      if (user != null) {
+                                      if (newUser != null) {
                                         if (_formkey.currentState.validate()) {
                                           Navigator.pushNamed(
                                               context, HomePage.id);
                                           print(email);
                                           print(password);
                                           print('Successful');
+                                        } else {
+                                          Flushbar(
+                                            title: 'Invalid',
+                                            message:
+                                                'Text-field must be filled properly.',
+                                            backgroundColor: Colors.blueAccent,
+                                            duration: Duration(seconds: 5),
+                                          ).show(context);
+                                          print("Unsuccessful");
                                         }
                                         Navigator.pushNamed(
                                             context, HomePage.id);
-                                      } else {
-                                        Flushbar(
-                                          title: 'Invalid',
-                                          message:
-                                              'Text-field must not be empty.',
-                                          backgroundColor: Colors.blueAccent,
-                                          duration: Duration(seconds: 5),
-                                        ).show(context);
-                                        print("Unsuccessful");
                                       }
                                     } catch (e) {
                                       print(e);
