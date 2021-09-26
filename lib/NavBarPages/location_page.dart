@@ -154,13 +154,16 @@ class _LocationPageState extends State<LocationPage>
                     Text(
                       'Hey There!',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
                       ),
                     ),
                     Text(
                       'Where Next?',
                       style: TextStyle(
                         fontSize: 20,
+                        color: Colors.black,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -211,12 +214,17 @@ class _LocationPageState extends State<LocationPage>
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Start location'),
+                            Text(
+                              'Start location',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                             SizedBox(
                               height: 4.0,
                             ),
                             Text(
-                              'From where?',
+                              'From ?',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 12,
@@ -249,12 +257,17 @@ class _LocationPageState extends State<LocationPage>
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Destination'),
+                            Text(
+                              'Destination',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                             SizedBox(
                               height: 4.0,
                             ),
                             Text(
-                              'To?',
+                              'To ?',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 12,
