@@ -18,7 +18,7 @@ class _LocationPageState extends State<LocationPage>
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(27.7129336, 85.3044747),
     zoom: 14.4746,
   );
 
