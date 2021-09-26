@@ -129,7 +129,7 @@ class _LocationPageState extends State<LocationPage>
             right: 0.0,
             bottom: 0.0,
             child: Container(
-              height: 250.0,
+              height: 270.0,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -181,22 +181,25 @@ class _LocationPageState extends State<LocationPage>
                           ),
                         ],
                       ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.search,
-                            color: Colors.blueAccent,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'What to look at?,',
-                            style: TextStyle(
-                              color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.all(9.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.search,
+                              color: Colors.blueAccent,
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'What to look at?,',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
