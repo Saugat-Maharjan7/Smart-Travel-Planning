@@ -311,16 +311,14 @@ class _LoginPageState extends State<LoginPage> {
                                 TextButton.icon(
                                   onPressed: () async {
                                     if (_formkey.currentState.validate()) {
-                                    } else {
                                       Fluttertoast.showToast(
-                                          msg: "Text-field must not be empty");
-                                    }
-                                    try {
-                                      final newUser = await _auth
-                                          .signInWithEmailAndPassword(
-                                              email: email, password: password);
-                                      if (newUser != null) {
-                                        if (_formkey.currentState.validate()) {
+                                          msg: "User not registered");
+                                      try {
+                                        final newUser = await _auth
+                                            .signInWithEmailAndPassword(
+                                                email: email,
+                                                password: password);
+                                        if (newUser != null) {
                                           Navigator.pushNamed(
                                               context, HomePage.id);
                                           print(email);
@@ -328,24 +326,29 @@ class _LoginPageState extends State<LoginPage> {
                                           print('Successful');
                                           Fluttertoast.showToast(
                                               msg: "User signing in");
-                                        } else {
-                                          Fluttertoast.showToast(
-                                              msg:
-                                                  "Textfield must not be empty");
-                                          Flushbar(
-                                            title: 'Invalid',
-                                            message:
-                                                'Text-field must be filled properly.',
-                                            backgroundColor: Colors.blueAccent,
-                                            duration: Duration(seconds: 5),
-                                          ).show(context);
-                                          print("Unsuccessful");
+                                          // if (_formkey.currentState.validate()) {
+                                          //
+                                          // } else {
+                                          //   Fluttertoast.showToast(
+                                          //       msg: "User not Registered");
+                                          //   // Flushbar(
+                                          //   //   title: 'Invalid',
+                                          //   //   message:
+                                          //   //       'Text-field must be filled properly.',
+                                          //   //   backgroundColor: Colors.blueAccent,
+                                          //   //   duration: Duration(seconds: 5),
+                                          //   // ).show(context);
+                                          //   print("Unsuccessful");
+                                          // }
+                                          // Navigator.pushNamed(
+                                          //     context, HomePage.id);
                                         }
-                                        Navigator.pushNamed(
-                                            context, HomePage.id);
+                                      } catch (e) {
+                                        print(e);
                                       }
-                                    } catch (e) {
-                                      print(e);
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: "Text-field is empty");
                                     }
                                   },
                                   icon: Icon(
