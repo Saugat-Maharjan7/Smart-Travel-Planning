@@ -8,12 +8,16 @@ import 'package:smart_travel_planning_appli/Login/intro_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'NavBarPages/location_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
+
+DatabaseReference usersRef =
+    FirebaseDatabase.instance.reference().child("users");
 
 class MyApp extends StatefulWidget {
   @override

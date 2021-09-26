@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
@@ -12,10 +14,10 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _auth = FirebaseAuth.instance;
 
-  String userName;
-  String mobileNumber;
-  String email;
-  String password;
+  // String userName;
+  // String mobileNumber;
+  // String email;
+  // String password;
 
   TextEditingController _nameTextEditingController = TextEditingController();
   TextEditingController _emailTextEditingController = TextEditingController();
@@ -26,6 +28,8 @@ class _RegisterPageState extends State<RegisterPage> {
       TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  get usersRef => null;
 
   @override
   Widget build(BuildContext context) {
@@ -111,10 +115,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         TextButton(
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
-                              print(userName);
-                              print(mobileNumber);
-                              print(email);
-                              print(password);
+                              print(_nameTextEditingController);
+                              print(_mobileTextEditingController);
+                              print(_emailTextEditingController);
+                              print(_passwordTextEditingController);
                               print('New account registered successfully.');
                               Navigator.pop(
                                 context,
@@ -135,15 +139,32 @@ class _RegisterPageState extends State<RegisterPage> {
                               print("Unsuccessful");
                             }
                             try {
-                              final newUser =
-                                  (await _auth.createUserWithEmailAndPassword(
+                              final newUser = (await _auth
+                                      .createUserWithEmailAndPassword(
                                           email:
                                               _emailTextEditingController.text,
                                           password:
                                               _passwordTextEditingController
-                                                  .text))
-                                      .user;
+                                                  .text)
+                                      .catchError((errorMsg) {}))
+                                  .user;
                               if (newUser != null) {
+                                Map userDataMap = {
+                                  "name":
+                                      _nameTextEditingController.text.trim(),
+                                  "email":
+                                      _emailTextEditingController.text.trim(),
+                                  // "password":
+                                  //     _passwordTextEditingController.text,
+                                  // "Re-password":
+                                  //     _confirmPasswordTextEditingController
+                                  //         .text,
+                                  "Mobile":
+                                      _mobileTextEditingController.text.trim(),
+                                };
+
+                                usersRef.child(newUser.uid).set(userDataMap);
+
                                 Navigator.pop(
                                   context,
                                   MaterialPageRoute(
@@ -153,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ),
                                 );
                               } else {
-                                print('Error occured');
+                                print('Error occurred');
                               }
                             } catch (e) {
                               print(e);
@@ -199,10 +220,10 @@ class _RegisterPageState extends State<RegisterPage> {
           return null;
         },
         onSaved: (value) {
-          userName = value;
+          _nameTextEditingController = value as TextEditingController;
         },
         onChanged: (value) {
-          userName = value;
+          _nameTextEditingController = value as TextEditingController;
         },
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         style: TextStyle(
@@ -257,10 +278,10 @@ class _RegisterPageState extends State<RegisterPage> {
           return null;
         },
         onSaved: (value) {
-          email = value;
+          _emailTextEditingController = value as TextEditingController;
         },
         onChanged: (value) {
-          email = value;
+          _emailTextEditingController = value as TextEditingController;
         },
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         style: TextStyle(
@@ -312,10 +333,10 @@ class _RegisterPageState extends State<RegisterPage> {
           return null;
         },
         onSaved: (value) {
-          mobileNumber = value;
+          _mobileTextEditingController = value as TextEditingController;
         },
         onChanged: (value) {
-          mobileNumber = value;
+          _mobileTextEditingController = value as TextEditingController;
         },
         keyboardType: isNumber ? TextInputType.number : TextInputType.text,
         style: TextStyle(
@@ -365,10 +386,10 @@ class _RegisterPageState extends State<RegisterPage> {
           return null;
         },
         onSaved: (value) {
-          password = value;
+          _passwordTextEditingController = value as TextEditingController;
         },
         onChanged: (value) {
-          password = value;
+          _passwordTextEditingController = value as TextEditingController;
         },
         keyboardType: isPassword ? TextInputType.text : TextInputType.text,
         style: TextStyle(
@@ -422,10 +443,12 @@ class _RegisterPageState extends State<RegisterPage> {
           return null;
         },
         onSaved: (value) {
-          password = value;
+          _confirmPasswordTextEditingController =
+              value as TextEditingController;
         },
         onChanged: (value) {
-          password = value;
+          _confirmPasswordTextEditingController =
+              value as TextEditingController;
         },
         keyboardType: isPassword ? TextInputType.text : TextInputType.text,
         style: TextStyle(
