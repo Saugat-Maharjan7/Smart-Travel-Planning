@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:smart_travel_planning_appli/Login/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
@@ -139,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               print("Unsuccessful");
                             }
                             try {
-                              final newUser = (await _auth
+                              final User newUser = (await _auth
                                       .createUserWithEmailAndPassword(
                                           email:
                                               _emailTextEditingController.text,
@@ -165,14 +166,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                                 usersRef.child(newUser.uid).set(userDataMap);
 
-                                Navigator.pop(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return;
-                                    },
-                                  ),
-                                );
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, LoginPage.id, (route) => false);
                               } else {
                                 print('Error occurred');
                               }
