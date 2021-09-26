@@ -319,13 +319,14 @@ class _LoginPageState extends State<LoginPage> {
                                                 email: email,
                                                 password: password);
                                         if (newUser != null) {
+                                          Fluttertoast.showToast(
+                                              msg: "User logged in");
                                           Navigator.pushNamed(
                                               context, HomePage.id);
                                           print(email);
                                           print(password);
                                           print('Successful');
-                                          Fluttertoast.showToast(
-                                              msg: "User signing in");
+
                                           // if (_formkey.currentState.validate()) {
                                           //
                                           // } else {

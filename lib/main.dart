@@ -17,7 +17,7 @@ Future<void> main() async {
 }
 
 DatabaseReference usersRef =
-    FirebaseDatabase.instance.reference().child("users");
+    FirebaseDatabase.instance.reference().child("Users");
 
 class MyApp extends StatefulWidget {
   @override
