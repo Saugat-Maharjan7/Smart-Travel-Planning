@@ -18,6 +18,24 @@ class _LocationPageState extends State<LocationPage>
     with TickerProviderStateMixin {
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
 
+  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  Position currentPosition;
+  var geoLocator = Geolocator();
+
+  void locatePosition() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    currentPosition = position;
+
+    LatLng latLatPosition = LatLng(position.latitude, position.longitude);
+
+    CameraPosition cameraPosition =
+        new CameraPosition(target: latLatPosition, zoom: 14);
+    newGoogleMapController
+        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
+
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(27.7129336, 85.3044747),
     zoom: 14.4746,
@@ -122,6 +140,9 @@ class _LocationPageState extends State<LocationPage>
 
               //Rider call(can remove)
               newGoogleMapController = controller;
+
+              //Person's location
+              locatePosition();
             },
           ),
           Positioned(
