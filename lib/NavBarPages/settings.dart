@@ -72,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 Text(
                   'Account',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -233,15 +233,15 @@ class _SettingsPageState extends State<SettingsPage> {
             Row(
               children: [
                 Icon(
-                  Icons.notifications_active,
+                  Icons.info,
                   color: Colors.blueAccent,
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
-                  'Notifications',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  'About',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -253,37 +253,13 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 10,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Account activity',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                Transform.scale(
-                  scale: 0.7,
-                  child: CupertinoSwitch(
-                    value: true,
-                    onChanged: (bool val) {},
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'New',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                Transform.scale(
-                  scale: 0.7,
-                  child: CupertinoSwitch(
-                    value: true,
-                    onChanged: (bool val) {},
+                Center(
+                  child: Text(
+                    '---Details Section---',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ],
