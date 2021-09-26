@@ -22,6 +22,7 @@ class _LocationPageState extends State<LocationPage>
 
   Position currentPosition;
   var geoLocator = Geolocator();
+  double bottomPadding = 0;
 
   void locatePosition() async {
     Position position = await Geolocator.getCurrentPosition(
@@ -129,6 +130,7 @@ class _LocationPageState extends State<LocationPage>
       body: Stack(
         children: [
           GoogleMap(
+            padding: EdgeInsets.only(bottom: bottomPadding),
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
             initialCameraPosition: _kGooglePlex,
@@ -140,6 +142,10 @@ class _LocationPageState extends State<LocationPage>
 
               //Rider call(can remove)
               newGoogleMapController = controller;
+
+              setState(() {
+                bottomPadding = 265;
+              });
 
               //Person's location
               locatePosition();
