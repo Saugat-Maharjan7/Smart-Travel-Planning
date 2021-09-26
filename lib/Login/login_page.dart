@@ -313,14 +313,7 @@ class _LoginPageState extends State<LoginPage> {
                                     if (_formkey.currentState.validate()) {
                                     } else {
                                       Fluttertoast.showToast(
-                                          msg: "Textfield must not be empty");
-                                      Flushbar(
-                                        title: 'Invalid',
-                                        message:
-                                            'Text-field must be filled properly.',
-                                        backgroundColor: Colors.blueAccent,
-                                        duration: Duration(seconds: 5),
-                                      ).show(context);
+                                          msg: "Text-field must not be empty");
                                     }
                                     try {
                                       final newUser = await _auth
