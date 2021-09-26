@@ -16,28 +16,14 @@ class LocationPage extends StatefulWidget {
 class _LocationPageState extends State<LocationPage>
     with TickerProviderStateMixin {
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
-  GoogleMapController newGoogleMapController;
-
-  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  Position currentPosition;
-  var geoLocator = Geolocator();
-
-  void locatePosition() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    currentPosition = position;
-
-    LatLng latLatPosition = LatLng(position.latitude, position.longitude);
-
-    CameraPosition cameraPosition =
-        new CameraPosition(target: latLatPosition, zoom: 14);
-    newGoogleMapController
-        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962), zoom: 14.4746);
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  //Rider call for driver/cab (you can remove)
+  GoogleMapController newGoogleMapController;
 
   int _selectedIndex = 1;
 
@@ -63,8 +49,7 @@ class _LocationPageState extends State<LocationPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFF320D36),
+      // backgroundColor: Color(0xFF320D36),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 1,
@@ -133,9 +118,9 @@ class _LocationPageState extends State<LocationPage>
             zoomControlsEnabled: true,
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
 
-              locatePosition();
+              //Rider call(can remove)
+              newGoogleMapController = controller;
             },
           )
         ],
