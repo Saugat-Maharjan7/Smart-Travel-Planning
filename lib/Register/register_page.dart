@@ -17,8 +17,13 @@ class _RegisterPageState extends State<RegisterPage> {
   String email;
   String password;
 
-  TextEditingController _password = TextEditingController();
-  TextEditingController _confirmPassword = TextEditingController();
+  TextEditingController _nameTextEditingController = TextEditingController();
+  TextEditingController _emailTextEditingController = TextEditingController();
+  TextEditingController _mobileTextEditingController = TextEditingController();
+  TextEditingController _passwordTextEditingController =
+      TextEditingController();
+  TextEditingController _confirmPasswordTextEditingController =
+      TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -131,8 +136,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             try {
                               final newUser =
-                                  await _auth.createUserWithEmailAndPassword(
-                                      email: email, password: password);
+                                  (await _auth.createUserWithEmailAndPassword(
+                                          email:
+                                              _emailTextEditingController.text,
+                                          password:
+                                              _passwordTextEditingController
+                                                  .text))
+                                      .user;
                               if (newUser != null) {
                                 Navigator.pop(
                                   context,
@@ -142,6 +152,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                     },
                                   ),
                                 );
+                              } else {
+                                print('Error occured');
                               }
                             } catch (e) {
                               print(e);
@@ -177,6 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        controller: _nameTextEditingController,
         textAlign: TextAlign.center,
         obscureText: isPassword,
         validator: (String value) {
@@ -230,6 +243,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        controller: _emailTextEditingController,
         textAlign: TextAlign.center,
         obscureText: isPassword1,
         validator: (String value) {
@@ -286,6 +300,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        controller: _mobileTextEditingController,
         textAlign: TextAlign.center,
         validator: (String value) {
           if (value.isEmpty) {
@@ -341,7 +356,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
         textAlign: TextAlign.center,
-        controller: _password,
+        controller: _passwordTextEditingController,
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
@@ -394,13 +409,14 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
         textAlign: TextAlign.center,
-        controller: _confirmPassword,
+        controller: _confirmPasswordTextEditingController,
         obscureText: isPassword,
         validator: (String value) {
           if (value.isEmpty) {
             return "Please Re-enter password";
           }
-          if (_password.text != _confirmPassword.text) {
+          if (_passwordTextEditingController.text !=
+              _confirmPasswordTextEditingController.text) {
             return "Password Mismatch";
           }
           return null;

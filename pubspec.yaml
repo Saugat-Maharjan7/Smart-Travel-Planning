@@ -24,6 +24,7 @@ dependencies:
   alert_dialog: ^1.0.0
   flushbar: ^1.10.4
   image_picker: ^0.8.4+2
+
   google_maps_flutter: ^2.0.10
   geolocator: ^7.6.2
 

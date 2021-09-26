@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 
@@ -11,6 +15,30 @@ class LocationPage extends StatefulWidget {
 
 class _LocationPageState extends State<LocationPage>
     with TickerProviderStateMixin {
+  Completer<GoogleMapController> _controllerGoogleMap = Completer();
+  GoogleMapController newGoogleMapController;
+
+  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  Position currentPosition;
+  var geoLocator = Geolocator();
+
+  void locatePosition() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    currentPosition = position;
+
+    LatLng latLatPosition = LatLng(position.latitude, position.longitude);
+
+    CameraPosition cameraPosition =
+        new CameraPosition(target: latLatPosition, zoom: 14);
+    newGoogleMapController
+        .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(37.42796133580664, -122.085749655962), zoom: 14.4746);
+
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
@@ -35,6 +63,7 @@ class _LocationPageState extends State<LocationPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: Color(0xFF320D36),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -93,15 +122,23 @@ class _LocationPageState extends State<LocationPage>
           )
         ],
       ),
-      body: Center(
-        child: Text(
-          'Location Page',
-          style: TextStyle(
-            fontSize: 150,
-            color: Colors.tealAccent,
-            backgroundColor: Colors.blueAccent,
-          ),
-        ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.normal,
+            myLocationButtonEnabled: true,
+            initialCameraPosition: _kGooglePlex,
+            myLocationEnabled: true,
+            zoomGesturesEnabled: true,
+            zoomControlsEnabled: true,
+            onMapCreated: (GoogleMapController controller) {
+              _controllerGoogleMap.complete(controller);
+              newGoogleMapController = controller;
+
+              locatePosition();
+            },
+          )
+        ],
       ),
     );
   }

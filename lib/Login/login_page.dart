@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import '../Register/register_page.dart';
 import '../Home/home_page.dart';
@@ -309,6 +310,18 @@ class _LoginPageState extends State<LoginPage> {
                               children: <Widget>[
                                 TextButton.icon(
                                   onPressed: () async {
+                                    if (_formkey.currentState.validate()) {
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: "Textfield must not be empty");
+                                      Flushbar(
+                                        title: 'Invalid',
+                                        message:
+                                            'Text-field must be filled properly.',
+                                        backgroundColor: Colors.blueAccent,
+                                        duration: Duration(seconds: 5),
+                                      ).show(context);
+                                    }
                                     try {
                                       final newUser = await _auth
                                           .signInWithEmailAndPassword(
@@ -320,7 +333,12 @@ class _LoginPageState extends State<LoginPage> {
                                           print(email);
                                           print(password);
                                           print('Successful');
+                                          Fluttertoast.showToast(
+                                              msg: "User signing in");
                                         } else {
+                                          Fluttertoast.showToast(
+                                              msg:
+                                                  "Textfield must not be empty");
                                           Flushbar(
                                             title: 'Invalid',
                                             message:
