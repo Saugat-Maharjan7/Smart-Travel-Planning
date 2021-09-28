@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_travel_planning_appli/Assistant/assistantMethods.dart';
@@ -44,7 +43,7 @@ class _LocationPageState extends State<LocationPage>
     print("This is your Address ::" + address);
   }
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition _kKathmandu = CameraPosition(
     target: LatLng(27.7129336, 85.3044747),
     zoom: 14.4746,
   );
@@ -140,7 +139,7 @@ class _LocationPageState extends State<LocationPage>
             padding: EdgeInsets.only(bottom: bottomPadding),
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: _kKathmandu,
             myLocationEnabled: true,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,

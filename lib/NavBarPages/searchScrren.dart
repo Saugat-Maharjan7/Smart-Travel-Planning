@@ -1,6 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_travel_planning_appli/Assistant/ConfigMaps.dart';
+import 'package:smart_travel_planning_appli/Assistant/requestAssistant.dart';
 import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
+import 'package:http/http.dart' as http;
+import 'package:smart_travel_planning_appli/models/placePrediction.dart';
+
+
 
 class SearchScreen extends StatefulWidget {
 
@@ -14,6 +22,8 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController startTextEditingController = TextEditingController();
   TextEditingController destinationTextEditingController = TextEditingController();
 
+  List<PlacePrediction> placePredictionList = [];
+
   @override
   Widget build(BuildContext context) {
 
@@ -21,6 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
     startTextEditingController.text = placeAddress;
 
     return Scaffold(
+      backgroundColor: Color(0xFF320D36),
       body: Column(
         children: [
           Container(
@@ -67,7 +78,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         color: Colors.blueAccent,
                       ),
                       SizedBox(width: 18,),
-                      Expanded(child: Container(
+                      Expanded(
+                        child: Container(
                       decoration: BoxDecoration(
                         color: Color(0xFFD8AADD),
                         borderRadius: BorderRadius.circular(5.0),
@@ -76,6 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Padding(
                         padding: EdgeInsets.all(3),
                         child: TextField(
+
                           controller: startTextEditingController,
                           decoration: InputDecoration(
                             hintText: 'Start Location',
@@ -108,6 +121,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: Padding(
                           padding: EdgeInsets.all(3),
                           child: TextField(
+                            onChanged: (val){
+                              findPlace(val);
+                            },
                             controller: destinationTextEditingController,
                             decoration: InputDecoration(
                               hintText: 'Destination',
@@ -126,7 +142,103 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
             ),
+          ),
+
+          //tiles for displaying container
+          SizedBox(
+            height: 10,
+          ),
+          (placePredictionList.length > 0)
+              ? Padding(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: ListView.separated(
+              padding: EdgeInsets.all(0),
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (context,index){
+                return PredictionTile(placePrediction: placePredictionList[index] );
+              },
+              separatorBuilder: (BuildContext context,int index) => DividerWidget(),
+              itemCount: placePredictionList.length),
           )
+              : Container(),
+        ],
+      ),
+    );
+  }
+
+  void findPlace(String placeName) async{
+    if(placeName.length > 1){
+      String autoCompleteUrl = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$placeName&key=$mapKey&components=country:np";
+
+          var res = await RequestAssistant.getRequest(autoCompleteUrl);
+
+      if(res == "failed"){
+        return;
+      }
+
+      if(res["status"] == "OK"){
+        var predictions = res["predictions"];
+
+        var placeList = (predictions as List).map((e) => PlacePrediction.fromJson(e)).toList();
+
+        setState(() {
+          placePredictionList = placeList;
+        });
+
+      }
+    }
+  }
+
+  DividerWidget() {}
+
+}
+
+
+class PredictionTile extends StatelessWidget {
+  final PlacePrediction placePrediction;
+
+   PredictionTile({Key key,this.placePrediction}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          SizedBox(
+            width: 14,
+          ),
+          Row(
+            children: [
+              Icon(Icons.add_location_alt),
+              SizedBox(width: 14,),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 8,),
+                    Text(placePrediction.main_text,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 16
+                      ),
+                    ),
+                    SizedBox(height: 3,),
+                    Text(placePrediction.secondary_text,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            width: 10,
+          ),
         ],
       ),
     );
