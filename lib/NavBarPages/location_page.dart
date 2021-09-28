@@ -43,11 +43,6 @@ class _LocationPageState extends State<LocationPage>
     print("This is your Address ::" + address);
   }
 
-  static final CameraPosition _kKathmandu = CameraPosition(
-    target: LatLng(27.7129336, 85.3044747),
-    zoom: 14.4746,
-  );
-
   //Rider call for driver/cab (you can remove)
   GoogleMapController newGoogleMapController;
 
@@ -139,7 +134,10 @@ class _LocationPageState extends State<LocationPage>
             padding: EdgeInsets.only(bottom: bottomPadding),
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
-            initialCameraPosition: _kKathmandu,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(25.778686, 85.84585484),
+              zoom: 14.4746,
+            ),
             myLocationEnabled: true,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,
@@ -202,8 +200,13 @@ class _LocationPageState extends State<LocationPage>
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
+                      onTap: ()async{
+
+                        var res = await Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
+
+                        if(res == "obtainDirection"){
+                          await getPlaceDirection();
+                        }
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -326,4 +329,23 @@ class _LocationPageState extends State<LocationPage>
       ),
     );
   }
+
+  Future<void> getPlaceDirection()async {
+    var initialPos = Provider.of<AppData>(context, listen: false).startLocation;
+    var finalPos = Provider.of<AppData>(context, listen: false).destination;
+
+    var startLatLng = LatLng(initialPos.latitude, initialPos.longitude);
+    var stopLatLng = LatLng(finalPos.latitude, finalPos.longitude);
+
+    showDialog(context: context, builder: (BuildContext context) => Text("Please wait..."),
+    );
+
+    var details = await AssistantMethods.obtainDirectionDetails(startLatLng, stopLatLng);
+
+    Navigator.pop(context);
+
+    print("This is the place::");
+    print(details.encodedPoints);
+  }
+
 }

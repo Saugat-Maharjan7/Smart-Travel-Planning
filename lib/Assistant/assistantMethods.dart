@@ -1,10 +1,11 @@
-
-
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:smart_travel_planning_appli/Assistant/ConfigMaps.dart';
 import 'package:smart_travel_planning_appli/Assistant/requestAssistant.dart';
 import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/models/address.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_travel_planning_appli/models/directionDetails.dart';
 
 class AssistantMethods {
   static Future<String> searchCoordinateAddress(Position position, context) async {
@@ -32,5 +33,26 @@ class AssistantMethods {
 
     }
     return placeAddress;
+  }
+
+  static Future<DirectionDetails> obtainDirectionDetails(LatLng initialPosition, LatLng finalPosition)async {
+    String directionUrl = "https://maps.googleapis.com/api/directions/json?origin=${initialPosition.latitude},${initialPosition.longitude}&destination=${finalPosition.latitude},${finalPosition.longitude}&key=$mapKey";
+
+    var res= await RequestAssistant.getRequest(directionUrl);
+
+    if(res == "failed"){
+      return null;
+    }
+
+    DirectionDetails directionDetails = DirectionDetails();
+
+    directionDetails.encodedPoints = res["routes"][0]["overview_polyline"]["points"];
+
+    directionDetails.distanceText = res["routes"][0]["legs"][0]["distance"]["text"];
+    directionDetails.distanceValue = res["routes"][0]["legs"][0]["distance"]["value"];
+
+    directionDetails.durationText = res["routes"][0]["legs"][0]["duration"]["text"];
+    directionDetails.durationValue = res["routes"][0]["legs"][0]["duration"]["value"];
+
   }
 }

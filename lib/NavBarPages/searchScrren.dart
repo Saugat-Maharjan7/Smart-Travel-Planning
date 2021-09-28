@@ -159,7 +159,8 @@ class _SearchScreenState extends State<SearchScreen> {
               itemBuilder: (context,index){
                 return PredictionTile(placePrediction: placePredictionList[index] );
               },
-              separatorBuilder: (BuildContext context,int index) => DividerWidget(),
+              //DividerWidget() vane rakheko thyo
+              separatorBuilder: (BuildContext context,int index) => Divider(),
               itemCount: placePredictionList.length),
           )
               : Container(),
@@ -190,8 +191,6 @@ class _SearchScreenState extends State<SearchScreen> {
       }
     }
   }
-
-  DividerWidget() {}
 
 }
 
@@ -276,6 +275,8 @@ getPlaceAddressDetails(placePrediction.place_id, context);
 Provider.of<AppData>(context, listen: false).updateDestinationAddress(address);
 print('This is Destination you choosed ::');
 print(address.placeName);
+
+Navigator.pop(context, "obtainDirection");
     }
   }
 }
