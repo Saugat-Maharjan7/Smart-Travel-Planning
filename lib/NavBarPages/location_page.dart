@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,9 @@ class _LocationPageState extends State<LocationPage>
   Completer<GoogleMapController> _controllerGoogleMap = Completer();
 
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  List<LatLng> pLineCoordinates = [];
+  Set<Polyline> polylineSet = {};
 
   Position currentPosition;
   var geoLocator = Geolocator();
@@ -141,6 +145,7 @@ class _LocationPageState extends State<LocationPage>
             myLocationEnabled: true,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,
+            polylines: polylineSet,
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMap.complete(controller);
 
@@ -346,6 +351,48 @@ class _LocationPageState extends State<LocationPage>
 
     print("This is the place::");
     print(details.encodedPoints);
-  }
 
+    PolylinePoints polylinePoints = PolylinePoints();
+    List<PointLatLng> decodedPolylinePointsResult = polylinePoints.decodePolyline(details.encodedPoints);
+
+    pLineCoordinates.clear();
+
+    if(decodedPolylinePointsResult.isNotEmpty){
+      decodedPolylinePointsResult.forEach((PointLatLng pointLatLng) {
+        pLineCoordinates.add(LatLng(pointLatLng.latitude, pointLatLng.longitude));
+      });
+    }
+
+    polylineSet.clear();
+
+    setState(() {
+      Polyline polyline = Polyline(
+        color: Colors.blue,
+        polylineId: PolylineId("PolylineID"),
+        jointType: JointType.round,
+        points: pLineCoordinates,
+        width: 5,
+        startCap: Cap.roundCap,
+        endCap: Cap.roundCap,
+        geodesic: true,
+      );
+      polylineSet.add(polyline);
+    });
+
+    LatLngBounds latLngBounds;
+    if(startLatLng.latitude > stopLatLng.latitude && startLatLng.longitude > stopLatLng.longitude){
+      latLngBounds = LatLngBounds(southwest: stopLatLng, northeast: startLatLng);
+    }else if(startLatLng.latitude > stopLatLng.latitude ){
+      latLngBounds = LatLngBounds(southwest: LatLng(stopLatLng.latitude, startLatLng.longitude), northeast: LatLng(startLatLng.latitude, stopLatLng.longitude));
+    }
+    else if(startLatLng.longitude > stopLatLng.longitude ){
+      latLngBounds = LatLngBounds(southwest: LatLng(startLatLng.latitude, stopLatLng.longitude), northeast: LatLng(stopLatLng.latitude, startLatLng.longitude));
+    }
+    else{
+      latLngBounds = LatLngBounds(southwest: startLatLng, northeast: stopLatLng);
+    }
+
+    newGoogleMapController.animateCamera(CameraUpdate.newLatLngBounds(latLngBounds, 70));
+
+  }
 }
