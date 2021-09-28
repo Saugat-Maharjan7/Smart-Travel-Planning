@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_travel_planning_appli/Assistant/assistantMethods.dart';
+import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/searchScrren.dart';
 
 class LocationPage extends StatefulWidget {
   static const String id = 'location_page';
@@ -37,7 +40,7 @@ class _LocationPageState extends State<LocationPage>
     newGoogleMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
-    String address = await AssistantMethods.searchCoordinateAddress(position);
+    String address = await AssistantMethods.searchCoordinateAddress(position, context);
     print("This is your Address ::" + address);
   }
 
@@ -199,37 +202,42 @@ class _LocationPageState extends State<LocationPage>
                       ),
                     ),
                     SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black54,
-                            blurRadius: 6,
-                            spreadRadius: 0.5,
-                            offset: Offset(0.7, 0.7),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(9.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.search,
-                              color: Colors.blueAccent,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black54,
+                              blurRadius: 6,
+                              spreadRadius: 0.5,
+                              offset: Offset(0.7, 0.7),
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'What to look at?,',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            )
                           ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(9.0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.search,
+                                color: Colors.blueAccent,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'What to look at?,',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -249,10 +257,9 @@ class _LocationPageState extends State<LocationPage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Start location',
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
+                              Provider.of<AppData>(context).startLocation != null
+                                  ?Provider.of<AppData>(context).startLocation.placeName
+                                  : "Start location",
                             ),
                             SizedBox(
                               height: 4.0,

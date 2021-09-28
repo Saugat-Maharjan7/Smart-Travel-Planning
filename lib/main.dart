@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/Register/register_page.dart';
@@ -41,19 +43,22 @@ class _MyAppState extends State<MyApp> {
     //  width = MediaQuery.of(context).size.width;
     //  height = MediaQuery.of(context).size.height;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      initialRoute: IntroPage.id,
-      routes: {
-        IntroPage.id: (context) => IntroPage(),
-        LoginPage.id: (context) => LoginPage(),
-        RegisterPage.id: (context) => RegisterPage(),
-        HomePage.id: (context) => HomePage(),
-        ProfilePage.id: (context) => ProfilePage(),
-        LocationPage.id: (context) => LocationPage(),
-      },
-      // home: Splash(),
+    return ChangeNotifierProvider(
+      create: (context) => AppData(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        initialRoute: IntroPage.id,
+        routes: {
+          IntroPage.id: (context) => IntroPage(),
+          LoginPage.id: (context) => LoginPage(),
+          RegisterPage.id: (context) => RegisterPage(),
+          HomePage.id: (context) => HomePage(),
+          ProfilePage.id: (context) => ProfilePage(),
+          LocationPage.id: (context) => LocationPage(),
+        },
+        // home: Splash(),
+      ),
     );
   }
 }
