@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -59,11 +60,42 @@ class _DestinationScreenState extends State<DestinationScreen> {
                    IconButton(icon: Icon(Icons.sort_outlined,
                      color: Colors.tealAccent,
                      size: 30,),
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () => print('Sorting form'),
                       ),
                        ],
                   ),
                   ],
+                ),
+                Positioned(
+                  left: 20,
+                  bottom: 20,
+                  child: Column(
+                    crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            FlutterIcons.location_city_mdi,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            widget.destination.city,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             )

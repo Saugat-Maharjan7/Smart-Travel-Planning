@@ -57,12 +57,37 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                         IconButton(icon: Icon(Icons.sort_outlined,
                           color: Colors.black,
                           size: 30,),
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () => print('Sorting form'),
                         ),
                       ],
                     ),
                   ],
                 ),
+
+                Positioned(
+                  left: 20,
+                  bottom: 20,
+                  child: Column(
+                    crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            widget.season.name,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
               ],
             )
           ],

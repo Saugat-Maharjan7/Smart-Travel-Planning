@@ -277,7 +277,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     )),
                 onPressed: () {
                   _auth.signOut();
-                  Navigator.pop(context);
+                  Navigator.pushNamed(
+                      context, LoginPage.id);
                 },
                 icon: Icon(
                   Icons.exit_to_app_rounded,
