@@ -741,7 +741,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       borderRadius: BorderRadius.circular(9.6),
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(recommendations[index].image)),
+                          image: CachedNetworkImageProvider(recommendations[index].image)),
                     ),
                     child: Stack(
                       children: <Widget>[
