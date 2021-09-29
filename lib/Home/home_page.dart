@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'suggestionList.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -71,6 +73,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
+
+  var _suggestionTextFieldController = new TextEditingController();
 
   //Page Controller
   final _pageController = PageController(viewportFraction: 0.87);
@@ -166,7 +170,36 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             child: Container(
                               padding: EdgeInsets.only(left: 26),
                               child: !_folded
-                                  ? TextField(
+                                  ? AutoCompleteTextField(
+                                clearOnSubmit: false,
+                                controller: _suggestionTextFieldController,
+                                      suggestions: [suggestionList],
+                                      itemFilter: (item, query){
+                                  return item.toLowerCase().startsWith(query.toLowerCase());
+                                      },
+                                itemSorter: (a,b){
+                                  return a.compareTo(b);
+                                },
+                                itemSubmitted: (item){
+                                  _suggestionTextFieldController.text = item;
+                                },
+                                itemBuilder: (context, item){
+                                  return Container(
+                                    padding: EdgeInsets.all(20),
+                                    child: Row(
+                                      children: [
+                                        Text(item,
+                                        style: TextStyle(
+                                          color: Colors.blueAccent,
+                                        ),)
+                                      ],
+                                    ),
+                                  );
+                                },
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
                                       decoration: InputDecoration(
                                         hintText: 'Search',
                                         hintStyle: TextStyle(
