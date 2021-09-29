@@ -23,20 +23,15 @@ class SelectedPlaceScreen extends StatelessWidget {
         child: Stack(
           children: [
             PageView(
-              physics: BouncingScrollPhysics(),
               controller: _pageController,
               scrollDirection: Axis.horizontal,
               children: List.generate(
                 recommendedModel.images.length,
                     (int index) => Container(
-                  margin: EdgeInsets.only(right: 28),
-                  width: 333,
-                  height: 218,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9.6),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage(recommendedModel.images[index]),
+                        image: CachedNetworkImageProvider(recommendedModel.images[index]),
                   ),
                 ),
               ),
@@ -47,21 +42,25 @@ class SelectedPlaceScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(icon: Icon(Icons.arrow_back,
-                  color: Colors.black,
-                  size: 30,),
-                  onPressed: () => Navigator.pop(context),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14.0),
+                  child: IconButton(icon: Icon(Icons.arrow_back,
+                    color: Colors.black,
+                    size: 30,),
+                    onPressed: () => Navigator.pop(context),
+                  ),
                 ),
               ],
             ),
 
             //Content
             Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.bottomCenter,
               child: Container(
               height: 345,
                   margin: EdgeInsets.only(left: 28, bottom: 48, right: 28),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SmoothPageIndicator(
                       controller: _pageController,
@@ -106,8 +105,11 @@ class SelectedPlaceScreen extends StatelessWidget {
 
 
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('Start from',
                             style: GoogleFonts.lato(
@@ -120,28 +122,31 @@ class SelectedPlaceScreen extends StatelessWidget {
                               style: GoogleFonts.lato(
                                   fontSize: 21,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white
+                                  color: Colors.white,
                               ),
                             ),
                           ],
                         ),
 
-                        Container(
-                          height: 62,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9),
-                            color: Colors.white
-                          ),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 28, right: 28),
-                              child: Text(
-                                'Explore Now',
-                                style: GoogleFonts.lato(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black
+                        GestureDetector(
+                          onTap: () => print("Go to the website"),
+                          child: Container(
+                            height: 62,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(9),
+                              color: Colors.white
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 28, right: 28),
+                                child: Text(
+                                  'Explore Now',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black
+                                  ),
                                 ),
                               ),
                             ),
