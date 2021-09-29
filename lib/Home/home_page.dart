@@ -447,62 +447,65 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      offset: Offset(0.0, 2.0),
-                                      blurRadius: 6.9,
-                                    )
-                                  ]),
-                              child: Stack(
-                                children: <Widget>[
-                                  ClipRRect(
+                             Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
-                                    child: Image(
-                                      height: 180,
-                                      width: 180,
-                                      image: AssetImage(destination.imageUrl),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 10,
-                                    bottom: 10,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(
-                                              FlutterIcons.location_city_mdi,
-                                              size: 10.0,
-                                              color: Colors.white,
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Text(
-                                              destination.city,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600,
-                                                letterSpacing: 1.2,
-                                              ),
-                                            ),
-                                          ],
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(0.0, 2.0),
+                                        blurRadius: 6.9,
+                                      )
+                                    ]),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Hero(
+                                      tag: destination.imageUrl,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          height: 180,
+                                          width: 180,
+                                          image: AssetImage(destination.imageUrl),
+                                          fit: BoxFit.cover,
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Positioned(
+                                      left: 10,
+                                      bottom: 10,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                FlutterIcons.location_city_mdi,
+                                                size: 10.0,
+                                                color: Colors.white,
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                destination.city,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600,
+                                                  letterSpacing: 1.2,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),
@@ -632,13 +635,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   ]),
                               child: Stack(
                                 children: <Widget>[
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image(
-                                      height: 180,
-                                      width: 180,
-                                      image: AssetImage(season.imgUrl),
-                                      fit: BoxFit.cover,
+                                  Hero(
+                                    tag: season.imgUrl,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        height: 180,
+                                        width: 180,
+                                        image: AssetImage(season.imgUrl),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   Positioned(

@@ -33,20 +33,34 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                     ),
                     ],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image(
-                      image: AssetImage(widget.season.imgUrl),
-                      fit: BoxFit.fill,
+                  child: Hero(
+                    tag: widget.season.imgUrl,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image(
+                        image: AssetImage(widget.season.imgUrl),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(icon: Icon(Icons.arrow_back,
-                      color: Colors.tealAccent,
+                      color: Colors.black,
                       size: 30,),
-                      onPressed: () => Navigator.pop(context),)
+                      onPressed: () => Navigator.pop(context),),
+
+                    Row(
+                      children: [
+                        IconButton(icon: Icon(Icons.sort_outlined,
+                          color: Colors.black,
+                          size: 30,),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
