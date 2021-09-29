@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_travel_planning_appli/Home/destinations.dart';
+import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
-import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'suggestionList.dart';
+import 'suggestionSearchList.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';

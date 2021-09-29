@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
+import 'package:smart_travel_planning_appli/MapsDataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/Register/register_page.dart';
 import 'package:smart_travel_planning_appli/Login/intro_page.dart';
 // import 'package:smart_travel_planning_appli/Login/splash.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
-import 'NavBarPages/location_page.dart';
+import 'NavBarPages/map_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 

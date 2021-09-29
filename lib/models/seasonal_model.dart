@@ -1,4 +1,4 @@
-import 'package:smart_travel_planning_appli/models/season_activity_model.dart';
+import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
 
 class Season {
   String imgUrl;
@@ -70,7 +70,7 @@ final List<Season> seasons = [
     imgUrl: 'images/winter.jpg',
     name: 'Winter',
     month: 'Dec,Jan,Feb',
-    info: 'Cold weather occuring snowfall in mountain areas.',
+    info: 'Cold weather occurring snowfall in mountain areas.',
     activities: activities,
   ),
 ];

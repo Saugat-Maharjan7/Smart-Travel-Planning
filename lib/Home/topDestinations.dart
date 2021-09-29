@@ -34,7 +34,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
             Stack(
               children: [
                    Container(
-                    height: MediaQuery.of(context).size.width,
+                    height: 340,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: [BoxShadow(

@@ -6,10 +6,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_travel_planning_appli/MapsAssistant/assistantMethods.dart';
-import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
+import 'package:smart_travel_planning_appli/MapsDataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
-import 'package:smart_travel_planning_appli/NavBarPages/searchScrren.dart';
+import 'package:smart_travel_planning_appli/NavBarPages/mapSearchScrren.dart';
 import 'package:geocoding/geocoding.dart';
 
 class LocationPage extends StatefulWidget {

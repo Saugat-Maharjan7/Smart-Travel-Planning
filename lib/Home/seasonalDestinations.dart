@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_travel_planning_appli/models/season_activity_model.dart';
+import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
 
@@ -25,7 +25,7 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
             Stack(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.width,
+                  height: 340,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     boxShadow: [BoxShadow(
@@ -99,84 +99,87 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                     Activity activity = widget.season.activities[index];
                     return Stack(
                       children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
-                          height: 170,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white30,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 120,
-                                      child: Text(activity.name,
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () => print('Open this page'),
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
+                            height: 170,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white30,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 120,
+                                        child: Text(activity.name,
+                                          style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
                                         ),
-                                        overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
 
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  children: [
-                                    Container(
-                                      width: 70,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blueAccent,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        activity.season[0],
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          activity.season[0],
 
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 10,),
-                                    Container(
-                                      width: 70,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blueAccent,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        activity.season[1],
+                                      SizedBox(width: 10,),
+                                      Container(
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          activity.season[1],
 
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(width: 10,),
-                                    Container(
-                                      width: 70,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blueAccent,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        activity.season[2],
+                                      SizedBox(width: 10,),
+                                      Container(
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          activity.season[2],
 
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

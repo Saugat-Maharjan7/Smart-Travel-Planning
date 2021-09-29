@@ -2,10 +2,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smart_travel_planning_appli/MapsAssistant/ConfigMaps.dart';
 import 'package:smart_travel_planning_appli/MapsAssistant/requestAssistant.dart';
-import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
-import 'package:smart_travel_planning_appli/models/address.dart';
+import 'package:smart_travel_planning_appli/MapsDataHandler/appData.dart';
+import 'package:smart_travel_planning_appli/models/mapAddress.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_travel_planning_appli/models/directionDetails.dart';
+import 'package:smart_travel_planning_appli/models/mapDirectionDetails.dart';
 
 class AssistantMethods {
   static Future<String> searchCoordinateAddress(Position position, context) async {

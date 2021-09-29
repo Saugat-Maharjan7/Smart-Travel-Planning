@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_travel_planning_appli/MapsAssistant/ConfigMaps.dart';
 import 'package:smart_travel_planning_appli/MapsAssistant/requestAssistant.dart';
-import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
+import 'package:smart_travel_planning_appli/MapsDataHandler/appData.dart';
 import 'package:http/http.dart' as http;
-import 'package:smart_travel_planning_appli/models/address.dart';
-import 'package:smart_travel_planning_appli/models/placePrediction.dart';
+import 'package:smart_travel_planning_appli/models/mapAddress.dart';
+import 'package:smart_travel_planning_appli/models/mapPlacePrediction.dart';
 import 'package:geocoding/geocoding.dart';
 
 
