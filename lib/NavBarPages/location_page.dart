@@ -31,6 +31,10 @@ class _LocationPageState extends State<LocationPage>
   var geoLocator = Geolocator();
   double bottomPadding = 0;
 
+  Set<Marker> markersSet = {};
+  Set<Circle> circlesSet = {};
+
+
   void locatePosition() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -146,6 +150,8 @@ class _LocationPageState extends State<LocationPage>
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,
             polylines: polylineSet,
+            markers: markersSet,
+            circles: circlesSet,
             onMapCreated: (GoogleMapController controller) {
               _controllerGoogleMap.complete(controller);
 
@@ -393,6 +399,44 @@ class _LocationPageState extends State<LocationPage>
     }
 
     newGoogleMapController.animateCamera(CameraUpdate.newLatLngBounds(latLngBounds, 70));
+
+    Marker startLocMarker = Marker(icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+    infoWindow: InfoWindow(title: initialPos.placeName, snippet: 'My Position'),
+    position: startLatLng,
+    markerId: MarkerId('startId'),);
+
+    Marker stopLocMarker = Marker(icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      infoWindow: InfoWindow(title: initialPos.placeName, snippet: 'Final Position'),
+      position: stopLatLng,
+      markerId: MarkerId('stopId'),);
+
+    setState(() {
+      markersSet.add(startLocMarker);
+      markersSet.add(stopLocMarker);
+    });
+
+    Circle startLocCircle = Circle(
+     fillColor: Colors.greenAccent,
+     center: startLatLng,
+     radius: 12,
+     strokeWidth: 4,
+     strokeColor: Colors.yellowAccent,
+     circleId: CircleId("startId")
+    );
+
+    Circle stopLocCircle = Circle(
+        fillColor: Colors.blueAccent,
+        center: stopLatLng,
+        radius: 12,
+        strokeWidth: 4,
+        strokeColor: Colors.redAccent,
+        circleId: CircleId("stopId")
+    );
+
+    setState(() {
+      circlesSet.add(startLocCircle);
+      circlesSet.add(stopLocCircle);
+    });
 
   }
 }
