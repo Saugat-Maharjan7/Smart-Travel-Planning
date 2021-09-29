@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_travel_planning_appli/models/season_activity_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
 
@@ -93,9 +94,108 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: widget.season.month.length,
+                  itemCount: widget.season.activities.length,
                   itemBuilder: (BuildContext context, int index){
-                    return Text(widget.season.month[index],
+                    Activity activity = widget.season.activities[index];
+                    return Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
+                          height: 170,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white30,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 120,
+                                      child: Text(activity.name,
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blueAccent,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        activity.season[0],
+
+                                      ),
+                                    ),
+                                    SizedBox(width: 10,),
+                                    Container(
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blueAccent,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        activity.season[1],
+
+                                      ),
+                                    ),
+                                    SizedBox(width: 10,),
+                                    Container(
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blueAccent,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        activity.season[2],
+
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        Positioned(
+                          left: 20,
+                          top: 15,
+                          bottom: 15,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image(
+                              width: 110,
+                              image: AssetImage(activity.imgUrl),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+
+                      ],
                     );
                   }),
             ),

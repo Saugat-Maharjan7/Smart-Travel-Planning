@@ -20,14 +20,14 @@ List<Activity> activities = [
     name: 'Scenery view',
     startTimes: ['6:00 am', '11:00 am'],
     rating: 5,
-    price: 300,
+    price: 200,
   ),
   Activity(
     imgUrl: "images/hiking.jpg",
     name: 'Walking and Hiking',
     startTimes: ['6:00 am', '11:00 am'],
-    rating: 5,
-    price: 210,
+    rating: 4,
+    price: 500,
   ),
   Activity(
     imgUrl: "images/durbar.jpg",

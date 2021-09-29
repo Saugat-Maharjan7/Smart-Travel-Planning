@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:smart_travel_planning_appli/models/activity_model.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -13,6 +14,15 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
+
+  _buildRatingStars(int rating){
+    String stars = '';
+    for (int i=0; i<rating; i++){
+      stars += '⭐ ';
+    }
+    return Text(stars);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,9 +113,100 @@ class _DestinationScreenState extends State<DestinationScreen> {
               child: ListView.builder(
                   itemCount: widget.destination.activities.length,
                   itemBuilder: (BuildContext context, int index){
-                return Text(widget.destination.activities[index].name,
+                    Activity activity = widget.destination.activities[index];
+                return Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
+                      height: 170,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white30,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding:  EdgeInsets.fromLTRB(100, 20, 20, 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 120,
+                                  child: Text(activity.name,
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  ),
+                                ),
+                                Text('\Rs.${activity.price}',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),),
+                              ],
+                            ),
+                            _buildRatingStars(activity.rating),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    activity.startTimes[0],
+                                  ),
+                                ),
+                                SizedBox(width: 10,),
+                                Container(
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    activity.startTimes[1],
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      left:20,
+                      top: 15,
+                      bottom: 15,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image(
+                          width: 110,
+                            image: AssetImage(activity.imgUrl),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+
+                  ],
                 );
-              }),
+              },
+              ),
             ),
           ],
         ),

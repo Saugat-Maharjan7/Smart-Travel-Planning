@@ -5,12 +5,14 @@ class Season {
   String name;
   String month;
   String info;
+  List<Activity> activities;
 
   Season({
     this.imgUrl,
     this.name,
     this.month,
     this.info,
+    this.activities,
   });
 }
 
@@ -48,23 +50,27 @@ final List<Season> seasons = [
     month: 'Mar,Apr,May',
     info:
         'Warmer weather, but frequent storms and snowfall at higher altitudes.',
+    activities: activities,
   ),
   Season(
     imgUrl: 'images/monsoon.jpg',
     name: 'Monsoon',
     month: 'Jun,Jul,Aug',
     info: 'Rain,mist and fog expected almost daily.',
+    activities: activities,
   ),
   Season(
     imgUrl: 'images/autumn.jpg',
     name: 'Autumn',
     month: 'Sep,Oct,Nov',
     info: 'Best for hiking and trekking.\nFavourable weather condition',
+    activities: activities,
   ),
   Season(
     imgUrl: 'images/winter.jpg',
     name: 'Winter',
     month: 'Dec,Jan,Feb',
     info: 'Cold weather occuring snowfall in mountain areas.',
+    activities: activities,
   ),
 ];
