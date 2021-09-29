@@ -5,7 +5,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_travel_planning_appli/Assistant/assistantMethods.dart';
+import 'package:smart_travel_planning_appli/MapsAssistant/assistantMethods.dart';
 import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
