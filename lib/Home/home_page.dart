@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/Home/destinations.dart';
+import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/location_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
@@ -171,6 +173,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               padding: EdgeInsets.only(left: 26),
                               child: !_folded
                                   ? AutoCompleteTextField(
+                                key: null,
                                 clearOnSubmit: false,
                                 controller: _suggestionTextFieldController,
                                       suggestions: [suggestionList],
@@ -401,102 +404,107 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   itemCount: destinations.length,
                   itemBuilder: (BuildContext context, int index) {
                     Destination destination = destinations[index];
-                    return Container(
-                      margin: EdgeInsets.all(10),
-                      width: 210,
-                      child: Stack(
-                        alignment: Alignment.topCenter,
-                        children: <Widget>[
-                          Positioned(
-                            bottom: 15.0,
-                            child: Container(
-                              height: 120,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.blueAccent,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      '${destination.activities.length} places',
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Text(
-                                      destination.description,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
+                    return GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> DestinationScreen(destination: destination,),
+                      ),
+                      ),
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        width: 210,
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: <Widget>[
+                            Positioned(
+                              bottom: 15.0,
+                              child: Container(
+                                height: 120,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.blueAccent,
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 6.9,
-                                  )
-                                ]),
-                            child: Stack(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image(
-                                    height: 180,
-                                    width: 180,
-                                    image: AssetImage(destination.imageUrl),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 10,
-                                  bottom: 10,
+                                child: Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            FlutterIcons.location_city_mdi,
-                                            size: 10.0,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            destination.city,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 1.2,
-                                            ),
-                                          ),
-                                        ],
+                                      Text(
+                                        '${destination.activities.length} places',
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        destination.description,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(0.0, 2.0),
+                                      blurRadius: 6.9,
+                                    )
+                                  ]),
+                              child: Stack(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      height: 180,
+                                      width: 180,
+                                      image: AssetImage(destination.imageUrl),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 10,
+                                    bottom: 10,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              FlutterIcons.location_city_mdi,
+                                              size: 10.0,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              destination.city,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.2,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -563,99 +571,104 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   itemCount: seasons.length,
                   itemBuilder: (BuildContext context, int index) {
                     Season season = seasons[index];
-                    return Container(
-                      margin: EdgeInsets.all(10),
-                      width: 210,
-                      child: Stack(
-                        alignment: Alignment.topCenter,
-                        children: <Widget>[
-                          Positioned(
-                            bottom: 15.0,
-                            child: Container(
-                              height: 120,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.blueAccent,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
-                                      season.month,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      season.info,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
+                    return GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> SeasonalScreen(season: season,),
+                      ),
+                      ),
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        width: 210,
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: <Widget>[
+                            Positioned(
+                              bottom: 15.0,
+                              child: Container(
+                                height: 120,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  color: Colors.blueAccent,
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 6.9,
-                                  )
-                                ]),
-                            child: Stack(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image(
-                                    height: 180,
-                                    width: 180,
-                                    image: AssetImage(season.imgUrl),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 10,
-                                  bottom: 10,
+                                child: Padding(
+                                  padding: EdgeInsets.all(10.0),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Row(
-                                        children: <Widget>[
-                                          Text(
-                                            season.name,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 1.2,
-                                            ),
-                                          ),
-                                        ],
+                                      Text(
+                                        season.month,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        season.info,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(0.0, 2.0),
+                                      blurRadius: 6.9,
+                                    )
+                                  ]),
+                              child: Stack(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image(
+                                      height: 180,
+                                      width: 180,
+                                      image: AssetImage(season.imgUrl),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 10,
+                                    bottom: 10,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                          children: <Widget>[
+                                            Text(
+                                              season.name,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.2,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

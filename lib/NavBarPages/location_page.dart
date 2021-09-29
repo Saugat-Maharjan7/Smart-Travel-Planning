@@ -272,10 +272,14 @@ class _LocationPageState extends State<LocationPage>
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              Provider.of<AppData>(context).startLocation != null
-                                  ?Provider.of<AppData>(context).startLocation.placeName
-                                  : "Start location",
+                            Text('Start Location',
+                              style: TextStyle(
+                              color: Colors.black,
+                            ),
+
+                              // Provider.of<AppData>(context).startLocation != null
+                              //     ?Provider.of<AppData>(context).startLocation
+                              //     : "Start location",
                             ),
                             SizedBox(
                               height: 4.0,
