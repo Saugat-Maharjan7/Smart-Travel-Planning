@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
+
 class SeasonalScreen extends StatefulWidget {
 
   final Season season;
@@ -89,7 +90,15 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                 ),
 
               ],
-            )
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: widget.season.month.length,
+                  itemBuilder: (BuildContext context, int index){
+                    return Text(widget.season.month[index],
+                    );
+                  }),
+            ),
           ],
         ),
       ),

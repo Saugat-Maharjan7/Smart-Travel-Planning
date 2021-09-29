@@ -98,7 +98,15 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ),
                 ),
               ],
-            )
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: widget.destination.activities.length,
+                  itemBuilder: (BuildContext context, int index){
+                return Text(widget.destination.activities[index].name,
+                );
+              }),
+            ),
           ],
         ),
       ),

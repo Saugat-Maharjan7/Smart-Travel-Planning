@@ -1,3 +1,5 @@
+import 'package:smart_travel_planning_appli/models/season_activity_model.dart';
+
 class Season {
   String imgUrl;
   String name;
@@ -11,6 +13,33 @@ class Season {
     this.info,
   });
 }
+
+List<Activity> activities = [
+  Activity(
+    imgUrl: "images/summer.jpg",
+    name: 'Hot',
+    season: ['Mar','Apr','May'],
+    price: 300,
+  ),
+  Activity(
+    imgUrl: "images/autumn.jpg",
+    name: 'Chilled',
+    season: ['Jun','Jul','Aug'],
+    price: 210,
+  ),
+  Activity(
+    imgUrl: "images/monsoon.jpg",
+    name: 'Mostly Rainy',
+    season: ['Sep','Oct','Nov'],
+    price: 125,
+  ),
+  Activity(
+    imgUrl: "images/winter.jpg",
+    name: 'Cold',
+    season: ['Dec','Jan','Feb'],
+    price: 250,
+  ),
+];
 
 final List<Season> seasons = [
   Season(

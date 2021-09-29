@@ -1,5 +1,4 @@
 import 'package:smart_travel_planning_appli/models/activity_model.dart';
-import 'activity_model.dart';
 
 class Destination {
   String imageUrl;
@@ -17,28 +16,25 @@ class Destination {
 
 List<Activity> activities = [
   Activity(
-    imgUrl: "images/ktm.jpg",
-    name: 'Scenary view',
-    type: 'Sightseeing tour',
+    imgUrl: "images/scene.jpg",
+    name: 'Scenery view',
     startTimes: ['6:00 am', '11:00 am'],
     rating: 5,
-    price: 30,
+    price: 300,
   ),
   Activity(
-    imgUrl: "images/pkr.jpg",
-    name: 'Walking Tour and Hiking',
-    type: 'Sightseeing tour',
+    imgUrl: "images/hiking.jpg",
+    name: 'Walking and Hiking',
     startTimes: ['6:00 am', '11:00 am'],
     rating: 5,
     price: 210,
   ),
   Activity(
-    imgUrl: "images/cht.jpg",
+    imgUrl: "images/durbar.jpg",
     name: 'Visit Historical Places',
-    type: 'Sightseeing tour',
     startTimes: ['10:00 am', '5:00 pm'],
     rating: 5,
-    price: 125,
+    price: 250,
   ),
 ];
 
