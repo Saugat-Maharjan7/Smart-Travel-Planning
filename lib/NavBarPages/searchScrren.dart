@@ -8,6 +8,7 @@ import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_travel_planning_appli/models/address.dart';
 import 'package:smart_travel_planning_appli/models/placePrediction.dart';
+import 'package:geocoding/geocoding.dart';
 
 
 

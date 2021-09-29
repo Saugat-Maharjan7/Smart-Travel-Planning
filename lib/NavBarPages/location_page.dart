@@ -10,6 +10,7 @@ import 'package:smart_travel_planning_appli/DataHandler/appData.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/searchScrren.dart';
+import 'package:geocoding/geocoding.dart';
 
 class LocationPage extends StatefulWidget {
   static const String id = 'location_page';
@@ -50,6 +51,11 @@ class _LocationPageState extends State<LocationPage>
     String address = await AssistantMethods.searchCoordinateAddress(position, context);
     print("This is your Address ::" + address);
   }
+
+  // static final CameraPosition _kbalkumari = CameraPosition(
+  //   target: LatLng(27.6695, 85.3408),
+  //   zoom: 14.4746,
+  // );
 
   //Rider call for driver/cab (you can remove)
   GoogleMapController newGoogleMapController;
@@ -142,10 +148,7 @@ class _LocationPageState extends State<LocationPage>
             padding: EdgeInsets.only(bottom: bottomPadding),
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(25.778686, 85.84585484),
-              zoom: 14.4746,
-            ),
+            initialCameraPosition: CameraPosition(target: LatLng(27.6695, 85.3408),zoom: 14),
             myLocationEnabled: true,
             zoomGesturesEnabled: true,
             zoomControlsEnabled: true,
