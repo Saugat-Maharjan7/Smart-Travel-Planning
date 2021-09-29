@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
 import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
@@ -16,6 +17,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'suggestionSearchList.dart';
+import 'package:http/http.dart' as http;
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -721,56 +724,66 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               scrollDirection: Axis.horizontal,
               children: List.generate(
                 recommendations.length,
-                (int index) => Container(
-                  margin: EdgeInsets.only(right: 28),
-                  width: 333,
-                  height: 218,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9.6),
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(recommendations[index].image)),
-                  ),
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned(
-                        bottom: 10,
-                        right: 12,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(28),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                              sigmaX: 1,
-                              sigmaY: 1,
-                            ),
-                            child: Container(
-                              height: 36,
-                              padding: EdgeInsets.only(left: 16, right: 14),
-                              alignment: Alignment.centerLeft,
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.location_on,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 9,
-                                  ),
-                                  Text(
-                                    recommendations[index].name,
-                                    style: GoogleFonts.aBeeZee(
-                                      fontWeight: FontWeight.w700,
+                (int index) => GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          SelectedPlaceScreen(
+                              recommendedModel: recommendations[index]),
+                    ),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: 28),
+                    width: 333,
+                    height: 218,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9.6),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(recommendations[index].image)),
+                    ),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          bottom: 10,
+                          right: 12,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(28),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 1,
+                                sigmaY: 1,
+                              ),
+                              child: Container(
+                                height: 36,
+                                padding: EdgeInsets.only(left: 16, right: 14),
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.location_on,
                                       color: Colors.white,
-                                      fontSize: 16,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      width: 9,
+                                    ),
+                                    Text(
+                                      recommendations[index].name,
+                                      style: GoogleFonts.aBeeZee(
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
