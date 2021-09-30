@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -123,13 +124,15 @@ class _RegisterPageState extends State<RegisterPage> {
                               print(_emailTextEditingController);
                               print(_passwordTextEditingController);
                               print('New account registered successfully.');
-                              Flushbar(
-                                title: 'Success',
-                                message:
-                                'New Account created successfully.',
-                                backgroundColor: Colors.blueAccent,
-                                duration: Duration(seconds: 5),
-                              );
+                              Fluttertoast.showToast(
+                                  msg: "New Account registered successfully.");
+                              // Flushbar(
+                              //   title: 'Success',
+                              //   message:
+                              //   'New Account created successfully.',
+                              //   backgroundColor: Colors.blueAccent,
+                              //   duration: Duration(seconds: 5),
+                              // );
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
