@@ -163,9 +163,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                               "password": _passwordTextEditingController
                                                   .text
                                                   .trim(),
-                                              "Re-password":
-                                              _confirmPasswordTextEditingController.text
-                                                  .trim(),
                                             'mobile': _mobileTextEditingController.text.trim()
                                             });
                               })
