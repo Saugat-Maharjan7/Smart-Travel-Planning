@@ -29,57 +29,77 @@ class _LoginPageState extends State<LoginPage> {
   bool isRememberMe = false;
   bool isAuth = false;
 
+  //Facebook Login
   // bool _isLogin = false;
   // Map data;
   // final facebookLogin = FacebookLogin();
 
+
+//2nd method for google sign in
+  Future<UserCredential> signInWithGoogle() async{
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+       idToken: googleAuth.idToken,
+       accessToken: googleAuth.accessToken
+     );
+
+     Fluttertoast.showToast(msg: "Account Created");
+     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+
+
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  @override
-  void initState() {
-    super.initState();
-    //Detects when user signed in/out
-    googleSignIn.onCurrentUserChanged.listen(
-      (account) {
-        if (account != null) {
-          print('User signed in != $account');
-          setState(() {
-            isAuth = true;
-          });
-        } else {
-          setState(() {
-            isAuth = false;
-          });
-        }
-      },
-      onError: (err) {
-        print('Error signing in: $err');
-      },
-    );
-    //Re-authenticate user app when app is reopened
-    googleSignIn.signInSilently(suppressErrors: false).then((account) {
-      if (account != null) {
-        print('User signed in != $account');
-        setState(() {
-          isAuth = true;
-        });
-      } else {
-        setState(() {
-          isAuth = false;
-        });
-      }
-    }).catchError((err) {
-      print('Error signing in : $err');
-    });
-  }
 
-  login() {
-    googleSignIn.signIn();
-  }
+  //first method for google sign in
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   //Detects when user signed in/out
+  //   googleSignIn.onCurrentUserChanged.listen(
+  //     (account) {
+  //       if (account != null) {
+  //         print('User signed in != $account');
+  //         setState(() {
+  //           isAuth = true;
+  //         });
+  //       } else {
+  //         setState(() {
+  //           isAuth = false;
+  //         });
+  //       }
+  //     },
+  //     onError: (err) {
+  //       print('Error signing in: $err');
+  //     },
+  //   );
+  //   //Re-authenticate user app when app is reopened
+  //   googleSignIn.signInSilently(suppressErrors: false).then((account) {
+  //     if (account != null) {
+  //       print('User signed in != $account');
+  //       setState(() {
+  //         isAuth = true;
+  //       });
+  //     } else {
+  //       setState(() {
+  //         isAuth = false;
+  //       });
+  //     }
+  //   }).catchError((err) {
+  //     print('Error signing in : $err');
+  //   });
+  // }
 
-  logout() {
-    googleSignIn.signOut();
-  }
+  // login() {
+  //   googleSignIn.signIn();
+  // }
+  //
+  // logout() {
+  //   googleSignIn.signOut();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -314,44 +334,46 @@ class _LoginPageState extends State<LoginPage> {
                                     if (_formkey.currentState.validate()) {
                                       Fluttertoast.showToast(
                                           msg: "User not registered");
-                                      try {
-                                        final newUser = await _auth
-                                            .signInWithEmailAndPassword(
-                                                email: email,
-                                                password: password);
-                                        if (newUser != null) {
-                                          Fluttertoast.showToast(
-                                              msg: "User logged in");
-                                          Navigator.pushNamed(
-                                              context, HomePage.id);
-                                          print(email);
-                                          print(password);
-                                          print('Successful');
+                                        try {
+                                          final newUser = await _auth
+                                              .signInWithEmailAndPassword(
+                                              email: email,
+                                              password: password);
+                                          if (newUser != null) {
+                                            Fluttertoast.showToast(
+                                                msg: "User logged in");
+                                            Navigator.pushNamed(
+                                                context, HomePage.id);
+                                            print(email);
+                                            print(password);
+                                            print('Successful');
 
-                                          // if (_formkey.currentState.validate()) {
-                                          //
-                                          // } else {
-                                          //   Fluttertoast.showToast(
-                                          //       msg: "User not Registered");
-                                          //   // Flushbar(
-                                          //   //   title: 'Invalid',
-                                          //   //   message:
-                                          //   //       'Text-field must be filled properly.',
-                                          //   //   backgroundColor: Colors.blueAccent,
-                                          //   //   duration: Duration(seconds: 5),
-                                          //   // ).show(context);
-                                          //   print("Unsuccessful");
-                                          // }
-                                          // Navigator.pushNamed(
-                                          //     context, HomePage.id);
+                                            // if (_formkey.currentState.validate()) {
+                                            //
+                                            // } else {
+                                            //   Fluttertoast.showToast(
+                                            //       msg: "User not Registered");
+                                            //   // Flushbar(
+                                            //   //   title: 'Invalid',
+                                            //   //   message:
+                                            //   //       'Text-field must be filled properly.',
+                                            //   //   backgroundColor: Colors.blueAccent,
+                                            //   //   duration: Duration(seconds: 5),
+                                            //   // ).show(context);
+                                            //   print("Unsuccessful");
+                                            // }
+                                            // Navigator.pushNamed(
+                                            //     context, HomePage.id);
+                                          }
+                                        } catch (e) {
+                                          print(e);
                                         }
-                                      } catch (e) {
-                                        print(e);
-                                      }
+
                                     } else {
                                       Fluttertoast.showToast(
                                           msg: "Text-field is empty");
                                     }
+
                                   },
                                   icon: Icon(
                                     Icons.login_rounded,
@@ -476,19 +498,20 @@ class _LoginPageState extends State<LoginPage> {
                           SignInButton(
                             Buttons.Google,
                             text: "Sign-in with Google",
-                            onPressed: () async {
-                              login();
+                            onPressed: () {
+                              signInWithGoogle();
+                              // login();
                               print('Signed-in with google');
                             },
                           ),
-                          SignInButton(
-                            Buttons.Facebook,
-                            text: "Sign-in with Facebook",
-                            onPressed: () async {
-                              // onFBLogin();
-                              print('Signed-in with facebook');
-                            },
-                          ),
+                          // SignInButton(
+                          //   Buttons.Facebook,
+                          //   text: "Sign-in with Facebook",
+                          //   onPressed: () async {
+                          //     // onFBLogin();
+                          //     print('Signed-in with facebook');
+                          //   },
+                          // ),
                         ],
                       ),
                     ),
@@ -501,6 +524,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  void notifyListeners() {}
 
 //   onFBLogin() async {
 //     final result = await facebookLogin.logIn(['email']);

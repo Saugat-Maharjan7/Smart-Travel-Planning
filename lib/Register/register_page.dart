@@ -24,9 +24,9 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _emailTextEditingController = TextEditingController();
   TextEditingController _mobileTextEditingController = TextEditingController();
   TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  TextEditingController();
   TextEditingController _confirmPasswordTextEditingController =
-      TextEditingController();
+  TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -122,6 +122,13 @@ class _RegisterPageState extends State<RegisterPage> {
                               print(_emailTextEditingController);
                               print(_passwordTextEditingController);
                               print('New account registered successfully.');
+                              Flushbar(
+                                title: 'Success',
+                                message:
+                                'New Account created successfully.',
+                                backgroundColor: Colors.blueAccent,
+                                duration: Duration(seconds: 5),
+                              );
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
@@ -134,7 +141,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               Flushbar(
                                 title: 'Invalid',
                                 message:
-                                    'All the field must be filled properly.',
+                                'All the field must be filled properly.',
                                 backgroundColor: Colors.blueAccent,
                                 duration: Duration(seconds: 5),
                               ).show(context);
@@ -142,28 +149,28 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             try {
                               final User newUser = (await _auth
-                                      .createUserWithEmailAndPassword(
-                                          email:
-                                              _emailTextEditingController.text,
-                                          password:
-                                              _passwordTextEditingController
-                                                  .text)
-                                      .catchError((errorMsg) {}))
+                                  .createUserWithEmailAndPassword(
+                                  email:
+                                  _emailTextEditingController.text,
+                                  password:
+                                  _passwordTextEditingController
+                                      .text)
+                                  .catchError((errorMsg) {}))
                                   .user;
                               if (newUser != null) {
                                 Map userDataMap = {
                                   "name":
-                                      _nameTextEditingController.text.trim(),
+                                  _nameTextEditingController.text.trim(),
                                   "email":
-                                      _emailTextEditingController.text.trim(),
+                                  _emailTextEditingController.text.trim(),
                                   "password": _passwordTextEditingController
                                       .text
                                       .trim(),
                                   "Re-password":
-                                      _confirmPasswordTextEditingController.text
-                                          .trim(),
+                                  _confirmPasswordTextEditingController.text
+                                      .trim(),
                                   "Mobile":
-                                      _mobileTextEditingController.text.trim(),
+                                  _mobileTextEditingController.text.trim(),
                                 };
 
                                 usersRef.child(newUser.uid).set(userDataMap);
@@ -441,11 +448,11 @@ class _RegisterPageState extends State<RegisterPage> {
         },
         onSaved: (value) {
           _confirmPasswordTextEditingController =
-              value as TextEditingController;
+          value as TextEditingController;
         },
         onChanged: (value) {
           _confirmPasswordTextEditingController =
-              value as TextEditingController;
+          value as TextEditingController;
         },
         keyboardType: isPassword ? TextInputType.text : TextInputType.text,
         style: TextStyle(
