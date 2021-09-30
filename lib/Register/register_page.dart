@@ -49,6 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: SafeArea(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           margin: EdgeInsets.only(top: 80),
           padding: EdgeInsets.only(left: 50, right: 20),
           // height: 600,

@@ -262,6 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                               Padding(
                                 padding: EdgeInsets.only(left: 50.0),
                                 child: Row(
+                                  
                                   children: [
                                     Checkbox(
                                       checkColor: Colors.black,
@@ -276,7 +277,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Text(
                                       "Remember Me",
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Colors.white,
                                       ),
                                     )
@@ -393,7 +394,7 @@ class _LoginPageState extends State<LoginPage> {
                                   icon: Icon(
                                     Icons.fingerprint,
                                     color: Colors.white,
-                                    size: 30,
+                                    size: 28,
                                   ),
                                   label: Text(
                                     'Login with fingerprint',

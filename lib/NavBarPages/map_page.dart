@@ -174,7 +174,7 @@ class _LocationPageState extends State<LocationPage>
             right: 0.0,
             bottom: 0.0,
             child: Container(
-              height: 270.0,
+              height: 265,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
