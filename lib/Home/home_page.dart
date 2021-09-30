@@ -6,9 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/Home/packages.dart';
+import 'package:smart_travel_planning_appli/Home/search.dart';
 import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
 import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
+import 'package:smart_travel_planning_appli/Home/topDestionationDetails.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
@@ -239,6 +242,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 onTap: () {
                                   setState(() {
                                     _folded = !_folded;
+
+                                    // showSearch(context: context, delegate: SearchUser());
                                   });
                                 },
                               ),
@@ -262,6 +267,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                 ),
               ),
+
+              //Text for packages
+              Padding(
+                padding: EdgeInsets.only(top:30.0, left: 20, bottom: 10),
+                child: Container(
+                  height: 50,
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PackageScreen())),
+                    child: Text(
+                      'Packages',
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+
 
               //Custom Tab bar for Category
               Container(
@@ -325,7 +350,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ),
 
-              //_tabbarItem for recommend, popular
+              //_tab-barItem for recommend, popular
               Container(
                 margin: EdgeInsets.only(top: 20),
                 height: 300,
@@ -551,7 +576,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => print('See All'),
+                      onTap: () => null,
                       child: Text(
                         'Show all',
                         style: GoogleFonts.lato(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_travel_planning_appli/Home/topDestionationDetails.dart';
 import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
@@ -100,7 +101,8 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                     return Stack(
                       children: [
                         GestureDetector(
-                          onTap: () => print('Open this page'),
+                          onTap: () => Navigator.push(
+                        context, MaterialPageRoute(builder: (context)=> DetailPage(),)),
                           child: Container(
                             margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
                             height: 170,
