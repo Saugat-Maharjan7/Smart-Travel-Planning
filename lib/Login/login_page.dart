@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
      return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-
+final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -307,8 +307,12 @@ class _LoginPageState extends State<LoginPage> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 50.0),
                                 child: TextButton(
-                                  onPressed: () {
-                                    print('Forgot Password?');
+                                  onPressed: () async {
+                                    try{
+                                      await _firebaseAuth.sendPasswordResetEmail(email: email);
+                                    } catch(e){
+                                      Fluttertoast.showToast(msg: e.toString());
+                                    };
                                   },
                                   child: Text(
                                     'Forgot Password?',
@@ -335,10 +339,10 @@ class _LoginPageState extends State<LoginPage> {
                                       Fluttertoast.showToast(
                                           msg: "User not registered");
                                         try {
-                                          final newUser = await _auth
+                                          final newUser = (await _auth
                                               .signInWithEmailAndPassword(
                                               email: email,
-                                              password: password);
+                                              password: password)).user;
                                           if (newUser != null) {
                                             Fluttertoast.showToast(
                                                 msg: "User logged in");

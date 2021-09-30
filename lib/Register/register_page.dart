@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -154,9 +155,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _emailTextEditingController.text,
                                   password:
                                   _passwordTextEditingController
-                                      .text)
-                                  .catchError((errorMsg) {}))
-                                  .user;
+                                      .text).then((value){
+                                        FirebaseFirestore.instance.collection('UserData').doc(value.user.uid).set(
+                                            {'Username': _nameTextEditingController.text.trim(),
+                                              "email":
+                                              _emailTextEditingController.text.trim(),
+                                              "password": _passwordTextEditingController
+                                                  .text
+                                                  .trim(),
+                                              "Re-password":
+                                              _confirmPasswordTextEditingController.text
+                                                  .trim(),
+                                            'mobile': _mobileTextEditingController.text.trim()
+                                            });
+                              })
+                                  .catchError((errorMsg) {}));
                               if (newUser != null) {
                                 Map userDataMap = {
                                   "name":
