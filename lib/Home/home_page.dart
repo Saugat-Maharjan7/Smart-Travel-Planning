@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               //Text for packages
               Padding(
-                padding: EdgeInsets.only(top:30.0, left: 20, bottom: 10),
+                padding: EdgeInsets.only(top: 48, left: 28.8),
                 child: Container(
                   height: 50,
                   child: GestureDetector(
@@ -278,7 +278,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     child: Text(
                       'Packages',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
