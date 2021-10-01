@@ -41,6 +41,56 @@ List<Activity> activities = [
     name: 'Lumbini',
     info: 'Archaeological site, place of pilgrimage honored as birthplace of Buddha.'
   ),
+  Activity(
+      imgUrl: "images/abc.jpg",
+      name: 'ABC trek',
+      info: 'An amazing walk through diverse landscape and rich mountains, wild variety of flora and faunas.'
+  ),
+  Activity(
+      imgUrl: "images/bardiya.jpg",
+      name: 'Bardiya National Park',
+      info: 'Largest national park in lowland Terai. Wide species of animals.'
+  ),
+  Activity(
+      imgUrl: "images/janakpur.jpg",
+      name: 'Janakpur',
+      info: 'Archaeological site, place of pilgrimage honored as birthplace of Buddha.'
+  ),
+  Activity(
+      imgUrl: "images/rara.jpg",
+      name: 'Rara',
+      info: 'The deepest lake and also one of most pristine. Surrounded by green hills on all sides, one can camp by sparkling waters of lake.'
+  ),
+  Activity(
+      imgUrl: "images/chitwanNP.jpg",
+      name: 'Chitwan National Park',
+      info: 'Nestled at foot of himalayas, has particullaerly rich flora and fauna and is home to asian rhinos,bengal tigers.'
+  ),
+  Activity(
+      imgUrl: "images/ebc.jpg",
+      name: 'Everest Base Camp',
+      info: 'Classic trek to base of Mt.Everest. Journey to base of the Everest is more than just a trek.'
+  ),
+  Activity(
+      imgUrl: "images/phokshundo.jpg",
+      name: 'Phokshundo Lake',
+      info: 'Alpine fresh water oligotropic lake, surrounded by glaciers and famous for spectacular landscapes and most scenic mountain parks.'
+  ),
+  Activity(
+      imgUrl: "images/kalinchowk.jpg",
+      name: 'Kalinchwok',
+      info: 'Named after hill-top temple Kalinchwok Bhagwati. It is blend of both biological and cultural attractions.'
+  ),
+  Activity(
+      imgUrl: "images/bandipur.jpg",
+      name: 'Bandipur',
+      info: 'Hilltop settlement famous for its newari people and their culture. Also famous for its wildlife. Houses reflect style, architecture and culture.'
+  ),
+  Activity(
+      imgUrl: "images/nagarkot.jpg",
+      name: 'Nagarkot',
+      info: 'Scenic hilly town in midst of snow-capped mountains. Offers great views of Himalayas, breathtaking sunrise view.'
+  ),
 ];
 
 final List<Season> seasons = [

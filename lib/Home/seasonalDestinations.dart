@@ -98,6 +98,7 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
 
                   itemCount: widget.season.activities.length,
                   itemBuilder: (BuildContext context, int index){
+
                     Activity activity = widget.season.activities[index];
                     return Stack(
                       children: [
@@ -117,15 +118,16 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                                 children: [
                                   Row(
                                     children: [
-                                      Container(
-                                        width: 120,
-                                        child: Text(activity.name,
-                                          style: TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
+                                      Expanded(
+                                        child: Container(
+                                          width: 120,
+                                          child: Text(activity.name,
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+
                                           ),
-                                          overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
                                         ),
                                       ),
                                     ],
@@ -170,7 +172,8 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
 
                       ],
                     );
-                  }),
+                  },
+              ),
             ),
           ],
         ),
