@@ -12,7 +12,7 @@ import 'package:smart_travel_planning_appli/Home_extendedDetails/search.dart';
 import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
 import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
-import 'package:smart_travel_planning_appli/Home_extendedDetails/topDestionationDetails.dart';
+import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/package_place.dart';
@@ -420,7 +420,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
 
-              //Top Destination Places Places
+
+              //Top Destination Places
               Padding(
                 padding: EdgeInsets.only(top: 48, left: 28, right: 28),
                 child: Row(
@@ -484,20 +485,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 child: Padding(
                                   padding: EdgeInsets.all(10.0),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      Text(
-                                        '${destination.activities.length} places',
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Text(
-                                        destination.description,
-                                        style: TextStyle(
-                                          color: Colors.white,
+                                      // Text(
+                                      //   '${destination.activities.length} places',
+                                      //   style: TextStyle(
+                                      //     fontSize: 22,
+                                      //     fontWeight: FontWeight.w600,
+                                      //   ),
+                                      // ),
+                                      Center(
+                                        child: Text(
+                                          destination.description,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -505,65 +508,65 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                             Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black26,
-                                        offset: Offset(0.0, 2.0),
-                                        blurRadius: 6.9,
-                                      )
-                                    ]),
-                                child: Stack(
-                                  children: <Widget>[
-                                    Hero(
-                                      tag: destination.imageUrl,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          height: 180,
-                                          width: 180,
-                                          image: AssetImage(destination.imageUrl),
-                                          fit: BoxFit.cover,
-                                        ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(0.0, 2.0),
+                                      blurRadius: 6.9,
+                                    )
+                                  ]),
+                              child: Stack(
+                                children: <Widget>[
+                                  Hero(
+                                    tag: destination.imageUrl,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image(
+                                        height: 180,
+                                        width: 180,
+                                        image: AssetImage(destination.imageUrl),
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                    Positioned(
-                                      left: 10,
-                                      bottom: 10,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                FlutterIcons.location_city_mdi,
-                                                size: 10.0,
+                                  ),
+                                  Positioned(
+                                    left: 10,
+                                    bottom: 10,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              FlutterIcons.location_city_mdi,
+                                              size: 10.0,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              destination.city,
+                                              style: TextStyle(
                                                 color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.2,
                                               ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text(
-                                                destination.city,
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w600,
-                                                  letterSpacing: 1.2,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
+                            ),
                           ],
                         ),
                       ),

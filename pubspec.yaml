@@ -25,6 +25,9 @@ dependencies:
   flushbar: ^1.10.4
   image_picker: ^0.8.4+2
 
+  carousel_slider: ^4.0.0
+  carousel_pro: ^1.0.0
+
   google_maps_flutter: ^2.0.10
   geolocator: ^7.6.2
   http: ^0.13.3

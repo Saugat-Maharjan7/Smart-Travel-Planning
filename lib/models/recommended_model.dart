@@ -52,9 +52,10 @@ var recommendationsData = [
     "image":
         "https://www.himalayanst.com/uploads/img/chandra-giri-trekking-in-nepal.jpg",
     "images": [
-     "https://www.luxuryholidaynepal.com/uploads/img/chandragiri-hill-admire-the-whole-kathmandu-valley-under-your-neath.jpeg",
+
       "https://www.vivaanadventure.com/wp-content/uploads/2020/03/Chandragiri-Cable-Car.jpg",
-      "https://www.gvtrek.com/uploads/daytours/chandragiri-hill-snowfall.jpg"
+      "https://www.gvtrek.com/uploads/daytours/chandragiri-hill-snowfall.jpg",
+      "https://www.luxuryholidaynepal.com/uploads/img/chandragiri-hill-admire-the-whole-kathmandu-valley-under-your-neath.jpeg",
     ],
     "description": "Just 7 km away from Thankot, Kathmandu, Chandragiri Hills feels like a whole new world, altogether. The 2551 meter-high natural haven is surrounded by temperate wilderness with a fantastic panorama of the Himalayas as the backdrop. The closest location from Kathmandu to get a view of the majestic Mt. Everest is surely something that you shouldn’t be missing.",
     "price": 750

@@ -22,28 +22,24 @@ class Season {
 
 List<Activity> activities = [
   Activity(
-    imgUrl: "images/summer.jpg",
-    name: 'Hot',
-    season: ['Mar','Apr','May'],
-    price: 300,
+    imgUrl: "images/illam.jpg",
+    name: 'Illam',
+    info: 'Lush green tea gardens makes illam popular. It has famous tea garden, Antu pond and much to explore.'
   ),
   Activity(
-    imgUrl: "images/autumn.jpg",
-    name: 'Chilled',
-    season: ['Jun','Jul','Aug'],
-    price: 210,
+    imgUrl: "images/pokhara.jpg",
+    name: 'Pokhara',
+    info: 'Major destination because of its panoramic views, magnificent mountains, lakes.'
   ),
   Activity(
-    imgUrl: "images/monsoon.jpg",
-    name: 'Mostly Rainy',
-    season: ['Sep','Oct','Nov'],
-    price: 125,
+    imgUrl: "images/mustang.jpg",
+    name: 'Mustang',
+    info: 'Land Beyond Himalayas: Deepest gorge that goes down three miles between Dhaulagiri and Annapurna mountains.'
   ),
   Activity(
-    imgUrl: "images/winter.jpg",
-    name: 'Cold',
-    season: ['Dec','Jan','Feb'],
-    price: 250,
+    imgUrl: "images/lumbini.jpg",
+    name: 'Lumbini',
+    info: 'Archaeological site, place of pilgrimage honored as birthplace of Buddha.'
   ),
 ];
 

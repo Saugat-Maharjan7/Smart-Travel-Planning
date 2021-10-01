@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_travel_planning_appli/Home_extendedDetails/topDestionationDetails.dart';
+import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
 import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
@@ -95,14 +95,14 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
             ),
             Expanded(
               child: ListView.builder(
+
                   itemCount: widget.season.activities.length,
                   itemBuilder: (BuildContext context, int index){
                     Activity activity = widget.season.activities[index];
                     return Stack(
                       children: [
                         GestureDetector(
-                          onTap: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (context)=> DetailPage(),)),
+                          onTap: () => print('Clicked for information'),
                           child: Container(
                             margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
                             height: 170,
@@ -114,12 +114,8 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         width: 120,
@@ -134,52 +130,24 @@ class _SeasonalScreenState extends State<SeasonalScreen> {
                                       ),
                                     ],
                                   ),
-
                                   SizedBox(
                                     height: 10,
                                   ),
                                   Row(
                                     children: [
-                                      Container(
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blueAccent,
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          activity.season[0],
-
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Container(
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blueAccent,
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          activity.season[1],
-
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Container(
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blueAccent,
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          activity.season[2],
-
+                                      Expanded(
+                                        child: Container(
+                                          width: 200,
+                                          child: Text(activity.info,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
+
                                 ],
                               ),
                             ),

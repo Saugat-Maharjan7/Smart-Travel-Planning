@@ -3,6 +3,7 @@ import 'package:smart_travel_planning_appli/models/activity_model.dart';
 class Destination {
   String imageUrl;
   String city;
+  List<String> images;
   String description;
   List<Activity> activities;
 
@@ -10,6 +11,7 @@ class Destination {
     this.imageUrl,
     this.city,
     this.description,
+    this.images,
     this.activities,
   });
 }
@@ -41,18 +43,36 @@ List<Activity> activities = [
 List<Destination> destinations = [
   Destination(
     imageUrl: "images/ktm.jpg",
+    images: ["images/ktm.jpg"
+      "images/boudha.jpg",
+      "images/statue.jpg",
+"images/pashupatinath.jpg",
+      "images/swoyambhu.jpg"
+    ],
     city: "Kathmandu",
     description: "Travel around Kathmandu for exploring exciting places.",
     activities: activities,
   ),
   Destination(
     imageUrl: "images/pkr.jpg",
+    images: ["images/ktm.jpg"
+        "images/boudha.jpg",
+      "images/statue.jpg",
+      "images/pashupatinath.jpg",
+      "images/swoyambhu.jpg"
+    ],
     city: "Pokhara",
     description: "Visit Pokhara for an amazing and unforgettable adventure.",
     activities: activities,
   ),
   Destination(
     imageUrl: "images/cht.jpg",
+    images: ["images/ktm.jpg"
+        "images/boudha.jpg",
+      "images/statue.jpg",
+      "images/pashupatinath.jpg",
+      "images/swoyambhu.jpg"
+    ],
     city: "Chitwan",
     description: "Visit Chitwan for chilling and exploring wildlife adventure.",
     activities: activities,
