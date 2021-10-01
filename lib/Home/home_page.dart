@@ -7,6 +7,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/packages.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/packages_container.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/search.dart';
 import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
 import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
@@ -14,6 +15,7 @@ import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/topDestionationDetails.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
+import 'package:smart_travel_planning_appli/models/package_place.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -406,68 +408,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
               //Container for packages
               Container(
-                height:170,
-                margin: EdgeInsets.only(left: 30, top: 25),
-                child: Container(
-                  height: 170,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20))
-                  ),
-                  child: Column(
-                    children: [
-                      Stack(
-                        children: [
-                           Container(
-                          height: 120,
-                          width: 120,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(image: AssetImage('images/pkr.jpg'),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20))
-                          ),
-                        ),
-                          Positioned(
-                              top: 0,
-                              right: 0,
-                              child: Container(
-                                width: 54,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    bottomLeft: Radius.circular(20)
-                                  )
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.star,
-                                    color: Colors.yellowAccent,
-                                  ),
-                                ),
-                              ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 40,
-                        width: 120,
-                        decoration:  BoxDecoration(
-                          color: Colors.blueAccent,
-                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20)),
-                        ),
-                        child: Center(
-                          child: Text('Pokhara',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),),
-                        ),
-                      )
-                    ],
-                  ),
+                height: 200,
+                child: ListView.builder(scrollDirection: Axis.horizontal,
+                itemCount: packages.length,
+                  itemBuilder: (_, index){
+                  return PackageContainer(
+                      index: index,
+                      package: packages[index]);
+                  },
                 ),
               ),
 
