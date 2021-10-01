@@ -129,7 +129,11 @@ class SelectedPlaceScreen extends StatelessWidget {
                         ),
 
                         GestureDetector(
+
+                          //Recommended Details to direct to website
                           onTap: () => print("Go to the website"),
+                          //
+
                           child: Container(
                             height: 62,
                             decoration: BoxDecoration(

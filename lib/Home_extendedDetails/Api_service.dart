@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:smart_travel_planning_appli/Home/user_model.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/user_model.dart';
 
 class FetchUserList {
   var data = [];

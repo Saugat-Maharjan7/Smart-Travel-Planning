@@ -32,6 +32,9 @@ class SearchUser extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+
+    //Background color change so added scaffold
+
     return Scaffold(
       backgroundColor: Color(0xFF320D36),
       body: FutureBuilder<List<Userlist>>(
@@ -86,6 +89,9 @@ class SearchUser extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+
+    //Background color change so added scaffold
+
     return Scaffold(
       backgroundColor: Color(0xFF320D36),
       body: Center(

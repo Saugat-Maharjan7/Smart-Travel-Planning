@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_travel_planning_appli/Home/Api_service.dart';
-import 'package:smart_travel_planning_appli/Home/search.dart';
-import 'package:smart_travel_planning_appli/Home/user_model.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/Api_service.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/search.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/user_model.dart';
 
 class PackageScreen extends StatefulWidget {
 
@@ -17,6 +17,9 @@ class _PackageScreenState extends State<PackageScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+
+      //Background color change
+
       child: Scaffold(
         backgroundColor: Color(0xFF320D36),
         appBar: AppBar(
