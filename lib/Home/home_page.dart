@@ -610,6 +610,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                     GestureDetector(
                       onTap: () => null,
+                      //     Navigator.push(context, MaterialPageRoute(builder: (context)=> SeasonalScreen(),
+                      // ),
+                      // ),
                       child: Text(
                         'Show all',
                         style: GoogleFonts.lato(

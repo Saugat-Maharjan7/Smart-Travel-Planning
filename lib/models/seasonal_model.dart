@@ -64,7 +64,7 @@ List<Activity> activities = [
   Activity(
       imgUrl: "images/chitwanNP.jpg",
       name: 'Chitwan National Park',
-      info: 'Nestled at foot of himalayas, has particullaerly rich flora and fauna and is home to asian rhinos,bengal tigers.'
+      info: 'Nestled at foot of himalayas, has particularly rich flora and fauna and is home to asian rhinos,bengal tigers.'
   ),
   Activity(
       imgUrl: "images/ebc.jpg",
@@ -74,7 +74,7 @@ List<Activity> activities = [
   Activity(
       imgUrl: "images/phokshundo.jpg",
       name: 'Phokshundo Lake',
-      info: 'Alpine fresh water oligotropic lake, surrounded by glaciers and famous for spectacular landscapes and most scenic mountain parks.'
+      info: 'Alpine fresh water oligotrophic lake, surrounded by glaciers and famous for spectacular landscapes and most scenic mountain parks.'
   ),
   Activity(
       imgUrl: "images/kalinchowk.jpg",
