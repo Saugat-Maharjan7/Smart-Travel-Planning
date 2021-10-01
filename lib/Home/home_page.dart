@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   children: <Widget>[
                     AnimatedContainer(
                       duration: Duration(milliseconds: 400),
-                      width: _folded ? 56 : 372,
+                      width: _folded ? 56 : 280,
                       height: 56,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
@@ -241,7 +241,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    _folded = !_folded;
+                                    if(_folded = _folded){
+                                      showSearch(context: context, delegate: SearchUser());
+                                    }
 
                                     // showSearch(context: context, delegate: SearchUser());
                                   });
@@ -267,25 +269,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-
-              //Text for packages
-              Padding(
-                padding: EdgeInsets.only(top: 48, left: 28.8),
-                child: Container(
-                  height: 50,
-                  child: GestureDetector(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PackageScreen())),
-                    child: Text(
-                      'Packages',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
 
 
               //Custom Tab bar for Category
@@ -389,6 +372,38 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                 ),
               ),
+
+
+              //Packages list
+              Padding(
+                padding: EdgeInsets.only(top: 48, left: 28, right: 28),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Packages',
+                      style: GoogleFonts.roboto(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PackageScreen())),
+                      child: Text(
+                        'Show all',
+                        style: GoogleFonts.lato(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
 
               //Top Destination Places Places
               Padding(

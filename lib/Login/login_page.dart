@@ -6,6 +6,7 @@ import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import '../Register/register_page.dart';
 import '../Home/home_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:smart_travel_planning_appli/main.dart';
 import 'package:flushbar/flushbar.dart';
 // import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 // import 'package:http/http.dart' as http;
@@ -25,81 +26,41 @@ class _LoginPageState extends State<LoginPage> {
   String email;
   String password;
 
+  bool _showForgotPassword = false;
+
   bool _secureText = true;
   bool isRememberMe = false;
   bool isAuth = false;
+
 
   //Facebook Login
   // bool _isLogin = false;
   // Map data;
   // final facebookLogin = FacebookLogin();
 
+  Future<UserCredential> aignInWithGoogle() async{
+    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
 
-//2nd method for google sign in
-  Future<UserCredential> signInWithGoogle() async{
-    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
-       idToken: googleAuth.idToken,
-       accessToken: googleAuth.accessToken
-     );
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+      accessToken: googleAuth.accessToken
+    );
 
-     Fluttertoast.showToast(msg: "Account Created");
-     return await FirebaseAuth.instance.signInWithCredential(credential);
+Fluttertoast.showToast(msg: "Account Created");
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+
+
 
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
 
-  //first method for google sign in
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   //Detects when user signed in/out
-  //   googleSignIn.onCurrentUserChanged.listen(
-  //     (account) {
-  //       if (account != null) {
-  //         print('User signed in != $account');
-  //         setState(() {
-  //           isAuth = true;
-  //         });
-  //       } else {
-  //         setState(() {
-  //           isAuth = false;
-  //         });
-  //       }
-  //     },
-  //     onError: (err) {
-  //       print('Error signing in: $err');
-  //     },
-  //   );
-  //   //Re-authenticate user app when app is reopened
-  //   googleSignIn.signInSilently(suppressErrors: false).then((account) {
-  //     if (account != null) {
-  //       print('User signed in != $account');
-  //       setState(() {
-  //         isAuth = true;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         isAuth = false;
-  //       });
-  //     }
-  //   }).catchError((err) {
-  //     print('Error signing in : $err');
-  //   });
-  // }
 
-  // login() {
-  //   googleSignIn.signIn();
-  // }
-  //
-  // logout() {
-  //   googleSignIn.signOut();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -406,16 +367,24 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                             height: 5,
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width,
+                            width: 250,
+                            // width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 92),
+                                vertical: 5, horizontal: 90),
                             padding: EdgeInsets.all(2.0),
                             child: Row(
                               children: <Widget>[
                                 TextButton.icon(
                                   onPressed: () {
                                     print('Logged-in with fingerprint');
+
+
+                                    // This feature to be implemented in future if not worked
                                     Navigator.pushNamed(context, HomePage.id);
+                                    //Future work
+
+
+
                                   },
                                   icon: Icon(
                                     Icons.fingerprint,
@@ -503,8 +472,9 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                             Buttons.Google,
                             text: "Sign-in with Google",
                             onPressed: () {
-                              signInWithGoogle();
-                              // login();
+
+                              aignInWithGoogle();
+
                               print('Signed-in with google');
                             },
                           ),
@@ -529,7 +499,6 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     );
   }
 
-  void notifyListeners() {}
 
 //   onFBLogin() async {
 //     final result = await facebookLogin.logIn(['email']);
@@ -557,4 +526,5 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 //         break;
 //     }
 //   }
+
 }

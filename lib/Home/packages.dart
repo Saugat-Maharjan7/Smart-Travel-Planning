@@ -44,7 +44,11 @@ class _PackageScreenState extends State<PackageScreen> {
                         return Center(child: CircularProgressIndicator());
                       }
                       return GestureDetector(
+
+                        //Package website direct
                         onTap: () => print('Package open'),
+
+                        //
                         child: Card(
                           color: Colors.transparent,
                           shape: RoundedRectangleBorder(
