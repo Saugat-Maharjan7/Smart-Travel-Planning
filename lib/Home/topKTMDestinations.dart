@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
-import 'package:smart_travel_planning_appli/models/activity_model.dart';
-import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 class KtmDestinationScreen extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:smart_travel_planning_appli/models/package_place.dart';
 
 class PackageContainer extends StatelessWidget {

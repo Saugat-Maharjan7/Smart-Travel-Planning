@@ -412,9 +412,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: ListView.builder(scrollDirection: Axis.horizontal,
                 itemCount: packages.length,
                   itemBuilder: (_, index){
-                  return PackageContainer(
-                      index: index,
-                      package: packages[index]);
+                  return GestureDetector(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PackageScreen())),
+                    child: PackageContainer(
+                        index: index,
+                        package: packages[index]),
+                  );
                   },
                 ),
               ),
