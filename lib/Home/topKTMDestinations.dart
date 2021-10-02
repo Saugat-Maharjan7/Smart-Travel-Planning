@@ -128,6 +128,7 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
 
 
               //Content for down
+              //FILTERING AMIT LE GAREKO ETA HALNE
               // Expanded(
               //   child: ListView.builder(
               //     itemCount: widget.destination.activities.length,

@@ -6,14 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/Home/seasonalAutumn.dart';
+import 'package:smart_travel_planning_appli/Home/seasonalMonsoon.dart';
+import 'package:smart_travel_planning_appli/Home/seasonalWinter.dart';
 import 'package:smart_travel_planning_appli/Home/topCHTDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/topPKRDestinations.dart';
+import 'package:smart_travel_planning_appli/Home_extendedDetails/SeeAllSeasons.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/packages.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/packages_container.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/search.dart';
 import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
 import 'package:smart_travel_planning_appli/Home/topKTMDestinations.dart';
-import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
+import 'package:smart_travel_planning_appli/Home/seasonalSummer.dart';
 import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
@@ -35,6 +39,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
+
   // final _auth = FirebaseAuth.instance;
   // FirebaseUser loggedInUser;
   //
@@ -151,12 +157,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           )
         ],
       ),
-      // //appBar ma vako drawer
-      // backgroundColor: Color(0xFF320D36),
-      // drawer: NavigationDrawerWidget(),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      // ),
+
       body: SafeArea(
         child: Container(
           child: ListView(
@@ -966,13 +967,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         color: Colors.white,
                       ),
                     ),
+
                     GestureDetector(
-                      onTap: () => null,
-                      //     Navigator.push(context, MaterialPageRoute(builder: (context)=> SeasonalScreen(),
-                      // ),
-                      // ),
-                      child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeeAllSeasonal())),
                         child: Text(
                           'Show all',
                           style: GoogleFonts.lato(
@@ -982,7 +979,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
-                    ),
+
                   ],
                 ),
               ),
@@ -1007,7 +1004,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       height: 50,
                       // width: 200,
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalSummer())),
                         child: Container(
                           margin: EdgeInsets.all(2),
                           padding: EdgeInsets.all(5),
@@ -1069,16 +1066,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ]),
                                 child: Stack(
                                     children: <Widget>[
-                                      // Hero(
-                                      //   tag: AssetImage('images/summer.jpg'),
-                                      //   child:
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(20),
-                                          child: Image(
-                                            height: 180,
-                                            width: 180,
-                                            image: AssetImage('images/summer.jpg'),
-                                            fit: BoxFit.cover,
+
+                                        Hero(
+                                          tag: AssetImage('images/summer.jpg'),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image(
+                                              height: 180,
+                                              width: 180,
+                                              image: AssetImage('images/summer.jpg'),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       Positioned(
@@ -1130,7 +1128,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       height: 50,
                       // width: 200,
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalMonsoon())),
                         child: Container(
                           margin: EdgeInsets.all(2),
                           padding: EdgeInsets.all(5),
@@ -1192,16 +1190,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ]),
                                 child: Stack(
                                     children: <Widget>[
-                                      // Hero(
-                                      //   tag: AssetImage('images/summer.jpg'),
-                                      //   child:
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          height: 180,
-                                          width: 180,
-                                          image: AssetImage('images/monsoon.jpg'),
-                                          fit: BoxFit.cover,
+
+                                      Hero(
+                                        tag: AssetImage('images/monsoon.jpg'),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Image(
+                                            height: 180,
+                                            width: 180,
+                                            image: AssetImage('images/monsoon.jpg'),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                       Positioned(
@@ -1253,7 +1252,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       height: 50,
                       // width: 200,
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalAutumn())),
                         child: Container(
                           margin: EdgeInsets.all(2),
                           padding: EdgeInsets.all(5),
@@ -1315,16 +1314,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ]),
                                 child: Stack(
                                     children: <Widget>[
-                                      // Hero(
-                                      //   tag: AssetImage('images/summer.jpg'),
-                                      //   child:
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          height: 180,
-                                          width: 180,
-                                          image: AssetImage('images/autumn.jpg'),
-                                          fit: BoxFit.cover,
+
+                                      Hero(
+                                        tag: AssetImage('images/autumn.jpg'),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Image(
+                                            height: 180,
+                                            width: 180,
+                                            image: AssetImage('images/autumn.jpg'),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                       Positioned(
@@ -1376,7 +1376,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       height: 50,
                       // width: 200,
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalWinter())),
                         child: Container(
                           margin: EdgeInsets.all(2),
                           padding: EdgeInsets.all(5),
@@ -1438,16 +1438,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ]),
                                 child: Stack(
                                     children: <Widget>[
-                                      // Hero(
-                                      //   tag: AssetImage('images/summer.jpg'),
-                                      //   child:
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image(
-                                          height: 180,
-                                          width: 180,
-                                          image: AssetImage('images/winter.jpg'),
-                                          fit: BoxFit.cover,
+
+                                      Hero(
+                                        tag: AssetImage('images/winter.jpg'),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Image(
+                                            height: 180,
+                                            width: 180,
+                                            image: AssetImage('images/winter.jpg'),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                       Positioned(
@@ -1494,137 +1495,120 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
              //Before one Seasonal Best
-              // Container(
-              //   height: 300,
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     itemCount: seasons.length,
-              //     itemBuilder: (BuildContext context, int index) {
-              //       Season season = seasons[index];
-              //         return GestureDetector(
-              //           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> SeasonalScreen(season: season,),
-              //           ),
-              //           ),
-              //           child: Container(
-              //             margin: EdgeInsets.all(10),
-              //             width: 210,
-              //             child: Stack(
-              //               alignment: Alignment.topCenter,
-              //               children: <Widget>[
-              //                 Positioned(
-              //                   bottom: 15.0,
-              //                   child: Container(
-              //                     height: 120,
-              //                     width: 200,
-              //                     decoration: BoxDecoration(
-              //                       color: Colors.blueAccent,
-              //                       borderRadius: BorderRadius.circular(10),
-              //                     ),
-              //                     child: Padding(
-              //                       padding: EdgeInsets.all(10.0),
-              //                       child: Column(
-              //                         mainAxisAlignment: MainAxisAlignment.end,
-              //                         crossAxisAlignment: CrossAxisAlignment.start,
-              //                         children: <Widget>[
-              //                           Text(
-              //                             season.month,
-              //                             style: TextStyle(
-              //                               color: Colors.white,
-              //                               fontSize: 20,
-              //                               fontWeight: FontWeight.bold,
-              //                             ),
-              //                           ),
-              //                           SizedBox(
-              //                             height: 5,
-              //                           ),
-              //                           Text(
-              //                             season.info,
-              //                             style: TextStyle(
-              //                               color: Colors.white,
-              //                               fontSize: 12,
-              //                             ),
-              //                           ),
-              //                         ],
-              //                       ),
-              //                     ),
-              //                   ),
-              //                 ),
-              //                 Container(
-              //                   decoration: BoxDecoration(
-              //                       color: Colors.white,
-              //                       borderRadius: BorderRadius.circular(20),
-              //                       boxShadow: [
-              //                         BoxShadow(
-              //                           color: Colors.black26,
-              //                           offset: Offset(0.0, 2.0),
-              //                           blurRadius: 6.9,
-              //                         )
-              //                       ]),
-              //                   child: Stack(
-              //                     children: <Widget>[
-              //                       Hero(
-              //                         tag: season.imgUrl,
-              //                         child: ClipRRect(
-              //                           borderRadius: BorderRadius.circular(20),
-              //                           child: Image(
-              //                             height: 180,
-              //                             width: 180,
-              //                             image: AssetImage(season.imgUrl),
-              //                             fit: BoxFit.cover,
-              //                           ),
-              //                         ),
-              //                       ),
-              //                       Positioned(
-              //                         left: 10,
-              //                         bottom: 10,
-              //                         child: Column(
-              //                           crossAxisAlignment:
-              //                           CrossAxisAlignment.start,
-              //                           children: <Widget>[
-              //                             Row(
-              //                               children: <Widget>[
-              //                                 Text(
-              //                                   season.name,
-              //                                   style: TextStyle(
-              //                                     color: Colors.white,
-              //                                     fontSize: 20,
-              //                                     fontWeight: FontWeight.w600,
-              //                                     letterSpacing: 1.2,
-              //                                   ),
-              //                                 ),
-              //                               ],
-              //                             ),
-              //                           ],
-              //                         ),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //         );
-              //     },
-              //   ),
-              // ),
+             //  Container(
+             //    height: 300,
+             //    child: ListView.builder(
+             //      scrollDirection: Axis.horizontal,
+             //      itemCount: seasons.length,
+             //      itemBuilder: (BuildContext context, int index) {
+             //        Season season = seasons[index];
+             //          return GestureDetector(
+             //            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> SeasonalSummer(season: season,),
+             //            ),
+             //            ),
+             //            child: Container(
+             //              margin: EdgeInsets.all(10),
+             //              width: 210,
+             //              child: Stack(
+             //                alignment: Alignment.topCenter,
+             //                children: <Widget>[
+             //                  Positioned(
+             //                    bottom: 15.0,
+             //                    child: Container(
+             //                      height: 120,
+             //                      width: 200,
+             //                      decoration: BoxDecoration(
+             //                        color: Colors.blueAccent,
+             //                        borderRadius: BorderRadius.circular(10),
+             //                      ),
+             //                      child: Padding(
+             //                        padding: EdgeInsets.all(10.0),
+             //                        child: Column(
+             //                          mainAxisAlignment: MainAxisAlignment.end,
+             //                          crossAxisAlignment: CrossAxisAlignment.start,
+             //                          children: <Widget>[
+             //                            Text(
+             //                              season.month,
+             //                              style: TextStyle(
+             //                                color: Colors.white,
+             //                                fontSize: 20,
+             //                                fontWeight: FontWeight.bold,
+             //                              ),
+             //                            ),
+             //                            SizedBox(
+             //                              height: 5,
+             //                            ),
+             //                            Text(
+             //                              season.info,
+             //                              style: TextStyle(
+             //                                color: Colors.white,
+             //                                fontSize: 12,
+             //                              ),
+             //                            ),
+             //                          ],
+             //                        ),
+             //                      ),
+             //                    ),
+             //                  ),
+             //                  Container(
+             //                    decoration: BoxDecoration(
+             //                        color: Colors.white,
+             //                        borderRadius: BorderRadius.circular(20),
+             //                        boxShadow: [
+             //                          BoxShadow(
+             //                            color: Colors.black26,
+             //                            offset: Offset(0.0, 2.0),
+             //                            blurRadius: 6.9,
+             //                          )
+             //                        ]),
+             //                    child: Stack(
+             //                      children: <Widget>[
+             //                        Hero(
+             //                          tag: season.imgUrl,
+             //                          child: ClipRRect(
+             //                            borderRadius: BorderRadius.circular(20),
+             //                            child: Image(
+             //                              height: 180,
+             //                              width: 180,
+             //                              image: AssetImage(season.imgUrl),
+             //                              fit: BoxFit.cover,
+             //                            ),
+             //                          ),
+             //                        ),
+             //                        Positioned(
+             //                          left: 10,
+             //                          bottom: 10,
+             //                          child: Column(
+             //                            crossAxisAlignment:
+             //                            CrossAxisAlignment.start,
+             //                            children: <Widget>[
+             //                              Row(
+             //                                children: <Widget>[
+             //                                  Text(
+             //                                    season.name,
+             //                                    style: TextStyle(
+             //                                      color: Colors.white,
+             //                                      fontSize: 20,
+             //                                      fontWeight: FontWeight.w600,
+             //                                      letterSpacing: 1.2,
+             //                                    ),
+             //                                  ),
+             //                                ],
+             //                              ),
+             //                            ],
+             //                          ),
+             //                        ),
+             //                      ],
+             //                    ),
+             //                  ),
+             //                ],
+             //              ),
+             //            ),
+             //          );
+             //      },
+             //    ),
+             //  ),
 
-              // Align(
-              //   alignment: Alignment.center,
-              //   child: Padding(
-              //     padding: EdgeInsets.only(left: 28, top: 28),
-              //     child: SmoothPageIndicator(
-              //       controller: _pageController,
-              //       count: seasons.length,
-              //       effect: ExpandingDotsEffect(
-              //         activeDotColor: Colors.tealAccent,
-              //         dotColor: Colors.grey,
-              //         dotHeight: 6,
-              //         dotWidth: 6,
-              //         spacing: 4,
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
