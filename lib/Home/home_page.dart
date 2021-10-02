@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_travel_planning_appli/Home/topCHTDestinations.dart';
+import 'package:smart_travel_planning_appli/Home/topPKRDestinations.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/packages.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/packages_container.dart';
 import 'package:smart_travel_planning_appli/Home_extendedDetails/search.dart';
 import 'package:smart_travel_planning_appli/Home/selected_place_screen.dart';
-import 'package:smart_travel_planning_appli/Home/topDestinations.dart';
+import 'package:smart_travel_planning_appli/Home/topKTMDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/seasonalDestinations.dart';
 import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/map_page.dart';
@@ -455,125 +457,371 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 height: 10,
               ),
 
-              //Top Destinations
-              Container(
-                height: 300,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: destinations.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Destination destination = destinations[index];
-                    return GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> DestinationScreen(destination: destination,),
-                      ),
-                      ),
-                      child: Container(
-                        margin: EdgeInsets.all(10),
-                        width: 210,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                            Positioned(
-                              bottom: 15.0,
-                              child: Container(
-                                height: 120,
-                                width: 200,
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      // Text(
-                                      //   '${destination.activities.length} places',
-                                      //   style: TextStyle(
-                                      //     fontSize: 22,
-                                      //     fontWeight: FontWeight.w600,
-                                      //   ),
-                                      // ),
-                                      Center(
-                                        child: Text(
-                                          destination.description,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+
+// Top Destinations
+
+Container(
+  margin: EdgeInsets.symmetric(vertical: 40),
+  height: 280,
+  child: ListView(
+    scrollDirection: Axis.horizontal,
+    children: [
+      SizedBox(
+        width: 10
+      ),
+
+      //Kathmandu Packages
+      Container(
+        height: 50,
+        // width: 200,
+        child: GestureDetector(
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => KtmDestinationScreen())),
+          child: Container(
+            margin: EdgeInsets.all(2),
+            padding: EdgeInsets.all(5),
+            width: 210,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                  Positioned(
+              bottom: 5.0,
+              child: Container(
+                  height: 120,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            'Travel around Kathmandu for exploring exciting places.',
+                            style: TextStyle(
+                              color: Colors.white,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black26,
-                                      offset: Offset(0.0, 2.0),
-                                      blurRadius: 6.9,
-                                    )
-                                  ]),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: destination.imageUrl,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image(
-                                        height: 180,
-                                        width: 180,
-                                        image: AssetImage(destination.imageUrl),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 10,
-                                    bottom: 10,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Row(
-                                          children: <Widget>[
-                                            Icon(
-                                              FlutterIcons.location_city_mdi,
-                                              size: 10.0,
-                                              color: Colors.white,
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Text(
-                                              destination.city,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600,
-                                                letterSpacing: 1.2,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
+                    ],
               ),
+                  ),
+              ),
+                  ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      offset: Offset(0.0, 2.0),
+                      blurRadius: 6.9,
+                    )
+                  ]),
+              child: Stack(
+                children: <Widget>[
+              Hero(
+                tag: AssetImage('images/ktm.jpg'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    height: 180,
+                    width: 180,
+                    image: AssetImage('images/ktm.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )]
+              ),
+            )
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      SizedBox(
+        width: 15,
+      ),
+
+//Pokhara Packages
+      Container(
+        height: 50,
+        // width: 200,
+        child: GestureDetector(
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PkrDestinationScreen())),
+          child: Container(
+            margin: EdgeInsets.all(2),
+            padding: EdgeInsets.all(5),
+            width: 210,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Positioned(
+                  bottom: 5.0,
+                  child: Container(
+                    height: 120,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                        Center(
+                          child: Text(
+                            'Visit Pokhara for an amazing and unforgettable adventure.',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0.0, 2.0),
+                          blurRadius: 6.9,
+                        )
+                      ]),
+                  child: Stack(
+                      children: <Widget>[
+                        Hero(
+                          tag: AssetImage('images/pkr.jpg'),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image(
+                              height: 180,
+                              width: 180,
+                              image: AssetImage('images/pkr.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )]
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      SizedBox(
+        width: 15,
+      ),
+
+      //Chitwan Packages
+      Container(
+        height: 50,
+        // width: 200,
+        child: GestureDetector(
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ChtDestinationScreen())),
+          child: Container(
+            margin: EdgeInsets.all(2),
+            padding: EdgeInsets.all(5),
+            width: 210,
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Positioned(
+                  bottom: 5.0,
+                  child: Container(
+                    height: 120,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                        Center(
+                          child: Text(
+                            'Visit Chitwan for chilling and exploring wildlife adventure.',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0.0, 2.0),
+                          blurRadius: 6.9,
+                        )
+                      ]),
+                  child: Stack(
+                      children: <Widget>[
+                        Hero(
+                          tag: AssetImage('images/cht.jpg'),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image(
+                              height: 180,
+                              width: 180,
+                              image: AssetImage('images/cht.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )]
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
+              //Top Destinations
+              // Container(
+              //   height: 300,
+              //   child: ListView.builder(
+              //     scrollDirection: Axis.horizontal,
+              //     itemCount: destinations.length,
+              //     itemBuilder: (BuildContext context, int index) {
+              //       Destination destination = destinations[index];
+              //       return GestureDetector(
+              //         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> DestinationScreen(destination: destination,),
+              //         ),
+              //         ),
+              //         child: Container(
+              //           margin: EdgeInsets.all(10),
+              //           width: 210,
+              //           child: Stack(
+              //             alignment: Alignment.topCenter,
+              //             children: <Widget>[
+              //               Positioned(
+              //                 bottom: 15.0,
+              //                 child: Container(
+              //                   height: 120,
+              //                   width: 200,
+              //                   decoration: BoxDecoration(
+              //                     color: Colors.blueAccent,
+              //                     borderRadius: BorderRadius.circular(10),
+              //                   ),
+              //                   child: Padding(
+              //                     padding: EdgeInsets.all(10.0),
+              //                     child: Column(
+              //                       mainAxisAlignment: MainAxisAlignment.center,
+              //                       crossAxisAlignment: CrossAxisAlignment.center,
+              //                       children: <Widget>[
+              //                         // Text(
+              //                         //   '${destination.activities.length} places',
+              //                         //   style: TextStyle(
+              //                         //     fontSize: 22,
+              //                         //     fontWeight: FontWeight.w600,
+              //                         //   ),
+              //                         // ),
+              //                         Center(
+              //                           child: Text(
+              //                             destination.description,
+              //                             style: TextStyle(
+              //                               color: Colors.white,
+              //                             ),
+              //                           ),
+              //                         ),
+              //                       ],
+              //                     ),
+              //                   ),
+              //                 ),
+              //               ),
+              //               Container(
+              //                 decoration: BoxDecoration(
+              //                     color: Colors.white,
+              //                     borderRadius: BorderRadius.circular(20),
+              //                     boxShadow: [
+              //                       BoxShadow(
+              //                         color: Colors.black26,
+              //                         offset: Offset(0.0, 2.0),
+              //                         blurRadius: 6.9,
+              //                       )
+              //                     ]),
+              //                 child: Stack(
+              //                   children: <Widget>[
+              //                     Hero(
+              //                       tag: destination.imageUrl,
+              //                       child: ClipRRect(
+              //                         borderRadius: BorderRadius.circular(20),
+              //                         child: Image(
+              //                           height: 180,
+              //                           width: 180,
+              //                           image: AssetImage(destination.imageUrl),
+              //                           fit: BoxFit.cover,
+              //                         ),
+              //                       ),
+              //                     ),
+              //                     Positioned(
+              //                       left: 10,
+              //                       bottom: 10,
+              //                       child: Column(
+              //                         crossAxisAlignment:
+              //                         CrossAxisAlignment.start,
+              //                         children: <Widget>[
+              //                           Row(
+              //                             children: <Widget>[
+              //                               Icon(
+              //                                 FlutterIcons.location_city_mdi,
+              //                                 size: 10.0,
+              //                                 color: Colors.white,
+              //                               ),
+              //                               SizedBox(
+              //                                 width: 5,
+              //                               ),
+              //                               Text(
+              //                                 destination.city,
+              //                                 style: TextStyle(
+              //                                   color: Colors.white,
+              //                                   fontSize: 20,
+              //                                   fontWeight: FontWeight.w600,
+              //                                   letterSpacing: 1.2,
+              //                                 ),
+              //                               ),
+              //                             ],
+              //                           ),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
 
               // Align(
               //   alignment: Alignment.center,

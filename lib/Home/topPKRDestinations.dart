@@ -6,25 +6,14 @@ import 'package:smart_travel_planning_appli/models/activity_model.dart';
 import 'package:smart_travel_planning_appli/models/destination_model.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
-class DestinationScreen extends StatefulWidget {
-
-  final Destination destination;
-
-  DestinationScreen({this.destination});
+class PkrDestinationScreen extends StatefulWidget {
 
   @override
-  _DestinationScreenState createState() => _DestinationScreenState();
+  _PkrDestinationScreenState createState() => _PkrDestinationScreenState();
 }
 
-class _DestinationScreenState extends State<DestinationScreen> {
+class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
 
-  _buildRatingStars(int rating) {
-    String stars = '';
-    for (int i = 0; i < rating; i++) {
-      stars += '⭐ ';
-    }
-    return Text(stars);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +38,30 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       ],
                     ),
                     child: Hero(
-                      tag: widget.destination.imageUrl,
+                      tag: AssetImage('images/pkr.jpg'),
                       child:
                       ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child:
-                        Image(
-                          image: AssetImage(widget.destination.imageUrl),
-                          fit: BoxFit.fill,
+                        Carousel(
+                          animationDuration: Duration(milliseconds: 300),
+                          dotColor: Colors.white,
+                          dotIncreasedColor: Colors.tealAccent,
+                          dotSize: 8,
+                          dotBgColor: Colors.transparent,
+                          dotPosition: DotPosition.bottomRight,
+                          images: [
+                            Image.asset('images/pkr.jpg',
+                                fit: BoxFit.fill),
+                            Image.asset('images/pkr1.JPG',
+                                fit: BoxFit.fill),
+                            Image.asset('images/pkr2.jpg',
+                                fit: BoxFit.fill),
+                            Image.asset('images/pkr3.jpg',
+                                fit: BoxFit.fill),
+                            Image.asset('images/pkr4.jpg',
+                                fit: BoxFit.fill),
+                          ],
                         ),
                       ),
                     ),
@@ -100,7 +105,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               width: 5,
                             ),
                             Text(
-                              widget.destination.city,
+                              "Pokhara",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,
@@ -115,6 +120,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   ),
                 ],
               ),
+
+
+
+              //Content for down
               // Expanded(
               //   child: ListView.builder(
               //     itemCount: widget.destination.activities.length,
