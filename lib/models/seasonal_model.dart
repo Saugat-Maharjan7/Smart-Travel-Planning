@@ -54,7 +54,7 @@ List<Activity> activities = [
   Activity(
       imgUrl: "images/janakpur.jpg",
       name: 'Janakpur',
-      info: 'Archaeological site, place of pilgrimage honored as birthplace of Buddha.'
+      info: 'Surrounded by rivers like Dudhmati, Jalad, Rato, Balan and Kamala, Janakpur is famous for its temples and ponds'
   ),
   Activity(
       imgUrl: "images/rara.jpg",
@@ -84,7 +84,7 @@ List<Activity> activities = [
   Activity(
       imgUrl: "images/bandipur.jpg",
       name: 'Bandipur',
-      info: 'Hilltop settlement famous for its newari people and their culture. Also famous for its wildlife. Houses reflect style, architecture and culture.'
+      info: 'Hilltop settlement famous for its Newari people and their culture. Also famous for its wildlife. Houses reflect style, architecture and culture.'
   ),
   Activity(
       imgUrl: "images/nagarkot.jpg",
