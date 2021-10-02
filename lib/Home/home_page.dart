@@ -458,20 +458,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
 
 
-// Top Destinations
 
-Container(
-  margin: EdgeInsets.symmetric(vertical: 40),
-  height: 280,
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: [
-      SizedBox(
-        width: 10
-      ),
+          // Top Destinations
 
-      //Kathmandu Packages
-      Container(
+           Container(
+           margin: EdgeInsets.symmetric(vertical: 10),
+          height: 280,
+          child: ListView(
+              scrollDirection: Axis.horizontal,
+          children: [
+           SizedBox(
+          width: 10
+          ),
+
+           //Kathmandu Packages
+            Container(
         height: 50,
         // width: 200,
         child: GestureDetector(
@@ -499,10 +500,13 @@ Container(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Center(
-                          child: Text(
-                            'Travel around Kathmandu for exploring exciting places.',
-                            style: TextStyle(
-                              color: Colors.white,
+                          child: Padding(
+                            padding:  EdgeInsets.only(top: 24.0),
+                            child: Text(
+                              'Travel around Kathmandu for exploring exciting places.',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -535,7 +539,39 @@ Container(
                     fit: BoxFit.cover,
                   ),
                 ),
-              )]
+              ),
+                  Positioned(
+                    left: 10,
+                    bottom: 10,
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              FlutterIcons.location_city_mdi,
+                              size: 10.0,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Kathmandu',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ]
               ),
             )
               ],
@@ -544,12 +580,12 @@ Container(
         ),
       ),
 
-      SizedBox(
-        width: 15,
-      ),
+           SizedBox(
+            width: 15,
+            ),
 
-//Pokhara Packages
-      Container(
+           //Pokhara Packages
+            Container(
         height: 50,
         // width: 200,
         child: GestureDetector(
@@ -577,10 +613,13 @@ Container(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                         Center(
-                          child: Text(
-                            'Visit Pokhara for an amazing and unforgettable adventure.',
-                            style: TextStyle(
-                              color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 24.0),
+                            child: Text(
+                              'Visit Pokhara for an amazing and unforgettable adventure.',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -613,7 +652,39 @@ Container(
                               fit: BoxFit.cover,
                             ),
                           ),
-                        )]
+                        ),
+                        Positioned(
+                          left: 10,
+                          bottom: 10,
+                          child: Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    FlutterIcons.location_city_mdi,
+                                    size: 10.0,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    'Pokhara',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]
                   ),
                 )
               ],
@@ -622,12 +693,12 @@ Container(
         ),
       ),
 
-      SizedBox(
-        width: 15,
-      ),
+            SizedBox(
+           width: 15,
+            ),
 
-      //Chitwan Packages
-      Container(
+           //Chitwan Packages
+           Container(
         height: 50,
         // width: 200,
         child: GestureDetector(
@@ -655,10 +726,13 @@ Container(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                         Center(
-                          child: Text(
-                            'Visit Chitwan for chilling and exploring wildlife adventure.',
-                            style: TextStyle(
-                              color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 24.0),
+                            child: Text(
+                              'Visit Chitwan for chilling and exploring wildlife adventure.',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -691,7 +765,39 @@ Container(
                               fit: BoxFit.cover,
                             ),
                           ),
-                        )]
+                        ),
+                        Positioned(
+                          left: 10,
+                          bottom: 10,
+                          child: Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    FlutterIcons.location_city_mdi,
+                                    size: 10.0,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    'Chitwan',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]
                   ),
                 )
               ],
@@ -699,11 +805,13 @@ Container(
           ),
         ),
       ),
-    ],
-  ),
-),
+          ],
+          ),
+          ),
 
-              //Top Destinations
+
+              // Top Destinations
+
               // Container(
               //   height: 300,
               //   child: ListView.builder(
@@ -712,9 +820,7 @@ Container(
               //     itemBuilder: (BuildContext context, int index) {
               //       Destination destination = destinations[index];
               //       return GestureDetector(
-              //         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> DestinationScreen(destination: destination,),
-              //         ),
-              //         ),
+              //         onTap: () => null,
               //         child: Container(
               //           margin: EdgeInsets.all(10),
               //           width: 210,
@@ -841,7 +947,11 @@ Container(
               //   ),
               // ),
 
+
+
               //Seasonal Best
+
+
               Padding(
                 padding: EdgeInsets.only(top: 48, left: 28, right: 28),
                 child: Row(
@@ -861,12 +971,15 @@ Container(
                       //     Navigator.push(context, MaterialPageRoute(builder: (context)=> SeasonalScreen(),
                       // ),
                       // ),
-                      child: Text(
-                        'Show all',
-                        style: GoogleFonts.lato(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        child: Text(
+                          'Show all',
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -880,51 +993,182 @@ Container(
 
               //Seasonal Best
               Container(
-                height: 300,
-                child: ListView.builder(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                height: 280,
+                child: ListView(
                   scrollDirection: Axis.horizontal,
-                  itemCount: seasons.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Season season = seasons[index];
+                  children: [
+                    SizedBox(
+                        width: 10
+                    ),
 
-                      return GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> SeasonalScreen(season: season,),
-                        ),
-                        ),
+                    //Summer
+                    Container(
+                      height: 50,
+                      // width: 200,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
                         child: Container(
-                          margin: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(2),
+                          padding: EdgeInsets.all(5),
                           width: 210,
                           child: Stack(
                             alignment: Alignment.topCenter,
-                            children: <Widget>[
+                            children: [
                               Positioned(
-                                bottom: 15.0,
+                                bottom: 5.0,
                                 child: Container(
                                   height: 120,
                                   width: 200,
                                   decoration: BoxDecoration(
                                     color: Colors.blueAccent,
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsets.all(10.0),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        Text(
-                                          season.month,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 30.0),
+                                        child: Text(
+                                                                    'Mar, Apr, May',
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 20,
+                                                                      fontWeight: FontWeight.bold,
+                                                                    ),
+                                                                  ),
+                                      ),
+                                                                SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                  'Warmer weather, but frequent storms and snowfall at higher altitudes.',
+                                                                  style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 12,
+                                                                  ),
+                                                                ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(0.0, 2.0),
+                                        blurRadius: 6.9,
+                                      )
+                                    ]),
+                                child: Stack(
+                                    children: <Widget>[
+                                      // Hero(
+                                      //   tag: AssetImage('images/summer.jpg'),
+                                      //   child:
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Image(
+                                            height: 180,
+                                            width: 180,
+                                            image: AssetImage('images/summer.jpg'),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      Positioned(
+                                        left: 10,
+                                        bottom: 10,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FlutterIcons.ios_sunny_ion,
+                                                  size: 10.0,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  'Summer',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(
+                        width: 15
+                    ),
+
+                    //Monsoon
+                    Container(
+                      height: 50,
+                      // width: 200,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        child: Container(
+                          margin: EdgeInsets.all(2),
+                          padding: EdgeInsets.all(5),
+                          width: 210,
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Positioned(
+                                bottom: 5.0,
+                                child: Container(
+                                  height: 120,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 30.0),
+                                          child: Text(
+                                            'Jun, Jul, Aug',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                         SizedBox(
                                           height: 5,
                                         ),
                                         Text(
-                                          season.info,
+                                          'Rain,mist and fog expected almost daily.',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 12,
@@ -947,54 +1191,422 @@ Container(
                                       )
                                     ]),
                                 child: Stack(
-                                  children: <Widget>[
-                                    Hero(
-                                      tag: season.imgUrl,
-                                      child: ClipRRect(
+                                    children: <Widget>[
+                                      // Hero(
+                                      //   tag: AssetImage('images/summer.jpg'),
+                                      //   child:
+                                      ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
                                         child: Image(
                                           height: 180,
                                           width: 180,
-                                          image: AssetImage(season.imgUrl),
+                                          image: AssetImage('images/monsoon.jpg'),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                    Positioned(
-                                      left: 10,
-                                      bottom: 10,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Row(
-                                            children: <Widget>[
-                                              Text(
-                                                season.name,
-                                                style: TextStyle(
+                                      Positioned(
+                                        left: 10,
+                                        bottom: 10,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FlutterIcons.ios_rainy_ion,
+                                                  size: 10.0,
                                                   color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w600,
-                                                  letterSpacing: 1.2,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  'Monsoon',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ]
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
-                      );
+                      ),
+                    ),
 
+                    SizedBox(
+                        width: 15
+                    ),
 
-                  },
+                    //Autumn
+                    Container(
+                      height: 50,
+                      // width: 200,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        child: Container(
+                          margin: EdgeInsets.all(2),
+                          padding: EdgeInsets.all(5),
+                          width: 210,
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Positioned(
+                                bottom: 5.0,
+                                child: Container(
+                                  height: 120,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 30.0),
+                                          child: Text(
+                                            'Sep, Oct, Nov',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          'Best for hiking and trekking.\nFavourable weather condition',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(0.0, 2.0),
+                                        blurRadius: 6.9,
+                                      )
+                                    ]),
+                                child: Stack(
+                                    children: <Widget>[
+                                      // Hero(
+                                      //   tag: AssetImage('images/summer.jpg'),
+                                      //   child:
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          height: 180,
+                                          width: 180,
+                                          image: AssetImage('images/autumn.jpg'),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        left: 10,
+                                        bottom: 10,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FlutterIcons.weather_partly_cloudy_mco,
+                                                  size: 10.0,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  'Autumn',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(
+                        width: 15
+                    ),
+
+                    //Winter
+                    Container(
+                      height: 50,
+                      // width: 200,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SeasonalScreen())),
+                        child: Container(
+                          margin: EdgeInsets.all(2),
+                          padding: EdgeInsets.all(5),
+                          width: 210,
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Positioned(
+                                bottom: 5.0,
+                                child: Container(
+                                  height: 120,
+                                  width: 200,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueAccent,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 30.0),
+                                          child: Text(
+                                            'Dec, Jan, Feb',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          'Cold weather occurring snowfall in mountain areas.',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(0.0, 2.0),
+                                        blurRadius: 6.9,
+                                      )
+                                    ]),
+                                child: Stack(
+                                    children: <Widget>[
+                                      // Hero(
+                                      //   tag: AssetImage('images/summer.jpg'),
+                                      //   child:
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image(
+                                          height: 180,
+                                          width: 180,
+                                          image: AssetImage('images/winter.jpg'),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        left: 10,
+                                        bottom: 10,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FlutterIcons.weather_snowy_rainy_mco,
+                                                  size: 10.0,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  'Winter',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ]
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
+             //Before one Seasonal Best
+              // Container(
+              //   height: 300,
+              //   child: ListView.builder(
+              //     scrollDirection: Axis.horizontal,
+              //     itemCount: seasons.length,
+              //     itemBuilder: (BuildContext context, int index) {
+              //       Season season = seasons[index];
+              //         return GestureDetector(
+              //           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_)=> SeasonalScreen(season: season,),
+              //           ),
+              //           ),
+              //           child: Container(
+              //             margin: EdgeInsets.all(10),
+              //             width: 210,
+              //             child: Stack(
+              //               alignment: Alignment.topCenter,
+              //               children: <Widget>[
+              //                 Positioned(
+              //                   bottom: 15.0,
+              //                   child: Container(
+              //                     height: 120,
+              //                     width: 200,
+              //                     decoration: BoxDecoration(
+              //                       color: Colors.blueAccent,
+              //                       borderRadius: BorderRadius.circular(10),
+              //                     ),
+              //                     child: Padding(
+              //                       padding: EdgeInsets.all(10.0),
+              //                       child: Column(
+              //                         mainAxisAlignment: MainAxisAlignment.end,
+              //                         crossAxisAlignment: CrossAxisAlignment.start,
+              //                         children: <Widget>[
+              //                           Text(
+              //                             season.month,
+              //                             style: TextStyle(
+              //                               color: Colors.white,
+              //                               fontSize: 20,
+              //                               fontWeight: FontWeight.bold,
+              //                             ),
+              //                           ),
+              //                           SizedBox(
+              //                             height: 5,
+              //                           ),
+              //                           Text(
+              //                             season.info,
+              //                             style: TextStyle(
+              //                               color: Colors.white,
+              //                               fontSize: 12,
+              //                             ),
+              //                           ),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ),
+              //                 Container(
+              //                   decoration: BoxDecoration(
+              //                       color: Colors.white,
+              //                       borderRadius: BorderRadius.circular(20),
+              //                       boxShadow: [
+              //                         BoxShadow(
+              //                           color: Colors.black26,
+              //                           offset: Offset(0.0, 2.0),
+              //                           blurRadius: 6.9,
+              //                         )
+              //                       ]),
+              //                   child: Stack(
+              //                     children: <Widget>[
+              //                       Hero(
+              //                         tag: season.imgUrl,
+              //                         child: ClipRRect(
+              //                           borderRadius: BorderRadius.circular(20),
+              //                           child: Image(
+              //                             height: 180,
+              //                             width: 180,
+              //                             image: AssetImage(season.imgUrl),
+              //                             fit: BoxFit.cover,
+              //                           ),
+              //                         ),
+              //                       ),
+              //                       Positioned(
+              //                         left: 10,
+              //                         bottom: 10,
+              //                         child: Column(
+              //                           crossAxisAlignment:
+              //                           CrossAxisAlignment.start,
+              //                           children: <Widget>[
+              //                             Row(
+              //                               children: <Widget>[
+              //                                 Text(
+              //                                   season.name,
+              //                                   style: TextStyle(
+              //                                     color: Colors.white,
+              //                                     fontSize: 20,
+              //                                     fontWeight: FontWeight.w600,
+              //                                     letterSpacing: 1.2,
+              //                                   ),
+              //                                 ),
+              //                               ],
+              //                             ),
+              //                           ],
+              //                         ),
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //         );
+              //     },
+              //   ),
+              // ),
 
               // Align(
               //   alignment: Alignment.center,

@@ -46,7 +46,8 @@ class _ChtDestinationScreenState extends State<ChtDestinationScreen> {
                           animationDuration: Duration(milliseconds: 300),
                           dotColor: Colors.white,
                           dotIncreasedColor: Colors.tealAccent,
-                          dotSize: 8,
+                          dotSize: 5,
+                          dotSpacing: 20,
                           dotBgColor: Colors.transparent,
                           dotPosition: DotPosition.bottomRight,
                           images: [
