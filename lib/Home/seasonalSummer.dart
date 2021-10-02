@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
-import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
-import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
 
 class SeasonalSummer extends StatefulWidget {
-
-  final Season season;
-
-  SeasonalSummer({this.season});
 
   @override
   _SeasonalSummerState createState() => _SeasonalSummerState();
@@ -99,94 +92,97 @@ class _SeasonalSummerState extends State<SeasonalSummer> {
                     ],
                   ),
                 ),
-
               ],
             ),
-            // Expanded(
-            //   child: ListView.builder(
-            //
-            //       itemCount: widget.season.activities.length,
-            //       itemBuilder: (BuildContext context, int index){
-            //
-            //         Activity activity = widget.season.activities[index];
-            //         return Stack(
-            //           children: [
-            //             GestureDetector(
-            //               onTap: () => print('Clicked for information'),
-            //               child: Container(
-            //                 margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
-            //                 height: 170,
-            //                 width: double.infinity,
-            //                 decoration: BoxDecoration(
-            //                   color: Colors.white30,
-            //                   borderRadius: BorderRadius.circular(20),
-            //                 ),
-            //                 child: Padding(
-            //                   padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
-            //                   child: Column(
-            //                     children: [
-            //                       Row(
-            //                         children: [
-            //                           Expanded(
-            //                             child: Container(
-            //                               width: 120,
-            //                               child: Text(activity.name,
-            //                                 style: TextStyle(
-            //                                   fontSize: 20,
-            //                                   fontWeight: FontWeight.bold,
-            //                                 ),
-            //
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       SizedBox(
-            //                         height: 10,
-            //                       ),
-            //                       Row(
-            //                         children: [
-            //                           Expanded(
-            //                             child: Container(
-            //                               width: 200,
-            //                               child: Text(activity.info,
-            //                                 style: TextStyle(
-            //                                   fontSize: 16,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //
-            //                     ],
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //
-            //             Positioned(
-            //               left: 20,
-            //               top: 15,
-            //               bottom: 15,
-            //               child: ClipRRect(
-            //                 borderRadius: BorderRadius.circular(20),
-            //                 child: Image(
-            //                   width: 110,
-            //                   image: AssetImage(activity.imgUrl),
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //             ),
-            //
-            //           ],
-            //         );
-            //       },
-            //   ),
-            // ),
+            Expanded(
+              child: ListView(
+                children: [
+                  buildSummerSeason("Illam", "Lush green tea gardens makes illam popular. It has famous tea garden, Antu pond and much to explore.", "images/illam.jpg"),
+                  buildSummerSeason('Pokhara', 'Major destination because of its panoramic views, magnificent mountains, lakes.', "images/pokhara.jpg" ),
+                  buildSummerSeason("Mustang", 'Land Beyond Himalayas: Deepest gorge that goes down three miles between Dhaulagiri and Annapurna mountains.', "images/mustang.jpg" ),
+                  buildSummerSeason('Lumbini', 'Archaeological site, place of pilgrimage honored as birthplace of Buddha.', "images/lumbini.jpg" ),
+                ]
+              ),
+            )
           ],
         ),
       ),
     );
+  }
+
+  Stack buildSummerSeason(title, info, image
+      ) {
+    return Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () => print('Clicked for information'),
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
+                        height: 170,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white30,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: 120,
+                                      child: Text(title,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      width: 200,
+                                      child: Text(info,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      left: 20,
+                      top: 15,
+                      bottom: 15,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image(
+                          width: 110,
+                          image: AssetImage(image),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+
+                  ],
+                );
   }
 }

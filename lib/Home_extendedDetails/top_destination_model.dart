@@ -1,5 +1,4 @@
-import 'package:http/http.dart' as http;
-import 'package:cached_network_image/cached_network_image.dart';
+
 
 class DestinationModel {
   List<String> images;

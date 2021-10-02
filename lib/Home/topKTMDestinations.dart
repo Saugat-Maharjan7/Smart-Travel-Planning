@@ -43,7 +43,7 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child: Carousel(
-                          animationDuration: Duration(milliseconds: 300),
+                          animationDuration: Duration(milliseconds: 200),
                           dotColor: Colors.white,
                           dotIncreasedColor: Colors.tealAccent,
                           dotSize: 5,
@@ -125,6 +125,8 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
                 ],
               ),
 
+              //Put Here
+              // Expanded(),
 
 
               //Content for down

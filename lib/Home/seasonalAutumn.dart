@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
-import 'package:smart_travel_planning_appli/models/activity_season_model.dart';
-import 'package:smart_travel_planning_appli/models/seasonal_model.dart';
 
 
 class SeasonalAutumn extends StatefulWidget {
-
-  final Season season;
-
-  SeasonalAutumn({this.season});
 
   @override
   _SeasonalAutumnState createState() => _SeasonalAutumnState();
@@ -102,91 +95,96 @@ class _SeasonalAutumnState extends State<SeasonalAutumn> {
 
               ],
             ),
-            // Expanded(
-            //   child: ListView.builder(
-            //
-            //       itemCount: widget.season.activities.length,
-            //       itemBuilder: (BuildContext context, int index){
-            //
-            //         Activity activity = widget.season.activities[index];
-            //         return Stack(
-            //           children: [
-            //             GestureDetector(
-            //               onTap: () => print('Clicked for information'),
-            //               child: Container(
-            //                 margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
-            //                 height: 170,
-            //                 width: double.infinity,
-            //                 decoration: BoxDecoration(
-            //                   color: Colors.white30,
-            //                   borderRadius: BorderRadius.circular(20),
-            //                 ),
-            //                 child: Padding(
-            //                   padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
-            //                   child: Column(
-            //                     children: [
-            //                       Row(
-            //                         children: [
-            //                           Expanded(
-            //                             child: Container(
-            //                               width: 120,
-            //                               child: Text(activity.name,
-            //                                 style: TextStyle(
-            //                                   fontSize: 20,
-            //                                   fontWeight: FontWeight.bold,
-            //                                 ),
-            //
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                       SizedBox(
-            //                         height: 10,
-            //                       ),
-            //                       Row(
-            //                         children: [
-            //                           Expanded(
-            //                             child: Container(
-            //                               width: 200,
-            //                               child: Text(activity.info,
-            //                                 style: TextStyle(
-            //                                   fontSize: 16,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         ],
-            //                       ),
-            //
-            //                     ],
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //
-            //             Positioned(
-            //               left: 20,
-            //               top: 15,
-            //               bottom: 15,
-            //               child: ClipRRect(
-            //                 borderRadius: BorderRadius.circular(20),
-            //                 child: Image(
-            //                   width: 110,
-            //                   image: AssetImage(activity.imgUrl),
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //             ),
-            //
-            //           ],
-            //         );
-            //       },
-            //   ),
-            // ),
+            Expanded(
+              child: ListView(
+                  children: [
+                    buildAutumnSeason("Janakpur", 'Surrounded by rivers like Dudhmati, Jalad, Rato, Balan and Kamala, Janakpur is famous for its temples and ponds', "images/janakpur.jpg"),
+                    buildAutumnSeason( 'Bardiya National Park', 'Largest national park in lowland Terai. Wide species of animals.', "images/bardiya.jpg" ),
+                    buildAutumnSeason( "ABC trek", 'An amazing walk through diverse landscape and rich mountains, wild variety of flora and faunas.', "images/abc.jpg"),
+                    buildAutumnSeason( 'Rara Lake', 'The deepest lake and also one of most pristine. Surrounded by green hills on all sides, one can camp by sparkling waters of lake.', "images/rara.jpg"),
+                  ]
+              ),
+            )
           ],
         ),
       ),
     );
   }
+
+  Stack buildAutumnSeason(title, info, image
+      ) {
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => print('Clicked for information'),
+          child: Container(
+            margin: EdgeInsets.fromLTRB(40, 5, 20, 5),
+            height: 170,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white30,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(100, 20, 20, 20),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: 120,
+                          child: Text(title,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: 200,
+                          child: Text(info,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        Positioned(
+          left: 20,
+          top: 15,
+          bottom: 15,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image(
+              width: 110,
+              image: AssetImage(image),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+      ],
+    );
+  }
+
 }

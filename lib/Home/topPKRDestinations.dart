@@ -44,7 +44,7 @@ class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
                         borderRadius: BorderRadius.circular(30),
                         child:
                         Carousel(
-                          animationDuration: Duration(milliseconds: 300),
+                          animationDuration: Duration(milliseconds: 100),
                           dotColor: Colors.white,
                           dotIncreasedColor: Colors.tealAccent,
                           dotSize: 5,
@@ -122,6 +122,11 @@ class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
                 ],
               ),
 
+
+              //PUT HERE
+              // Expanded(
+              //
+              // ),
 
 
               //Content for down

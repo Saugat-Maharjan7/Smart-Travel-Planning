@@ -43,7 +43,7 @@ class _ChtDestinationScreenState extends State<ChtDestinationScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child:Carousel(
-                          animationDuration: Duration(milliseconds: 300),
+                          animationDuration: Duration(milliseconds: 200),
                           dotColor: Colors.white,
                           dotIncreasedColor: Colors.tealAccent,
                           dotSize: 5,
@@ -122,6 +122,10 @@ class _ChtDestinationScreenState extends State<ChtDestinationScreen> {
               ),
 
 
+              //PUT HERE
+              // Expanded(
+              //
+              // ),
 
               //Content for down
               // Expanded(
