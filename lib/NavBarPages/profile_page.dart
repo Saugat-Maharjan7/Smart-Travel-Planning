@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
 import 'map_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String id = 'profile_page';
@@ -336,7 +338,8 @@ class _ProfilePageState extends State<ProfilePage>
               TextButton.icon(
                 icon: Icon(Icons.photo),
                 onPressed: () {
-                  takePhoto(ImageSource.gallery);
+                  // takePhoto(ImageSource.gallery);
+                  uploadImage();
                 },
                 label: Text('Gallery'),
               ),
@@ -349,14 +352,46 @@ class _ProfilePageState extends State<ProfilePage>
 
   void takePhoto(ImageSource source) async {
     try {
-      final pickedFile = await _picker.getImage(source: source);
+      final pickedFile = await _picker.pickImage(source: source);
       if (pickedFile == null) return;
 
       setState(() {
-        _imageFile = pickedFile;
+        _imageFile = pickedFile as PickedFile;
       });
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
   }
+
+  uploadImage() async{
+    final _storage = FirebaseStorage.instance;
+    final _picker = ImagePicker();
+    PickedFile image;
+
+    await Permission.photos.request();
+
+    var permissionStatus = await Permission.photos.status;
+
+    if(permissionStatus.isGranted){
+     image = (await _picker.pickImage(source: ImageSource.gallery)) as PickedFile;
+     var file = File(image.path);
+
+     if(image != null){
+
+      var snapshot = await _storage.ref().child('folderName/imageName').putFile(file);
+
+      var downloadUrl = snapshot.ref.getDownloadURL();
+
+      setState(() {
+        image = downloadUrl as PickedFile;
+      });
+     }else{
+       print('No path received.');
+     }
+    }else{
+      print('Grant permission and try again');
+    }
+
+  }
+
 }
