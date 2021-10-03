@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
-import 'package:smart_travel_planning_appli/retrive_data.dart';
 import 'map_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
