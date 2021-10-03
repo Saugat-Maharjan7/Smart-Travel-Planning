@@ -162,8 +162,10 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
                                                 borderRadius: BorderRadius.circular(10),
                                               ),
                                               child: Center(
-                                                child: Image.network(
-                                                  '${data[index].kimage}',
+                                                child: Expanded(
+                                                  child: Image.network(
+                                                    '${data[index].kimage}',
+                                                  ),
                                                 ),
                                               ),
                                             ),

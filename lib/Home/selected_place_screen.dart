@@ -31,13 +31,13 @@ class SelectedPlaceScreen extends StatelessWidget {
                     (int index) => Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(recommendedModel.images[index]),
+                      fit: BoxFit.cover,
+                      image: CachedNetworkImageProvider(recommendedModel.images[index]),
+                    ),
                   ),
                 ),
               ),
             ),
-      ),
 
             // Custom button
             Row(
@@ -58,8 +58,8 @@ class SelectedPlaceScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-              height: 345,
-                  margin: EdgeInsets.only(left: 28, bottom: 48, right: 28),
+                height: 345,
+                margin: EdgeInsets.only(left: 28, bottom: 48, right: 28),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -75,17 +75,17 @@ class SelectedPlaceScreen extends StatelessWidget {
                       ),
                     ),
 
-                Padding(
-                  padding: EdgeInsets.only(top: 19.2),
-                  child: Text(
-                    recommendedModel.tagLine,
-                    maxLines: 2,
-                    style: GoogleFonts.roboto(
-                      fontSize: 42,
-                      fontWeight: FontWeight.w700
-                    ),
-                  ),
-                ) ,
+                    Padding(
+                      padding: EdgeInsets.only(top: 19.2),
+                      child: Text(
+                        recommendedModel.tagLine,
+                        maxLines: 2,
+                        style: GoogleFonts.roboto(
+                            fontSize: 42,
+                            fontWeight: FontWeight.w700
+                        ),
+                      ),
+                    ) ,
 
                     Padding(
                       padding: EdgeInsets.only(top: 19.2),
@@ -95,7 +95,7 @@ class SelectedPlaceScreen extends StatelessWidget {
                         style: GoogleFonts.lato(
                             fontSize: 19,
                             fontWeight: FontWeight.w500,
-                          color: Colors.white
+                            color: Colors.white
                         ),
                       ),
                     ) ,
@@ -113,17 +113,17 @@ class SelectedPlaceScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('Start from',
-                            style: GoogleFonts.lato(
-                              fontSize: 19,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white
-                            ),
+                              style: GoogleFonts.lato(
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white
+                              ),
                             ),
                             Text('Rs.${recommendedModel.price.toString()}',
                               style: GoogleFonts.lato(
-                                  fontSize: 21,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+                                fontSize: 21,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -139,8 +139,8 @@ class SelectedPlaceScreen extends StatelessWidget {
                           child: Container(
                             height: 62,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
-                              color: Colors.white
+                                borderRadius: BorderRadius.circular(9),
+                                color: Colors.white
                             ),
                             child: Align(
                               alignment: Alignment.center,
@@ -149,9 +149,9 @@ class SelectedPlaceScreen extends StatelessWidget {
                                 child: Text(
                                   'Explore Now',
                                   style: GoogleFonts.lato(
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black
                                   ),
                                 ),
                               ),
@@ -165,12 +165,12 @@ class SelectedPlaceScreen extends StatelessWidget {
                 ),
               ),
             )
-        ],
-      ),
+          ],
+        ),
       ),
     );
   }
-  static const _url = 'https://www.expedia.com/things-to-do/nagarkot-sunrise-view-and-day-hiking-from-kathmandu.a1335658.activity-details?endDate=2021-10-17&location=Kathmandu%2C%20Bagmati%2C%20Nepal&rid=1938&startDate=2021-10-03&fbclid=IwAR2mWHFhSqgXqaWZFO0yZclVQKSlY4T7af-6-okdBbzqrh2but3Hvvq3aT0';
+  static const _url = "https://www.expedia.com/things-to-do/nagarkot-sunrise-view-and-day-hiking-from-kathmandu.a1335658.activity-details?endDate=2021-10-17&location=Kathmandu%2C%20Bagmati%2C%20Nepal&rid=1938&startDate=2021-10-03&fbclid=IwAR0bNyhJP5q59o2culsYtiMne2nfOLolK0FjfNu5EwdG-5kpG7k-_0GTDgM";
   void _launchURL() async =>
       await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 

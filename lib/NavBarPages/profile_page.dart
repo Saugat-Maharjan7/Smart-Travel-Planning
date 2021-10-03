@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
+import 'package:smart_travel_planning_appli/retrive_data.dart';
 import 'map_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +22,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
 
+  String myEmail;
+  String myUsername;
+  String myMobile;
 
   PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
@@ -144,10 +149,44 @@ class _ProfilePageState extends State<ProfilePage>
               SizedBox(
                 height: 30,
               ),
-              buildTextField("User Name", "User Name", false),
-              buildTextField("Email", "abcxyz123@email.com", false),
-              buildTextField("Password", "******", true),
-              buildTextField("Mobile Number", "984-------", false),
+              FutureBuilder( future: _fetch(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState != ConnectionState.done)
+                    return Text("Loading data...Please wait");
+
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text( "Username: $myUsername",
+                      style: TextStyle(
+                        fontSize: 20,
+
+                      ),),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text("Email: $myEmail",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text("Mobile: $myMobile",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),)
+                    ],
+                  );
+
+                },
+              ),
+              // buildTextField("User Name", "User Name", false),
+              // buildTextField("Email", "abcxyz123@email.com", false),
+              // buildTextField("Password", "******", true),
+              // buildTextField("Mobile Number", "984-------", false),
               SizedBox(
                 height: 25,
               ),
@@ -392,6 +431,25 @@ class _ProfilePageState extends State<ProfilePage>
       print('Grant permission and try again');
     }
 
+  }
+
+  _fetch() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null)
+      await FirebaseFirestore.instance
+          .collection('UserData')
+          .doc(firebaseUser.uid)
+          .get()
+          .then((ds) {
+
+            myUsername = ds.get('Username');
+      myEmail = ds.get('email');
+      myMobile= ds.get('mobile');
+      }
+
+      ).catchError((e) {
+        print(e);
+      });
   }
 
 }

@@ -379,7 +379,9 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                                     print('Logged-in with fingerprint');
 
 
-                                    // This feature to be implemented in future if not worked
+
+                                  //  Hataune yo voli lai
+                                  // This feature to be implemented in future if not worked
                                     Navigator.pushNamed(context, HomePage.id);
                                     //Future work
 
