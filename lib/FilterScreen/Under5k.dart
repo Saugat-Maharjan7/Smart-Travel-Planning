@@ -97,7 +97,7 @@ class _Under5kState extends State<Under5k> {
                                               ),
                                               TextButton(
                                                 style: ButtonStyle(
-                                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                                                 ),
                                                 onPressed: () async {
                                                   dynamic uurls = '${data[index].uurl}';
@@ -106,7 +106,10 @@ class _Under5kState extends State<Under5k> {
                                                   }else {
                                                     throw 'could not launch';
                                                   }} ,
-                                                child: Text('BOOK NOW'),
+                                                child: Text('BOOK NOW',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),),
                                               )
                                             ])
                                     )],
