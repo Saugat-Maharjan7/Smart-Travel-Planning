@@ -1,3 +1,4 @@
+//@dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -37,21 +38,6 @@ class _LoginPageState extends State<LoginPage> {
   // bool _isLogin = false;
   // Map data;
   // final facebookLogin = FacebookLogin();
-
-  Future<UserCredential> aignInWithGoogle() async{
-    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
-
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
-      idToken: googleAuth.idToken,
-      accessToken: googleAuth.accessToken
-    );
-
-Fluttertoast.showToast(msg: "Account Created");
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
 
 
 
@@ -381,6 +367,8 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
 
                                   //  Hataune yo voli lai
+
+
                                   // This feature to be implemented in future if not worked
                                     Navigator.pushNamed(context, HomePage.id);
                                     //Future work
@@ -475,11 +463,13 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                             text: "Sign-in with Google",
                             onPressed: () {
 
-                              aignInWithGoogle();
+                              signInWithGoogle();
 
                               print('Signed-in with google');
                             },
                           ),
+
+                          //Sign-in with facebook
                           // SignInButton(
                           //   Buttons.Facebook,
                           //   text: "Sign-in with Facebook",
@@ -502,6 +492,24 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   }
 
 
+  //Google Sign-in
+  Future<UserCredential> signInWithGoogle() async{
+    final GoogleSignInAccount googleuser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication googleAuth = await googleuser.authentication;
+
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+      accessToken: googleAuth.accessToken,
+    );
+
+    Fluttertoast.showToast(msg: "Account Created");
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+
+
+  }
+
+//Facebook method
 //   onFBLogin() async {
 //     final result = await facebookLogin.logIn(['email']);
 //     switch (result.status) {
