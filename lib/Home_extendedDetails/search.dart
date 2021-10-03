@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'Api_service.dart';
 import 'user_model.dart';
@@ -75,6 +76,38 @@ class SearchUser extends SearchDelegate {
                               '${data[index].name.toString()}',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              '${data[index].price.toString()}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              '${data[index].duration.toString()}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
+                              ),
+                              onPressed: () async {
+                                dynamic urls = '${data[index].url}';
+                                if(await canLaunch(urls)) {
+                                  launch(urls);
+                                }else {
+                                  throw 'could not launch';
+                                }} ,
+                              child: Text('BOOK NOW',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),),
                             ),
                             SizedBox(height: 15),
                           ]),

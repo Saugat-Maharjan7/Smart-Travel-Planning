@@ -254,11 +254,15 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             Row(
               children: [
-                Center(
-                  child: Text(
-                    '---Details Section---',
-                    style: TextStyle(
-                      fontSize: 18,
+                Expanded(
+                  child: Container(
+                    child: Text(
+
+                      "STPA is an application mainly focused on travel planning. Search and view destination and packages according to user's interest.",
+                      // overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),

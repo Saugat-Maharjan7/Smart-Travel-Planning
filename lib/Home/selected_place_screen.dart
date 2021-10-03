@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_travel_planning_appli/models/recommended_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SelectedPlaceScreen extends StatelessWidget {
 
@@ -131,8 +132,9 @@ class SelectedPlaceScreen extends StatelessWidget {
                         GestureDetector(
 
                           //Recommended Details to direct to website
-                          onTap: () => print("Go to the website"),
-                          //
+                          onTap: () {
+                            _launchURL();
+                          },
 
                           child: Container(
                             height: 62,
@@ -168,4 +170,8 @@ class SelectedPlaceScreen extends StatelessWidget {
       ),
     );
   }
+  static const _url = 'https://www.expedia.com/things-to-do/nagarkot-sunrise-view-and-day-hiking-from-kathmandu.a1335658.activity-details?endDate=2021-10-17&location=Kathmandu%2C%20Bagmati%2C%20Nepal&rid=1938&startDate=2021-10-03&fbclid=IwAR2mWHFhSqgXqaWZFO0yZclVQKSlY4T7af-6-okdBbzqrh2but3Hvvq3aT0';
+  void _launchURL() async =>
+      await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+
 }
