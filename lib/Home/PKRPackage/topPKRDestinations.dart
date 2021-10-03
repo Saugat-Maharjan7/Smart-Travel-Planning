@@ -171,7 +171,7 @@ class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
                                                     CrossAxisAlignment.start,
                                                     children: [
                                                       Text(
-                                                        '${data[index].ppname.toString()}',
+                                                        '${data[index].pname.toString()}',
                                                         style: TextStyle(
                                                             fontSize: 18,
                                                             fontWeight: FontWeight.w600),
@@ -198,7 +198,7 @@ class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
                                                           foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                                                         ),
                                                         onPressed: () async {
-                                                          dynamic purls = '${data[index].kurl}';
+                                                          dynamic purls = '${data[index].purl}';
                                                           if(await canLaunch(purls)) {
                                                             launch(purls);
                                                           }else {

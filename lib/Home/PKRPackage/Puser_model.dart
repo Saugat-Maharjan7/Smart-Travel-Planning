@@ -1,15 +1,15 @@
 class PUserlist {
-  String ppname;
-  String kurl;
+  String pname;
+  String purl;
   String pduration;
   String pprice;
   String pimage;
 
-  PUserlist({this.ppname, this.kurl, this.pduration, this.pprice, this.pimage});
+  PUserlist({this.pname, this.purl, this.pduration, this.pprice, this.pimage});
 
   PUserlist.fromJson(Map<String, dynamic> json) {
-    ppname = json['Ppname'];
-    kurl = json['Kurl'];
+    pname = json['Pname'];
+    purl = json['Purl'];
     pduration = json['Pduration'];
     pprice = json['Pprice'];
     pimage = json['Pimage'];
@@ -17,8 +17,8 @@ class PUserlist {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Ppname'] = this.ppname;
-    data['Kurl'] = this.kurl;
+    data['Ppname'] = this.pname;
+    data['Purl'] = this.purl;
     data['Pduration'] = this.pduration;
     data['Pprice'] = this.pprice;
     data['Pimage'] = this.pimage;

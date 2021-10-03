@@ -28,6 +28,8 @@ import '../Home_extendedDetails/suggestionSearchList.dart';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'PCKAllPackage/PCKpackage.dart';
+
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
 
@@ -440,7 +442,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => print('See All'),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PCKPackage())),
                       child: Text(
                         'Show all',
                         style: GoogleFonts.lato(
