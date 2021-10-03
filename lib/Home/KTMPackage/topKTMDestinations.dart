@@ -196,9 +196,9 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
                                                           fontWeight: FontWeight.w400,
                                                         ),
                                                       ),
-                                                      TextButton(
+                                                      ElevatedButton(
                                                         style: ButtonStyle(
-                                                          foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                                          foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                                                         ),
                                                         onPressed: () async {
                                                           dynamic kurls = '${data[index].kurl}';
@@ -207,7 +207,10 @@ class _KtmDestinationScreenState extends State<KtmDestinationScreen> {
                                                           }else {
                                                             throw 'could not launch';
                                                           }} ,
-                                                        child: Text('BOOK NOW'),
+                                                        child: Text('BOOK NOW',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                        ),),
                                                       )
                                                     ])
                                             )],

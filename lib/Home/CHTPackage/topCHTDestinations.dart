@@ -193,9 +193,9 @@ class _ChtDestinationScreenState extends State<ChtDestinationScreen> {
                                                            fontWeight: FontWeight.w400,
                                                          ),
                                                        ),
-                                                       TextButton(
+                                                       ElevatedButton(
                                                          style: ButtonStyle(
-                                                           foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                                                           foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent,)
                                                          ),
                                                          onPressed: () async {
                                                            dynamic curls = '${data[index].curl}';
@@ -204,7 +204,10 @@ class _ChtDestinationScreenState extends State<ChtDestinationScreen> {
                                                            }else {
                                                              throw 'could not launch';
                                                            }} ,
-                                                         child: Text('BOOK NOW'),
+                                                         child: Text('BOOK NOW',
+                                                           style: TextStyle(
+                                                           color: Colors.white,
+                                                         ),),
                                                        )
                                                      ])
                                              )],

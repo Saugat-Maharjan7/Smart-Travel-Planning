@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:smart_travel_planning_appli/Home/recommendedSectionDetails.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'PApi_service.dart';
 import 'Puser_model.dart';
 
@@ -193,6 +193,22 @@ class _PkrDestinationScreenState extends State<PkrDestinationScreen> {
                                                           fontWeight: FontWeight.w400,
                                                         ),
                                                       ),
+                                                      ElevatedButton(
+                                                        style: ButtonStyle(
+                                                          foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
+                                                        ),
+                                                        onPressed: () async {
+                                                          dynamic purls = '${data[index].kurl}';
+                                                          if(await canLaunch(purls)) {
+                                                            launch(purls);
+                                                          }else {
+                                                            throw 'could not launch';
+                                                          }} ,
+                                                        child: Text('BOOK NOW',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                          ),),
+                                                      )
                                                     ])
                                             )],
                                         ),

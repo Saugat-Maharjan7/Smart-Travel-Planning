@@ -133,6 +133,7 @@ class _PackageScreenState extends State<PackageScreen> {
 
                                           ElevatedButton(
                                             style: ButtonStyle(
+                                              foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                                             ),
                                             onPressed: () async {
                                               dynamic urls = '${data[index].url}';
@@ -141,7 +142,10 @@ class _PackageScreenState extends State<PackageScreen> {
                                               }else {
                                                 throw 'could not launch';
                                               }} ,
-                                            child: Text('BOOK NOW'),
+                                            child: Text('BOOK NOW',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),),
                                           )
 
                                         ]),
