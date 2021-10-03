@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
+import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
 import 'map_page.dart';
 import 'package:image_picker/image_picker.dart';
@@ -142,7 +143,7 @@ class _ProfilePageState extends State<ProfilePage>
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 25,
               ),
               imageProfile(),
               SizedBox(
@@ -156,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage>
                   return Column(
                     children: [
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Text( "Username: $myUsername",
                       style: TextStyle(
@@ -233,6 +234,35 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                 ],
               ),
+              SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 30),
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      )),
+                  onPressed: () {
+                    Navigator.pushNamed(
+                        context, LoginPage.id);
+                  },
+                  icon: Icon(
+                    Icons.exit_to_app_rounded,
+                    color: Colors.white,
+                  ),
+                  label: Text(
+                    'Sign Out',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
