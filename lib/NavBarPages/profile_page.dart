@@ -338,8 +338,8 @@ class _ProfilePageState extends State<ProfilePage>
               TextButton.icon(
                 icon: Icon(Icons.photo),
                 onPressed: () {
-                  // takePhoto(ImageSource.gallery);
-                  uploadImage();
+                  takePhoto(ImageSource.gallery);
+                  // uploadImage();
                 },
                 label: Text('Gallery'),
               ),

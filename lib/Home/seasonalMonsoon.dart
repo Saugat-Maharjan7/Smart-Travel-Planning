@@ -156,7 +156,7 @@ class _SeasonalMonsoonState extends State<SeasonalMonsoon> {
                           width: 200,
                           child: Text(info,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                             ),
                           ),
                         ),

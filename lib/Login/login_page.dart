@@ -395,7 +395,7 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                                     'Login with fingerprint',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 13.0,
+                                      fontSize: 12.0,
                                     ),
                                   ),
                                   style: TextButton.styleFrom(

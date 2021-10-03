@@ -156,7 +156,7 @@ class _SeasonalWinterState extends State<SeasonalWinter> {
                           width: 200,
                           child: Text(info,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                             ),
                           ),
                         ),
