@@ -11,6 +11,8 @@ import 'map_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:path/path.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String id = 'profile_page';
@@ -21,6 +23,12 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
+
+  File image;
+  String imgUrl;
+  
+  final formKey = GlobalKey<FormState>();
+  TextEditingController img = TextEditingController();
 
   String myEmail;
   String myUsername;
@@ -51,9 +59,29 @@ class _ProfilePageState extends State<ProfilePage>
       }
     });
   }
+  
+  sendData()async {
+    if(formKey.currentState.validate()){
+
+      var storageImage = FirebaseStorage.instance.ref().child(image.path);
+      var task = storageImage.putFile(image);
+
+      // await FirebaseFirestore.instance.collection('Storage').add();
+    }
+  }
+
+  Future getImage() async {
+    var img = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      image = img as File;
+    });
+}
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       // drawer: NavigationDrawerWidget(),
       appBar: AppBar(
@@ -146,38 +174,115 @@ class _ProfilePageState extends State<ProfilePage>
                 height: 25,
               ),
               imageProfile(),
+
               SizedBox(
                 height: 30,
               ),
               FutureBuilder( future: _fetch(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState != ConnectionState.done)
-                    return Text("Loading data...Please wait");
+                    return Text("Loading...Please wait");
 
                   return Column(
                     children: [
                       SizedBox(
                         height: 10,
                       ),
-                      Text( "Username: $myUsername",
-                      style: TextStyle(
-                        fontSize: 20,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Username:',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('$myUsername',
+                          style: TextStyle(
+                            fontSize: 21,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.tealAccent,
+                          ),
+                        ),
+                      ),
 
-                      ),),
                       SizedBox(
                         height: 5,
                       ),
-                      Text("Email: $myEmail",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),),
-                      SizedBox(
-                        height: 5,
+
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Email:',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
                       ),
-                      Text("Mobile: $myMobile",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('$myEmail',
+                          style: TextStyle(
+                            fontSize: 21,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.tealAccent,
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 10,
+                      ),
+
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Number:',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('$myMobile',
+                          style: TextStyle(
+                            fontSize: 21,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.tealAccent,
+                          ),
+                        ),
+                      ),
                     ],
                   );
 
@@ -188,16 +293,18 @@ class _ProfilePageState extends State<ProfilePage>
               // buildTextField("Password", "******", true),
               // buildTextField("Mobile Number", "984-------", false),
               SizedBox(
-                height: 25,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   OutlinedButton(
                     onPressed: () {
+                      // Navigator.of(context).pop();
                       print('Changes Discarded');
                     },
                     child: Text(
+
                       'Cancel',
                       style: TextStyle(
                         fontSize: 19,
@@ -214,6 +321,8 @@ class _ProfilePageState extends State<ProfilePage>
                   ),
                   ElevatedButton(
                     onPressed: () {
+
+
                       print('Changes Saved');
                     },
                     style: ElevatedButton.styleFrom(
@@ -235,7 +344,7 @@ class _ProfilePageState extends State<ProfilePage>
                 ],
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               Center(
                 child: OutlinedButton.icon(
@@ -270,42 +379,42 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Widget buildTextField(
-      String labelText, String placeholder, bool isPasswordTextField) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 35.0),
-      child: TextField(
-        obscureText: isPasswordTextField ? showPassword : false,
-        decoration: InputDecoration(
-          suffixIcon: isPasswordTextField
-              ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      showPassword = !showPassword;
-                    });
-                  },
-                  icon: Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
-                  ),
-                )
-              : null,
-          contentPadding: EdgeInsets.only(bottom: 5),
-          labelText: labelText,
-          labelStyle: TextStyle(
-            fontSize: 25,
-            color: Colors.blueAccent,
-          ),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          hintText: placeholder,
-          hintStyle: TextStyle(
-            fontSize: 19,
-            color: Colors.grey,
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget buildTextField(
+  //     String labelText, String placeholder, bool isPasswordTextField) {
+  //   return Padding(
+  //     padding: EdgeInsets.only(bottom: 35.0),
+  //     child: TextField(
+  //       obscureText: isPasswordTextField ? showPassword : false,
+  //       decoration: InputDecoration(
+  //         suffixIcon: isPasswordTextField
+  //             ? IconButton(
+  //                 onPressed: () {
+  //                   setState(() {
+  //                     showPassword = !showPassword;
+  //                   });
+  //                 },
+  //                 icon: Icon(
+  //                   Icons.visibility,
+  //                   color: Colors.grey,
+  //                 ),
+  //               )
+  //             : null,
+  //         contentPadding: EdgeInsets.only(bottom: 5),
+  //         labelText: labelText,
+  //         labelStyle: TextStyle(
+  //           fontSize: 25,
+  //           color: Colors.blueAccent,
+  //         ),
+  //         floatingLabelBehavior: FloatingLabelBehavior.always,
+  //         hintText: placeholder,
+  //         hintStyle: TextStyle(
+  //           fontSize: 19,
+  //           color: Colors.grey,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget imageProfile() {
     return Center(
@@ -331,7 +440,7 @@ class _ProfilePageState extends State<ProfilePage>
                   fit: BoxFit.cover,
                   image: _imageFile == null
                       ? AssetImage(
-                          "images/user.png")
+                      "images/user.png")
                       : FileImage(File(_imageFile.path)),
                 )),
           ),
@@ -340,6 +449,9 @@ class _ProfilePageState extends State<ProfilePage>
             right: 0,
             child: InkWell(
               onTap: () {
+
+                // getImage();
+
                 if (Platform.isAndroid) {
                   showModalBottomSheet(
                     context: context,
@@ -352,6 +464,8 @@ class _ProfilePageState extends State<ProfilePage>
                     builder: ((builder) => bottomSheet()),
                   );
                 }
+
+
                 print('Tapped');
               },
               child: Container(
@@ -407,7 +521,7 @@ class _ProfilePageState extends State<ProfilePage>
                 icon: Icon(Icons.photo),
                 onPressed: () {
                   takePhoto(ImageSource.gallery);
-                  // uploadImage();
+                  uploadImage();
                 },
                 label: Text('Gallery'),
               ),
