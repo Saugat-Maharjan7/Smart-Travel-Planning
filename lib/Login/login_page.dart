@@ -284,7 +284,7 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                                   onPressed: () async {
                                     if (_formkey.currentState.validate()) {
                                       Fluttertoast.showToast(
-                                          msg: "User not registered");
+                                          msg: "Finding User...");
                                         try {
                                           final newUser = (await _auth
                                               .signInWithEmailAndPassword(
