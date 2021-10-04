@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_travel_planning_appli/Home/home_page.dart';
 import 'package:smart_travel_planning_appli/Login/login_page.dart';
 import 'package:smart_travel_planning_appli/NavBarPages/settings.dart';
@@ -165,11 +166,13 @@ class _ProfilePageState extends State<ProfilePage>
             children: <Widget>[
               Text(
                 'Profile',
-                style: TextStyle(
+
+                style: GoogleFonts.lato(
                   fontSize: 45,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w500
+                )
+
                 ),
-              ),
               SizedBox(
                 height: 25,
               ),
