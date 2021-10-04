@@ -95,7 +95,7 @@ class _Under5kState extends State<Under5k> {
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
-                                              TextButton(
+                                              ElevatedButton(
                                                 style: ButtonStyle(
                                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                                                 ),
